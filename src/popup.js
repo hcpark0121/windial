@@ -3,11 +3,12 @@ import {
   getSettings, getSession, resolveBindings, saveWindowName, displayName,
 } from './common.js';
 import { refreshNanoNames, hasPromptApi } from './naming-nano.js';
+import { getShortcut, openShortcutsPage } from './shortcut.js';
 
 const $ = (id) => document.getElementById(id);
 const els = {
   searchbox: $('searchbox'), search: $('search'), mode: $('mode'),
-  list: $('list'), empty: $('empty'), foot: $('foot'),
+  list: $('list'), empty: $('empty'), foot: $('foot'), banner: $('banner'),
 };
 
 const state = {
@@ -518,6 +519,7 @@ function onKeyUp(e) {
 
 async function init() {
   await (globalThis.__windialMockReady || Promise.resolve());
+  chrome.storage.session.set({ lastPopupOpen: Date.now() }).catch(() => {});
   els.search.placeholder = t('searchPlaceholder');
   els.search.addEventListener('input', () => setQuery(els.search.value));
   window.addEventListener('keydown', onKeyDown);
@@ -533,6 +535,12 @@ async function init() {
   if (params.get('shift') === '1') state.shift = true;
   render();
   els.search.focus();
+
+  getShortcut().then((shortcut) => {
+    els.banner.hidden = Boolean(shortcut);
+    if (!shortcut) els.banner.textContent = t('popupNoShortcut');
+  });
+  els.banner.addEventListener('click', () => { openShortcutsPage(); window.close(); });
 
   if (state.settings.naming === 'nano' && hasPromptApi()) {
     refreshNanoNames(state.windows, state.settings, async () => {

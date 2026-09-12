@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Windial</title>
+<link rel="stylesheet" href="options.css">
+<style>
+  main { max-width: 620px; padding-top: 36px; }
+  .hero { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+  .hero img { width: 44px; height: 44px; border-radius: 10px; }
+  .hero h1 { margin: 0; font-size: 22px; }
+  .card { border: 1px solid var(--edge); border-radius: 10px; padding: 16px 18px; margin: 0 0 18px; background: var(--panel); }
+  .card.warn { border-color: var(--warn); }
+  .card .label { color: var(--ink-2); font-size: 12.5px; margin: 0 0 6px; }
+  .bigkey { display: inline-flex; align-items: center; justify-content: center; min-width: 64px; height: 44px; padding: 0 16px; border: 1.5px solid var(--key-edge); border-bottom-width: 3px; border-radius: 9px; background: var(--key-bg); font-weight: 600; font-size: 20px; }
+  .card p { margin: 10px 0 0; }
+  .card .actions { margin-top: 12px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .muted { color: var(--ink-3); font-size: 12.5px; }
+  .card.ok { border-color: var(--ok); }
+  .ok-text { color: var(--ok); font-weight: 600; }
+  table { border-collapse: collapse; width: 100%; font-size: 13px; }
+  td { padding: 7px 8px 7px 0; border-top: 1px solid var(--edge); vertical-align: top; }
+  td:first-child { white-space: nowrap; width: 1%; padding-right: 16px; }
+  .k { font-size: 12.5px; }
+</style>
+</head>
+<body>
+<main>
+  <div class="hero">
+    <img src="../icons/icon128.png" alt="">
+    <h1 data-i18n="welcomeReady"></h1>
+  </div>
+
+  <div class="card" id="card">
+    <p class="label" id="label"></p>
+    <div id="key"></div>
+    <p id="help" class="muted" hidden></p>
+    <div class="actions">
+      <button type="button" class="primary" id="setBtn"></button>
+      <span class="muted" id="watch" data-i18n="welcomeWatching"></span>
+    </div>
+  </div>
+
+  <div class="card" id="tryCard" hidden>
+    <p class="label" id="tryLabel"></p>
+    <p id="tryStatus" class="muted"></p>
+    <p id="tryHelp" hidden></p>
+    <div class="actions" id="tryActions" hidden><button type="button" id="tryBtn"></button></div>
+  </div>
+
+  <h2 data-i18n="welcomeKeys"></h2>
+  <table>
+    <tr><td><span class="k" id="kOpen"></span></td><td data-i18n="keyOpen"></td></tr>
+    <tr><td><span class="k">1</span> … <span class="k">9</span></td><td data-i18n="keyDigits"></td></tr>
+    <tr><td><span class="k">0</span></td><td data-i18n="keyZero"></td></tr>
+    <tr><td><span class="k">↵</span></td><td data-i18n="keyEnter"></td></tr>
+    <tr><td><span class="k">a</span><span class="k">b</span><span class="k">c</span></td><td data-i18n="keyType"></td></tr>
+    <tr><td><span class="k">⇧</span> + <span class="k">1</span>…<span class="k">9</span></td><td data-i18n="keyShift"></td></tr>
+    <tr><td><span class="k">F2</span></td><td data-i18n="keyF2"></td></tr>
+    <tr><td><span class="k">esc</span></td><td data-i18n="keyEsc"></td></tr>
+  </table>
+</main>
+<script type="module" src="mock.js"></script>
+<script type="module" src="welcome.js"></script>
+</body>
+</html>

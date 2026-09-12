@@ -1,62 +1,273 @@
 {
-  "extName": { "message": "Windial: Switch Windows by Number" },
-  "extDesc": { "message": "One shortcut, one number. See every Chrome window by its topic and jump between them in two keystrokes." },
-  "cmdOpen": { "message": "Open the window list" },
-
-  "searchPlaceholder": { "message": "Search window names, tabs and URLs" },
-  "tabCount": { "message": "$COUNT$ tabs", "placeholders": { "COUNT": { "content": "$1" } } },
-  "tabCountOne": { "message": "1 tab" },
-  "matchCount": { "message": "$COUNT$ matches", "placeholders": { "COUNT": { "content": "$1" } } },
-  "matchCountOne": { "message": "1 match" },
-  "currentWindow": { "message": "This window" },
-  "previousWindow": { "message": "Previous" },
-  "alreadyHere": { "message": "already here" },
-  "minimized": { "message": "minimized" },
-  "untitledGroup": { "message": "Untitled group" },
-
-  "footJump": { "message": "1–9 jump" },
-  "footLast": { "message": "0 last window" },
-  "footBack": { "message": "Enter previous window" },
-  "footMove": { "message": "Shift+number move this tab" },
-  "footRename": { "message": "F2 rename" },
-  "footLetters": { "message": "Shift+A… windows 10 and up" },
-  "footSearchEnter": { "message": "Enter opens the window and that tab" },
-  "footSearchPick": { "message": "↑↓ choose" },
-
-  "moveMode": { "message": "Move “$TITLE$” to which window?", "placeholders": { "TITLE": { "content": "$1" } } },
-  "moveStay": { "message": "Hold Alt to move without following" },
-  "renamePlaceholder": { "message": "Window name" },
-  "renameHint": { "message": "Enter saves · Esc cancels · empty name restores the default" },
-  "noWindows": { "message": "No other windows are open." },
-  "noMatch": { "message": "No window matches “$Q$”", "placeholders": { "Q": { "content": "$1" } } },
-  "rename": { "message": "Rename" },
-
-  "optTitle": { "message": "Windial settings" },
-  "optNaming": { "message": "Automatic window names" },
-  "optNamingHelp": { "message": "A name you type yourself always wins. These rules only fill in the rest." },
-  "optNamingRule": { "message": "From the first tab (default)" },
-  "optNamingRuleHelp": { "message": "The site of the window's first tab, for example “Github” or “Naver”." },
-  "optNamingNano": { "message": "Ask Gemini Nano on this device" },
-  "optNanoNote": { "message": "Runs on this computer; nothing leaves your machine. Needs Chrome 148 or newer, about 22 GB of free disk space and a one-time model download." },
-  "nanoUnsupported": { "message": "Not available in this Chrome" },
-  "nanoDownloadable": { "message": "Model not downloaded yet" },
-  "nanoDownloading": { "message": "Downloading… $PCT$%", "placeholders": { "PCT": { "content": "$1" } } },
-  "nanoAvailable": { "message": "Ready" },
-  "nanoUnavailable": { "message": "Not available on this device" },
-  "nanoDownload": { "message": "Download model" },
-  "nanoTest": { "message": "Try it on this window" },
-  "nanoTestResult": { "message": "Suggested name: $NAME$", "placeholders": { "NAME": { "content": "$1" } } },
-  "nanoTestFailed": { "message": "Could not get a name: $ERR$", "placeholders": { "ERR": { "content": "$1" } } },
-  "optLang": { "message": "Language of suggested names" },
-  "optLangSystem": { "message": "Same as Chrome" },
-  "optNames": { "message": "Saved window names" },
-  "optNamesHelp": { "message": "Names are matched to windows by their tabs, so they survive a Chrome restart." },
-  "optNamesEmpty": { "message": "No names saved yet. Press F2 in the list to name a window." },
-  "delete": { "message": "Delete" },
-  "optShortcut": { "message": "Shortcut" },
-  "optShortcutChange": { "message": "Change in Chrome" },
-  "optShortcutNone": { "message": "Not set" },
-  "optShortcutHelp": { "message": "Chrome may refuse a shortcut that is already taken. Pick another one in the Chrome shortcuts page." },
-  "saved": { "message": "Saved" },
-  "optPrivacy": { "message": "Windial keeps everything in this browser profile and never sends anything anywhere." }
+  "extName": {
+    "message": "Windial: Switch Windows by Number"
+  },
+  "extDesc": {
+    "message": "One shortcut, one number. See every Chrome window by its topic and jump between them in two keystrokes."
+  },
+  "cmdOpen": {
+    "message": "Open the window list"
+  },
+  "searchPlaceholder": {
+    "message": "Search window names, tabs and URLs"
+  },
+  "tabCount": {
+    "message": "$COUNT$ tabs",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "tabCountOne": {
+    "message": "1 tab"
+  },
+  "matchCount": {
+    "message": "$COUNT$ matches",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "matchCountOne": {
+    "message": "1 match"
+  },
+  "currentWindow": {
+    "message": "This window"
+  },
+  "previousWindow": {
+    "message": "Previous"
+  },
+  "alreadyHere": {
+    "message": "already here"
+  },
+  "minimized": {
+    "message": "minimized"
+  },
+  "untitledGroup": {
+    "message": "Untitled group"
+  },
+  "footJump": {
+    "message": "1–9 jump"
+  },
+  "footLast": {
+    "message": "0 last window"
+  },
+  "footBack": {
+    "message": "Enter previous window"
+  },
+  "footMove": {
+    "message": "Shift+number move this tab"
+  },
+  "footRename": {
+    "message": "F2 rename"
+  },
+  "footLetters": {
+    "message": "Shift+A… windows 10 and up"
+  },
+  "footSearchEnter": {
+    "message": "Enter opens the window and that tab"
+  },
+  "footSearchPick": {
+    "message": "↑↓ choose"
+  },
+  "moveMode": {
+    "message": "Move “$TITLE$” to which window?",
+    "placeholders": {
+      "TITLE": {
+        "content": "$1"
+      }
+    }
+  },
+  "moveStay": {
+    "message": "Hold Alt to move without following"
+  },
+  "renamePlaceholder": {
+    "message": "Window name"
+  },
+  "renameHint": {
+    "message": "Enter saves · Esc cancels · empty name restores the default"
+  },
+  "noWindows": {
+    "message": "No other windows are open."
+  },
+  "noMatch": {
+    "message": "No window matches “$Q$”",
+    "placeholders": {
+      "Q": {
+        "content": "$1"
+      }
+    }
+  },
+  "rename": {
+    "message": "Rename"
+  },
+  "optTitle": {
+    "message": "Windial settings"
+  },
+  "optNaming": {
+    "message": "Automatic window names"
+  },
+  "optNamingHelp": {
+    "message": "A name you type yourself always wins. These rules only fill in the rest."
+  },
+  "optNamingRule": {
+    "message": "From the first tab (default)"
+  },
+  "optNamingRuleHelp": {
+    "message": "The site of the window's first tab, for example “Github” or “Naver”."
+  },
+  "optNamingNano": {
+    "message": "Ask Gemini Nano on this device"
+  },
+  "optNanoNote": {
+    "message": "Runs on this computer; nothing leaves your machine. Needs Chrome 148 or newer, about 22 GB of free disk space and a one-time model download."
+  },
+  "nanoUnsupported": {
+    "message": "Not available in this Chrome"
+  },
+  "nanoDownloadable": {
+    "message": "Model not downloaded yet"
+  },
+  "nanoDownloading": {
+    "message": "Downloading… $PCT$%",
+    "placeholders": {
+      "PCT": {
+        "content": "$1"
+      }
+    }
+  },
+  "nanoAvailable": {
+    "message": "Ready"
+  },
+  "nanoUnavailable": {
+    "message": "Not available on this device"
+  },
+  "nanoDownload": {
+    "message": "Download model"
+  },
+  "nanoTest": {
+    "message": "Try it on this window"
+  },
+  "nanoTestResult": {
+    "message": "Suggested name: $NAME$",
+    "placeholders": {
+      "NAME": {
+        "content": "$1"
+      }
+    }
+  },
+  "nanoTestFailed": {
+    "message": "Could not get a name: $ERR$",
+    "placeholders": {
+      "ERR": {
+        "content": "$1"
+      }
+    }
+  },
+  "optLang": {
+    "message": "Language of suggested names"
+  },
+  "optLangSystem": {
+    "message": "Same as Chrome"
+  },
+  "optNames": {
+    "message": "Saved window names"
+  },
+  "optNamesHelp": {
+    "message": "Names are matched to windows by their tabs, so they survive a Chrome restart."
+  },
+  "optNamesEmpty": {
+    "message": "No names saved yet. Press F2 in the list to name a window."
+  },
+  "delete": {
+    "message": "Delete"
+  },
+  "optShortcut": {
+    "message": "Shortcut"
+  },
+  "optShortcutChange": {
+    "message": "Change in Chrome"
+  },
+  "optShortcutNone": {
+    "message": "Not set"
+  },
+  "optShortcutHelp": {
+    "message": "Chrome may refuse a shortcut that is already taken. Pick another one in the Chrome shortcuts page."
+  },
+  "saved": {
+    "message": "Saved"
+  },
+  "optPrivacy": {
+    "message": "Windial keeps everything in this browser profile and never sends anything anywhere."
+  },
+  "welcomeReady": {
+    "message": "Windial is ready."
+  },
+  "welcomeShortcutIs": {
+    "message": "Your shortcut"
+  },
+  "welcomeNone": {
+    "message": "Chrome did not assign a shortcut. The suggested key was probably already taken by Chrome or by another extension. Setting one takes ten seconds."
+  },
+  "welcomeSet": {
+    "message": "Set the shortcut"
+  },
+  "welcomeChange": {
+    "message": "Change the shortcut"
+  },
+  "welcomeHow": {
+    "message": "On the page that opens, find Windial, click the pencil next to “Open the window list” and press the keys you want. Good choices: ⌥W, ⌘⇧C or ⌘⇧X on Mac; Alt+W or Ctrl+Shift+Y on Windows and Linux."
+  },
+  "welcomeWatching": {
+    "message": "This page updates by itself once the shortcut is set."
+  },
+  "welcomeKeys": {
+    "message": "Keys"
+  },
+  "keyOpen": {
+    "message": "Open the window list"
+  },
+  "keyDigits": {
+    "message": "Jump to that window. Numbers follow the order windows were opened and stay put."
+  },
+  "keyZero": {
+    "message": "Last window, however many there are"
+  },
+  "keyEnter": {
+    "message": "Previous window (preselected when the list opens)"
+  },
+  "keyType": {
+    "message": "Search window names, tab groups, tab titles and URLs. Enter opens the window and the matching tab."
+  },
+  "keyShift": {
+    "message": "Move the current tab into that window and follow it. Add Alt to stay."
+  },
+  "keyF2": {
+    "message": "Name the selected window"
+  },
+  "keyEsc": {
+    "message": "Clear the search, then close"
+  },
+  "popupNoShortcut": {
+    "message": "No shortcut is set — click to choose one"
+  },
+  "welcomeTry": {
+    "message": "Try it now: press $KEY$",
+    "placeholders": {
+      "KEY": {
+        "content": "$1"
+      }
+    }
+  },
+  "welcomeWaiting": {
+    "message": "Waiting for the list to open…"
+  },
+  "welcomeWorks": {
+    "message": "It works. You can close this tab."
+  },
+  "welcomeNotOpening": {
+    "message": "Nothing happened? Chrome sometimes shows a shortcut without registering it. Open the shortcuts page and enter the combination again — the same one is fine."
+  }
 }

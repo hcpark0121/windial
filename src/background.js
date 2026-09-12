@@ -3,6 +3,7 @@
 
 import { getSession, setSession, resolveBindings, getSettings } from './common.js';
 import { refreshNanoNames, hasPromptApi } from './naming-nano.js';
+import { getShortcut } from './shortcut.js';
 
 const MRU_LIMIT = 50;
 
@@ -57,9 +58,20 @@ chrome.runtime.onStartup.addListener(() => {
   seedMru().then(rebind).then(scheduleNano).catch(() => {});
 });
 
-chrome.runtime.onInstalled.addListener(() => {
+chrome.runtime.onInstalled.addListener((details) => {
   seedMru().then(rebind).then(scheduleNano).catch(() => {});
+  welcomeIfNeeded(details.reason).catch(() => {});
 });
+
+// Chrome cannot be asked to set a shortcut, only to suggest one. If the suggestion was
+// refused (key already taken) the user would never find out — so show them, once, right away.
+async function welcomeIfNeeded(reason) {
+  if (reason !== 'install' && reason !== 'update') return;
+  const shortcut = await getShortcut();
+  if (reason === 'update' && shortcut) return;
+  await setSession({ welcomeShownAt: Date.now() });
+  await chrome.tabs.create({ url: chrome.runtime.getURL('src/welcome.html') });
+}
 
 // Nano naming in the background is best-effort; the popup also names on demand.
 let nanoTimer = null;

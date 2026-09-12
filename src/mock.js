@@ -142,7 +142,7 @@ if (!isExtension && params.has('mock')) {
     },
     tabGroups: { async query() { return Object.values(groups).map(clone); } },
     storage: { local: storageArea(local), session: storageArea(session), onChanged: { addListener() {} } },
-    commands: { async getAll() { return [{ name: '_execute_action', shortcut: navigator.platform.includes('Mac') ? '⇧⌘X' : 'Alt+W' }]; } },
+    commands: { async getAll() { return [{ name: '_execute_action', shortcut: navigator.platform.includes('Mac') ? '⌥W' : 'Alt+W' }]; } },
   };
   globalThis.__windialMockReady = ready;
   window.close = () => console.log('[mock] window.close()');

@@ -10,7 +10,7 @@ If you keep one window per topic, Chrome's own window switching is slow: `⌘`` 
 
 | Key | What it does |
 |---|---|
-| `⌘⇧X` (Mac) / `Alt+W` (Windows, Linux) | Open the list. Change it at `chrome://extensions/shortcuts`. |
+| `⌥W` (Mac) / `Alt+W` (Windows, Linux) | Open the list. Change it at `chrome://extensions/shortcuts`. If Chrome could not assign it (key already taken), Windial opens a page that says so right after install. |
 | `1` … `9` | Jump to that window. Numbers follow the order windows were opened and stay put. |
 | `0` | Jump to the last window, however many there are. |
 | `Enter` | Go to the previous window. It is preselected when the list opens. |

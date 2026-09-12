@@ -234,6 +234,17 @@ try {
   const modeText = await popup.evaluate(() => document.getElementById('mode').textContent);
   check('holding Shift relabels keycaps and shows the move prompt', shiftKeys[0] === '⇧1' && modeText.length > 0, `${shiftKeys.join(' ')} / ${modeText}`);
   await popup.screenshot({ path: path.join(outDir, '4-shift.png') });
+  // Releasing Shift must fully leave move mode: prompt hidden, placeholder back, keycaps plain.
+  await popup.keyboard.up('Shift');
+  await sleep(150);
+  const afterShift = await popup.evaluate(() => ({
+    modeDisplay: getComputedStyle(document.getElementById('mode')).display,
+    moving: document.getElementById('searchbox').classList.contains('moving'),
+    key: document.querySelector('.row .key').textContent,
+  }));
+  check('releasing Shift clears the move prompt', afterShift.modeDisplay === 'none' && !afterShift.moving && afterShift.key === '1', JSON.stringify(afterShift));
+  await popup.keyboard.down('Shift');
+  await sleep(150);
   await popup.keyboard.down('Alt');
   await press(popup, 'Digit2');
   await popup.keyboard.up('Alt');
@@ -255,6 +266,12 @@ try {
   check('closing a window drops it and the ghost 0 moves', rows.length === 2 && rows[1].keys.join() === '2,0', JSON.stringify(rows.map((r) => r.keys)));
   await press(popup, 'Escape');
   await waitClosed(popup);
+
+  // --- welcome page opened on install and shows the shortcut ---
+  const welcome = context.pages().find((p) => p.url().includes('welcome.html'));
+  let welcomeKey = '';
+  if (welcome) { await welcome.bringToFront(); await sleep(300); welcomeKey = await welcome.evaluate(() => document.querySelector('.bigkey')?.textContent || ''); await welcome.screenshot({ path: path.join(outDir, '6-welcome.png'), fullPage: true }); }
+  check('welcome page opened on install and shows the assigned shortcut', Boolean(welcome) && welcomeKey.length > 0, welcomeKey || 'no welcome page');
 
   // --- options page ---
   await probe.reload();

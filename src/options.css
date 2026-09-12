@@ -11,6 +11,7 @@
   }
 }
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 html, body { margin: 0; }
 body {
   background: var(--bg); color: var(--ink);
@@ -48,6 +49,7 @@ select { font: inherit; font-size: 12.5px; padding: 4px 6px; border-radius: 6px;
 .names small { color: var(--ink-3); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 12px; }
 .names button { padding: 2px 8px; font-size: 12px; }
 .shortcut { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+.k.missing { color: var(--bad); border-color: var(--bad); }
 .k { display: inline-block; padding: 2px 8px; border: 1px solid var(--key-edge); border-bottom-width: 2px; border-radius: 6px; background: var(--key-bg); font-weight: 600; }
 .privacy { color: var(--ink-3); font-size: 12px; margin: 14px 0 0; border-top: 1px solid var(--edge); padding-top: 12px; }
 .toast { position: fixed; right: 16px; bottom: 16px; background: var(--ink); color: var(--bg); padding: 6px 12px; border-radius: 6px; font-size: 12.5px; }

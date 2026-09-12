@@ -1,5 +1,6 @@
 import { t, getSettings, setSettings, getSavedNames, setSavedNames, getSession, setSession } from './common.js';
 import { nanoAvailability, nanoDownload, nanoNameFor, hasPromptApi } from './naming-nano.js';
+import { getShortcut, openShortcutsPage } from './shortcut.js';
 
 const $ = (id) => document.getElementById(id);
 
@@ -67,13 +68,10 @@ async function renderNames() {
 }
 
 async function renderShortcut() {
-  let text = t('optShortcutNone');
-  try {
-    const cmds = await chrome.commands.getAll();
-    const c = cmds.find((x) => x.name === '_execute_action');
-    if (c && c.shortcut) text = c.shortcut;
-  } catch (_) { /* ignore */ }
-  $('shortcut').textContent = text;
+  const shortcut = await getShortcut();
+  $('shortcut').textContent = shortcut || t('optShortcutNone');
+  $('shortcut').classList.toggle('missing', !shortcut);
+  $('shortcutHelp').textContent = shortcut ? t('optShortcutHelp') : t('welcomeNone');
 }
 
 async function init() {
@@ -122,9 +120,8 @@ async function init() {
     }
   });
 
-  $('shortcutChange').addEventListener('click', () => {
-    chrome.tabs.create({ url: 'chrome://extensions/shortcuts' });
-  });
+  $('shortcutChange').addEventListener('click', openShortcutsPage);
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) renderShortcut(); });
 
   await Promise.all([renderNano(), renderNames(), renderShortcut()]);
   if (!hasPromptApi()) {

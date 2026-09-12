@@ -13,7 +13,7 @@ If you keep one Chrome window per topic, you already know the problem: the built
 
 Windial fixes both.
 
-Press the shortcut (⌘⇧X on Mac, Alt+W on Windows and Linux; change it any time at chrome://extensions/shortcuts) and a list of your windows appears. Every window shows its name, its tab groups, a row of favicons and its tab count, so you recognise it before you read anything. Press 1 to 9 to jump to that window, or 0 for the last one. Two keystrokes, done.
+Press the shortcut (⌥W on Mac, Alt+W on Windows and Linux; change it any time at chrome://extensions/shortcuts) and a list of your windows appears. Every window shows its name, its tab groups, a row of favicons and its tab count, so you recognise it before you read anything. Press 1 to 9 to jump to that window, or 0 for the last one. Two keystrokes, done.
 
 • Numbers are stable. Windows are numbered in the order you opened them, so number 2 stays number 2 all day.
 • The previous window is preselected. Open Windial and press Enter to go back where you came from.

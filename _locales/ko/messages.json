@@ -1,62 +1,273 @@
 {
-  "extName": { "message": "Windial: 숫자로 창 전환" },
-  "extDesc": { "message": "단축키 하나, 숫자 하나. 크롬 창마다 주제 이름과 파비콘을 보여주고, 키 두 번으로 창을 옮깁니다." },
-  "cmdOpen": { "message": "창 목록 열기" },
-
-  "searchPlaceholder": { "message": "창 이름 · 탭 제목 · 주소로 찾기" },
-  "tabCount": { "message": "$COUNT$탭", "placeholders": { "COUNT": { "content": "$1" } } },
-  "tabCountOne": { "message": "1탭" },
-  "matchCount": { "message": "$COUNT$개 일치", "placeholders": { "COUNT": { "content": "$1" } } },
-  "matchCountOne": { "message": "1개 일치" },
-  "currentWindow": { "message": "지금 창" },
-  "previousWindow": { "message": "직전 창" },
-  "alreadyHere": { "message": "이미 여기" },
-  "minimized": { "message": "최소화됨" },
-  "untitledGroup": { "message": "이름 없는 그룹" },
-
-  "footJump": { "message": "1–9 이동" },
-  "footLast": { "message": "0 마지막 창" },
-  "footBack": { "message": "Enter 직전 창" },
-  "footMove": { "message": "Shift+숫자 이 탭 옮기기" },
-  "footRename": { "message": "F2 이름 바꾸기" },
-  "footLetters": { "message": "Shift+A… 10번째 창부터" },
-  "footSearchEnter": { "message": "Enter로 그 창에 가서 그 탭을 켭니다" },
-  "footSearchPick": { "message": "↑↓ 고르기" },
-
-  "moveMode": { "message": "«$TITLE$» 탭을 어느 창으로 옮길까요?", "placeholders": { "TITLE": { "content": "$1" } } },
-  "moveStay": { "message": "Alt를 같이 누르면 옮기기만 하고 여기 남습니다" },
-  "renamePlaceholder": { "message": "창 이름" },
-  "renameHint": { "message": "Enter 저장 · Esc 취소 · 비우면 기본 이름으로" },
-  "noWindows": { "message": "다른 창이 없습니다." },
-  "noMatch": { "message": "«$Q$»에 맞는 창이 없습니다", "placeholders": { "Q": { "content": "$1" } } },
-  "rename": { "message": "이름 바꾸기" },
-
-  "optTitle": { "message": "Windial 설정" },
-  "optNaming": { "message": "창 이름 자동 짓기" },
-  "optNamingHelp": { "message": "직접 지은 이름이 언제나 우선입니다. 아래 규칙은 나머지 창에만 적용됩니다." },
-  "optNamingRule": { "message": "첫 탭 기준(기본)" },
-  "optNamingRuleHelp": { "message": "창의 첫 탭이 열린 사이트 이름을 씁니다. 예: «Github», «Naver»." },
-  "optNamingNano": { "message": "기기 안의 Gemini Nano로 판정" },
-  "optNanoNote": { "message": "이 컴퓨터 안에서만 돕니다. 크롬 148 이상, 여유 디스크 약 22GB, 최초 1회 모델 내려받기가 필요합니다." },
-  "nanoUnsupported": { "message": "이 크롬에서는 쓸 수 없습니다" },
-  "nanoDownloadable": { "message": "모델을 아직 받지 않았습니다" },
-  "nanoDownloading": { "message": "내려받는 중… $PCT$%", "placeholders": { "PCT": { "content": "$1" } } },
-  "nanoAvailable": { "message": "준비됨" },
-  "nanoUnavailable": { "message": "이 기기에서는 쓸 수 없습니다" },
-  "nanoDownload": { "message": "모델 내려받기" },
-  "nanoTest": { "message": "지금 창으로 시험" },
-  "nanoTestResult": { "message": "제안된 이름: $NAME$", "placeholders": { "NAME": { "content": "$1" } } },
-  "nanoTestFailed": { "message": "이름을 받지 못했습니다: $ERR$", "placeholders": { "ERR": { "content": "$1" } } },
-  "optLang": { "message": "제안 이름의 언어" },
-  "optLangSystem": { "message": "크롬과 같게" },
-  "optNames": { "message": "저장된 창 이름" },
-  "optNamesHelp": { "message": "이름은 창의 탭 구성으로 다시 찾아 붙이므로 크롬을 다시 켜도 남습니다." },
-  "optNamesEmpty": { "message": "저장된 이름이 없습니다. 목록에서 F2를 눌러 창 이름을 지으세요." },
-  "delete": { "message": "삭제" },
-  "optShortcut": { "message": "단축키" },
-  "optShortcutChange": { "message": "크롬에서 바꾸기" },
-  "optShortcutNone": { "message": "설정 안 됨" },
-  "optShortcutHelp": { "message": "이미 쓰이는 조합은 크롬이 거부할 수 있습니다. 그럴 땐 크롬 단축키 화면에서 다른 조합을 고르세요." },
-  "saved": { "message": "저장됨" },
-  "optPrivacy": { "message": "Windial은 모든 것을 이 브라우저 프로필 안에만 두고 어디에도 보내지 않습니다." }
+  "extName": {
+    "message": "Windial: 숫자로 창 전환"
+  },
+  "extDesc": {
+    "message": "단축키 하나, 숫자 하나. 크롬 창마다 주제 이름과 파비콘을 보여주고, 키 두 번으로 창을 옮깁니다."
+  },
+  "cmdOpen": {
+    "message": "창 목록 열기"
+  },
+  "searchPlaceholder": {
+    "message": "창 이름 · 탭 제목 · 주소로 찾기"
+  },
+  "tabCount": {
+    "message": "$COUNT$탭",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "tabCountOne": {
+    "message": "1탭"
+  },
+  "matchCount": {
+    "message": "$COUNT$개 일치",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "matchCountOne": {
+    "message": "1개 일치"
+  },
+  "currentWindow": {
+    "message": "지금 창"
+  },
+  "previousWindow": {
+    "message": "직전 창"
+  },
+  "alreadyHere": {
+    "message": "이미 여기"
+  },
+  "minimized": {
+    "message": "최소화됨"
+  },
+  "untitledGroup": {
+    "message": "이름 없는 그룹"
+  },
+  "footJump": {
+    "message": "1–9 이동"
+  },
+  "footLast": {
+    "message": "0 마지막 창"
+  },
+  "footBack": {
+    "message": "Enter 직전 창"
+  },
+  "footMove": {
+    "message": "Shift+숫자 이 탭 옮기기"
+  },
+  "footRename": {
+    "message": "F2 이름 바꾸기"
+  },
+  "footLetters": {
+    "message": "Shift+A… 10번째 창부터"
+  },
+  "footSearchEnter": {
+    "message": "Enter로 그 창에 가서 그 탭을 켭니다"
+  },
+  "footSearchPick": {
+    "message": "↑↓ 고르기"
+  },
+  "moveMode": {
+    "message": "«$TITLE$» 탭을 어느 창으로 옮길까요?",
+    "placeholders": {
+      "TITLE": {
+        "content": "$1"
+      }
+    }
+  },
+  "moveStay": {
+    "message": "Alt를 같이 누르면 옮기기만 하고 여기 남습니다"
+  },
+  "renamePlaceholder": {
+    "message": "창 이름"
+  },
+  "renameHint": {
+    "message": "Enter 저장 · Esc 취소 · 비우면 기본 이름으로"
+  },
+  "noWindows": {
+    "message": "다른 창이 없습니다."
+  },
+  "noMatch": {
+    "message": "«$Q$»에 맞는 창이 없습니다",
+    "placeholders": {
+      "Q": {
+        "content": "$1"
+      }
+    }
+  },
+  "rename": {
+    "message": "이름 바꾸기"
+  },
+  "optTitle": {
+    "message": "Windial 설정"
+  },
+  "optNaming": {
+    "message": "창 이름 자동 짓기"
+  },
+  "optNamingHelp": {
+    "message": "직접 지은 이름이 언제나 우선입니다. 아래 규칙은 나머지 창에만 적용됩니다."
+  },
+  "optNamingRule": {
+    "message": "첫 탭 기준(기본)"
+  },
+  "optNamingRuleHelp": {
+    "message": "창의 첫 탭이 열린 사이트 이름을 씁니다. 예: «Github», «Naver»."
+  },
+  "optNamingNano": {
+    "message": "기기 안의 Gemini Nano로 판정"
+  },
+  "optNanoNote": {
+    "message": "이 컴퓨터 안에서만 돕니다. 크롬 148 이상, 여유 디스크 약 22GB, 최초 1회 모델 내려받기가 필요합니다."
+  },
+  "nanoUnsupported": {
+    "message": "이 크롬에서는 쓸 수 없습니다"
+  },
+  "nanoDownloadable": {
+    "message": "모델을 아직 받지 않았습니다"
+  },
+  "nanoDownloading": {
+    "message": "내려받는 중… $PCT$%",
+    "placeholders": {
+      "PCT": {
+        "content": "$1"
+      }
+    }
+  },
+  "nanoAvailable": {
+    "message": "준비됨"
+  },
+  "nanoUnavailable": {
+    "message": "이 기기에서는 쓸 수 없습니다"
+  },
+  "nanoDownload": {
+    "message": "모델 내려받기"
+  },
+  "nanoTest": {
+    "message": "지금 창으로 시험"
+  },
+  "nanoTestResult": {
+    "message": "제안된 이름: $NAME$",
+    "placeholders": {
+      "NAME": {
+        "content": "$1"
+      }
+    }
+  },
+  "nanoTestFailed": {
+    "message": "이름을 받지 못했습니다: $ERR$",
+    "placeholders": {
+      "ERR": {
+        "content": "$1"
+      }
+    }
+  },
+  "optLang": {
+    "message": "제안 이름의 언어"
+  },
+  "optLangSystem": {
+    "message": "크롬과 같게"
+  },
+  "optNames": {
+    "message": "저장된 창 이름"
+  },
+  "optNamesHelp": {
+    "message": "이름은 창의 탭 구성으로 다시 찾아 붙이므로 크롬을 다시 켜도 남습니다."
+  },
+  "optNamesEmpty": {
+    "message": "저장된 이름이 없습니다. 목록에서 F2를 눌러 창 이름을 지으세요."
+  },
+  "delete": {
+    "message": "삭제"
+  },
+  "optShortcut": {
+    "message": "단축키"
+  },
+  "optShortcutChange": {
+    "message": "크롬에서 바꾸기"
+  },
+  "optShortcutNone": {
+    "message": "설정 안 됨"
+  },
+  "optShortcutHelp": {
+    "message": "이미 쓰이는 조합은 크롬이 거부할 수 있습니다. 그럴 땐 크롬 단축키 화면에서 다른 조합을 고르세요."
+  },
+  "saved": {
+    "message": "저장됨"
+  },
+  "optPrivacy": {
+    "message": "Windial은 모든 것을 이 브라우저 프로필 안에만 두고 어디에도 보내지 않습니다."
+  },
+  "welcomeReady": {
+    "message": "Windial이 준비됐습니다."
+  },
+  "welcomeShortcutIs": {
+    "message": "지금 단축키"
+  },
+  "welcomeNone": {
+    "message": "크롬이 단축키를 배정하지 못했습니다. 제안한 조합을 크롬이나 다른 확장이 이미 쓰고 있었을 가능성이 큽니다. 지금 정하면 10초면 됩니다."
+  },
+  "welcomeSet": {
+    "message": "단축키 정하기"
+  },
+  "welcomeChange": {
+    "message": "단축키 바꾸기"
+  },
+  "welcomeHow": {
+    "message": "열리는 페이지에서 Windial을 찾아 «창 목록 열기» 옆 연필을 누르고 원하는 키를 누르세요. 추천: 맥은 ⌥W, ⌘⇧C, ⌘⇧X. 윈도우·리눅스는 Alt+W, Ctrl+Shift+Y."
+  },
+  "welcomeWatching": {
+    "message": "단축키를 정하면 이 페이지가 저절로 갱신됩니다."
+  },
+  "welcomeKeys": {
+    "message": "키 한 벌"
+  },
+  "keyOpen": {
+    "message": "창 목록 열기"
+  },
+  "keyDigits": {
+    "message": "그 번호 창으로 이동. 번호는 창을 연 순서라 바뀌지 않습니다."
+  },
+  "keyZero": {
+    "message": "마지막 창. 창이 몇 개든 언제나 마지막."
+  },
+  "keyEnter": {
+    "message": "직전 창 (목록이 열릴 때 미리 선택돼 있음)"
+  },
+  "keyType": {
+    "message": "창 이름·탭 그룹·탭 제목·주소로 찾기. Enter로 그 창에 가서 그 탭을 켭니다."
+  },
+  "keyShift": {
+    "message": "지금 탭을 그 창으로 옮기고 따라갑니다. Alt를 더하면 여기 남습니다."
+  },
+  "keyF2": {
+    "message": "선택한 창 이름 짓기"
+  },
+  "keyEsc": {
+    "message": "검색 지우기, 그 다음 닫기"
+  },
+  "popupNoShortcut": {
+    "message": "단축키가 비어 있습니다 — 눌러서 정하기"
+  },
+  "welcomeTry": {
+    "message": "지금 눌러 보세요: $KEY$",
+    "placeholders": {
+      "KEY": {
+        "content": "$1"
+      }
+    }
+  },
+  "welcomeWaiting": {
+    "message": "목록이 열리길 기다리는 중…"
+  },
+  "welcomeWorks": {
+    "message": "잘 됩니다. 이 탭은 닫아도 됩니다."
+  },
+  "welcomeNotOpening": {
+    "message": "눌러도 아무 일이 없나요? 크롬이 단축키를 표시만 하고 등록을 놓칠 때가 있습니다. 단축키 페이지에서 같은 조합이라도 다시 입력하면 살아납니다."
+  }
 }
