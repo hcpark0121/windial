@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Windial</title>
+<link rel="stylesheet" href="popup.css">
+</head>
+<body>
+<div id="app">
+  <div class="search" id="searchbox">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input id="search" type="text" autocomplete="off" spellcheck="false" aria-label="search">
+    <div id="mode" class="mode" hidden></div>
+  </div>
+  <div id="list" class="rows" role="listbox" aria-label="windows"></div>
+  <div id="empty" class="empty" hidden></div>
+  <div id="foot" class="foot"></div>
+</div>
+<script type="module" src="mock.js"></script>
+<script type="module" src="popup.js"></script>
+</body>
+</html>

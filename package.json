@@ -1,0 +1,16 @@
+{
+  "name": "windial",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Dev tooling for the Windial Chrome extension (icons, screenshots, end-to-end check). The extension itself is plain files and needs no build.",
+  "type": "module",
+  "scripts": {
+    "icons": "node tools/make-icons.mjs",
+    "shots": "node tools/screenshots.mjs",
+    "e2e": "node tools/e2e.mjs",
+    "pack": "bash tools/pack.sh"
+  },
+  "devDependencies": {
+    "playwright": "^1.50.0"
+  }
+}

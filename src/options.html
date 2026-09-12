@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Windial</title>
+<link rel="stylesheet" href="options.css">
+</head>
+<body>
+<main>
+  <h1 data-i18n="optTitle"></h1>
+
+  <section>
+    <h2 data-i18n="optNaming"></h2>
+    <p class="help" data-i18n="optNamingHelp"></p>
+    <label class="choice">
+      <input type="radio" name="naming" value="rule">
+      <span><b data-i18n="optNamingRule"></b><small data-i18n="optNamingRuleHelp"></small></span>
+    </label>
+    <label class="choice">
+      <input type="radio" name="naming" value="nano">
+      <span><b data-i18n="optNamingNano"></b><small data-i18n="optNanoNote"></small></span>
+    </label>
+    <div class="nano" id="nano">
+      <div class="status"><span class="dot" id="nanoDot"></span><span id="nanoStatus"></span></div>
+      <div class="actions">
+        <button type="button" id="nanoDownload" data-i18n="nanoDownload" hidden></button>
+        <button type="button" id="nanoTest" data-i18n="nanoTest" hidden></button>
+      </div>
+      <p class="result" id="nanoResult" hidden></p>
+      <label class="inline">
+        <span data-i18n="optLang"></span>
+        <select id="nameLang">
+          <option value="system" data-i18n="optLangSystem"></option>
+          <option value="ko">한국어</option>
+          <option value="en">English</option>
+          <option value="ja">日本語</option>
+          <option value="es">Español</option>
+          <option value="de">Deutsch</option>
+          <option value="fr">Français</option>
+        </select>
+      </label>
+    </div>
+  </section>
+
+  <section>
+    <h2 data-i18n="optNames"></h2>
+    <p class="help" data-i18n="optNamesHelp"></p>
+    <ul class="names" id="names"></ul>
+    <p class="help" id="namesEmpty" data-i18n="optNamesEmpty" hidden></p>
+  </section>
+
+  <section>
+    <h2 data-i18n="optShortcut"></h2>
+    <div class="shortcut">
+      <span class="k" id="shortcut"></span>
+      <button type="button" id="shortcutChange" data-i18n="optShortcutChange"></button>
+    </div>
+    <p class="help" data-i18n="optShortcutHelp"></p>
+  </section>
+
+  <p class="privacy" data-i18n="optPrivacy"></p>
+  <div class="toast" id="toast" hidden data-i18n="saved"></div>
+</main>
+<script type="module" src="mock.js"></script>
+<script type="module" src="options.js"></script>
+</body>
+</html>

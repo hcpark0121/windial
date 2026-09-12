@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Windial store screenshot</title>
+<style>
+  html, body { margin: 0; }
+  body {
+    width: 1280px; height: 800px; overflow: hidden;
+    background:
+      radial-gradient(900px 600px at 15% 10%, #DCE2FF 0%, rgba(220,226,255,0) 60%),
+      radial-gradient(700px 500px at 90% 90%, #E9F5EE 0%, rgba(233,245,238,0) 60%),
+      #F3F4F8;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Segoe UI", "Malgun Gothic", system-ui, sans-serif;
+    color: #1B1F2A;
+    display: grid; grid-template-columns: 1fr 560px; align-items: center; gap: 24px; padding: 0 72px 0 88px; box-sizing: border-box;
+  }
+  .cap h1 { font-size: 40px; font-weight: 700; letter-spacing: -.02em; line-height: 1.15; margin: 0 0 18px; text-wrap: balance; }
+  .cap p { font-size: 19px; line-height: 1.55; color: #4A5160; margin: 0; max-width: 30ch; }
+  .cap .keys { margin-top: 26px; display: flex; gap: 10px; align-items: center; color: #5B6270; font-size: 16px; }
+  .k { display: inline-flex; align-items: center; justify-content: center; min-width: 40px; height: 40px; padding: 0 12px; border: 1.5px solid #C9CDD6; border-bottom-width: 3px; border-radius: 9px; background: #fff; font-weight: 600; font-size: 17px; color: #1B1F2A; }
+  .frame { justify-self: end; width: 520px; border-radius: 14px; box-shadow: 0 30px 60px rgba(20,24,40,.22), 0 3px 10px rgba(20,24,40,.10); overflow: hidden; background: #fff; }
+  iframe { display: block; width: 520px; border: 0; height: 560px; }
+</style>
+</head>
+<body>
+  <div class="cap">
+    <h1 id="h"></h1>
+    <p id="p"></p>
+    <div class="keys" id="keys"></div>
+  </div>
+  <div class="frame"><iframe id="f"></iframe></div>
+  <script>
+    const params = new URLSearchParams(location.search);
+    const lang = params.get('lang') || 'en';
+    const state = params.get('state') || 'default';
+    const copy = {
+      ko: {
+        default: ['단축키 하나, 숫자 하나.', '창마다 이름과 파비콘이 보입니다. 열면 직전 창이 선택돼 있어 Enter 한 번으로 되돌아갑니다.', ['⌘⇧X', '→', '3']],
+        search: ['그 탭, 어느 창에 뒀더라.', '창 이름과 모든 탭을 뒤져서, 그 창으로 가면서 그 탭까지 켭니다.', ['밤부', '→', '↵']],
+        move: ['탭을 제자리로.', 'Shift를 누른 채 숫자를 누르면 지금 보던 탭이 그 창으로 옮겨집니다.', ['⇧', '+', '3']],
+      },
+      en: {
+        default: ['One shortcut, one number.', 'Every window shows its name and favicons. The previous window is preselected, so Enter takes you back.', ['⌘⇧X', '→', '3']],
+        search: ['Which window had that tab?', 'Search window names and every tab. Jump to the window and open that tab in one go.', ['bambu', '→', '↵']],
+        move: ['Put a tab where it belongs.', 'Hold Shift and press a number to move the current tab into that window.', ['⇧', '+', '3']],
+      },
+    };
+    const [h, p, keys] = copy[lang][state];
+    document.getElementById('h').textContent = h;
+    document.getElementById('p').textContent = p;
+    document.getElementById('keys').replaceChildren(...keys.map((k) => {
+      if (k === '→' || k === '+') { const s = document.createElement('span'); s.textContent = k; return s; }
+      const s = document.createElement('span'); s.className = 'k'; s.textContent = k; return s;
+    }));
+    const f = document.getElementById('f');
+    const q = params.get('q') || '';
+    const shift = params.get('shift') || '';
+    f.src = `../src/popup.html?mock=1&lang=${lang}${q ? `&q=${encodeURIComponent(q)}` : ''}${shift ? '&shift=1' : ''}`;
+    f.addEventListener('load', () => {
+      const check = () => {
+        const doc = f.contentDocument;
+        if (doc && doc.querySelector('.row')) {
+          f.style.height = doc.getElementById('app').getBoundingClientRect().height + 'px';
+          setTimeout(() => { window.__shotReady = true; }, 200);
+        } else setTimeout(check, 50);
+      };
+      check();
+    });
+  </script>
+</body>
+</html>

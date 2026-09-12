@@ -1,0 +1,53 @@
+:root {
+  --bg: #FFFFFF; --ink: #1B1F2A; --ink-2: #5B6270; --ink-3: #8A919E;
+  --edge: rgba(27,31,42,.12); --panel: #F4F5F8; --accent: #4258D6; --accent-ink: #fff;
+  --ok: #188038; --warn: #F29900; --bad: #D93025; --key-bg: #F6F7FA; --key-edge: #C9CDD6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #23262E; --ink: #E8EAF0; --ink-2: #A5ABB8; --ink-3: #737A88;
+    --edge: rgba(255,255,255,.1); --panel: #1C1F26; --accent: #7C8DF0; --accent-ink: #14172A;
+    --ok: #5BB974; --warn: #F9AB00; --bad: #F28B82; --key-bg: #2C303A; --key-edge: #4A505E;
+  }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Segoe UI", "Malgun Gothic", system-ui, "Noto Sans KR", sans-serif;
+  font-size: 13.5px; line-height: 1.5; min-width: 420px;
+}
+main { padding: 18px 22px 22px; max-width: 560px; }
+h1 { font-size: 17px; font-weight: 600; margin: 0 0 14px; }
+h2 { font-size: 13px; font-weight: 600; margin: 0 0 4px; }
+section { padding: 14px 0; border-top: 1px solid var(--edge); }
+.help { color: var(--ink-2); margin: 0 0 10px; font-size: 12.5px; }
+.choice { display: flex; gap: 10px; align-items: flex-start; padding: 6px 0; cursor: pointer; }
+.choice input { margin: 4px 0 0; accent-color: var(--accent); }
+.choice b { display: block; font-weight: 600; }
+.choice small { display: block; color: var(--ink-2); font-size: 12px; }
+.nano { margin: 6px 0 0 24px; padding: 10px 12px; background: var(--panel); border-radius: 8px; display: none; }
+.nano.on { display: block; }
+.status { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ink-3); flex: none; }
+.dot.ok { background: var(--ok); } .dot.warn { background: var(--warn); } .dot.bad { background: var(--bad); }
+.actions { display: flex; gap: 8px; flex-wrap: wrap; }
+button {
+  font: inherit; font-size: 12.5px; padding: 5px 11px; border-radius: 6px; cursor: pointer;
+  border: 1px solid var(--edge); background: var(--bg); color: var(--ink);
+}
+button.primary { background: var(--accent); color: var(--accent-ink); border-color: transparent; }
+button:disabled { opacity: .5; cursor: default; }
+button:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.result { margin: 8px 0 0; color: var(--ink-2); font-size: 12.5px; }
+.inline { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
+select { font: inherit; font-size: 12.5px; padding: 4px 6px; border-radius: 6px; border: 1px solid var(--edge); background: var(--bg); color: var(--ink); }
+.names { list-style: none; margin: 0; padding: 0; }
+.names li { display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px dashed var(--edge); }
+.names b { font-weight: 600; flex: none; }
+.names small { color: var(--ink-3); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 12px; }
+.names button { padding: 2px 8px; font-size: 12px; }
+.shortcut { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+.k { display: inline-block; padding: 2px 8px; border: 1px solid var(--key-edge); border-bottom-width: 2px; border-radius: 6px; background: var(--key-bg); font-weight: 600; }
+.privacy { color: var(--ink-3); font-size: 12px; margin: 14px 0 0; border-top: 1px solid var(--edge); padding-top: 12px; }
+.toast { position: fixed; right: 16px; bottom: 16px; background: var(--ink); color: var(--bg); padding: 6px 12px; border-radius: 6px; font-size: 12.5px; }
