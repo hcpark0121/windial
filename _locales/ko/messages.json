@@ -227,7 +227,7 @@
     "message": "키 한 벌"
   },
   "keyOpen": {
-    "message": "창 목록 열기"
+    "message": "창 목록 열기. 다시 누르면 닫힙니다."
   },
   "keyDigits": {
     "message": "그 번호 창으로 이동. 번호는 창을 연 순서라 바뀌지 않습니다."

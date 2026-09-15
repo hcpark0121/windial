@@ -3,7 +3,7 @@ import {
   getSettings, getSession, resolveBindings, saveWindowName, displayName,
 } from './common.js';
 import { refreshNanoNames, hasPromptApi } from './naming-nano.js';
-import { getShortcut, openShortcutsPage } from './shortcut.js';
+import { getShortcut, openShortcutsPage, parseShortcut, matchesShortcut } from './shortcut.js';
 
 const $ = (id) => document.getElementById(id);
 const els = {
@@ -15,6 +15,7 @@ const state = {
   windows: [], currentId: null, previousId: null, groups: {},
   bindings: {}, savedNames: [], nanoNames: {}, settings: null,
   names: {}, rows: [], selected: 0, query: '', shift: false, renaming: null, activeTab: null,
+  ownShortcut: null,
 };
 
 // ---------- data ----------
@@ -456,6 +457,8 @@ function renderFoot() {
 // ---------- keyboard ----------
 
 function onKeyDown(e) {
+  // The shortcut that opened the popup closes it again, and never reaches Chrome.
+  if (matchesShortcut(e, state.ownShortcut)) { e.preventDefault(); e.stopPropagation(); window.close(); return; }
   if (state.renaming) return;
   const mods = e.metaKey || e.ctrlKey;
 
@@ -530,6 +533,7 @@ async function init() {
   els.search.focus();
 
   getShortcut().then((shortcut) => {
+    state.ownShortcut = parseShortcut(shortcut);
     els.banner.hidden = Boolean(shortcut);
     if (!shortcut) els.banner.textContent = t('popupNoShortcut');
   });

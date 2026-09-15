@@ -201,6 +201,13 @@ try {
   await press(popup, 'Escape');
   check('second Escape closes the popup', await waitClosed(popup));
 
+  // --- pressing the extension's own shortcut again closes the popup ---
+  await focus(W1);
+  popup = await openPopup(W1);
+  const own = await popup.evaluate(async () => (await chrome.commands.getAll()).find((c) => c.name === '_execute_action')?.shortcut || '');
+  await press(popup, 'Alt+KeyW');
+  check('pressing the assigned shortcut inside the popup closes it', own === '⌥W' && await waitClosed(popup), `shortcut "${own}"`);
+
   // --- rename via F2 ---
   await focus(W1);
   popup = await openPopup(W1);

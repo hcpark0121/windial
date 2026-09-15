@@ -227,7 +227,7 @@
     "message": "Keys"
   },
   "keyOpen": {
-    "message": "Open the window list"
+    "message": "Open the window list. Press it again to close."
   },
   "keyDigits": {
     "message": "Jump to that window. Numbers follow the order windows were opened and stay put."
