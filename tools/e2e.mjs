@@ -278,6 +278,15 @@ try {
     Boolean(alphaTwo) && moveResult && moveResult.ok && w3.tabs.some((t) => t.title === 'Alpha two' && t.active) && (await focusedId()) === W3,
     JSON.stringify({ moveResult, w3tabs: w3.tabs.map((t) => [t.title, t.active]), focused: await focusedId() }));
 
+  // --- Shift+3 pressed in the popup: its own tab moves to window 3, which gets focus ---
+  await focus(W1);
+  popup = await openPopup(W1);
+  await popup.keyboard.down('Shift');
+  await press(popup, 'Digit3');
+  try { await popup.keyboard.up('Shift'); } catch (_) { /* popup may be gone */ }
+  await sleep(900);
+  check('Shift+digit from the popup moves the tab and focuses the target window', (await focusedId()) === W3 && await waitClosed(popup), `focused ${await focusedId()}`);
+
   // --- closing a window renumbers ---
   await probe.evaluate(async (W3) => chrome.windows.remove(W3), W3);
   await sleep(500);

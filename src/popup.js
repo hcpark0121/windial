@@ -116,10 +116,14 @@ async function moveActiveTab(target, follow) {
   const tab = state.activeTab;
   if (!tab || tab.windowId === target.id) return;
   // Chrome closes this popup the moment its window's active tab changes, so the service
-  // worker performs the whole move; we only send the request.
-  const done = chrome.runtime.sendMessage({ type: 'moveTab', tabId: tab.id, windowId: target.id, follow }).catch(() => null);
+  // worker performs the whole move. We must wait for its reply before closing ourselves:
+  // closing right after sendMessage tears the page down before the message is delivered.
+  try {
+    await chrome.runtime.sendMessage({ type: 'moveTab', tabId: tab.id, windowId: target.id, follow });
+  } catch (err) {
+    console.warn('[windial] move failed', err);
+  }
   if (follow) { window.close(); return; }
-  await done;
   await refresh();
 }
 
