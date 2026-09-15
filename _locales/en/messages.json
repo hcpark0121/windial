@@ -269,5 +269,8 @@
   },
   "welcomeNotOpening": {
     "message": "Nothing happened? Chrome sometimes shows a shortcut without registering it. Open the shortcuts page and enter the combination again — the same one is fine."
+  },
+  "support": {
+    "message": "Buy the developer a coffee"
   }
 }

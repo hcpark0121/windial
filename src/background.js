@@ -4,6 +4,7 @@
 import { getSession, setSession, resolveBindings, getSettings, keyLabel } from './common.js';
 import { refreshNanoNames, hasPromptApi } from './naming-nano.js';
 import { getShortcut } from './shortcut.js';
+import { iconImageData } from './icon.js';
 
 const MRU_LIMIT = 50;
 
@@ -22,22 +23,34 @@ async function forgetWindow(windowId) {
   await setSession({ mru: mru.filter((id) => id !== windowId), bindings, nanoNames });
 }
 
-// The toolbar badge shows the number of the window it sits in. Badges are per tab, so every
-// tab of window N carries "N"; renumbering (a window closes) rewrites them all.
+// The toolbar icon shows the number of the window it sits in. Icons are per tab, so every
+// tab of window N carries "N"; renumbering (a window closes) redraws them all. If drawing is
+// not possible the number falls back to a badge.
 const BADGE_BG = '#EEF0FF';
 const BADGE_INK = '#2A3BB0';
 let badgeTimer = null;
+const iconLabels = {}; // tabId -> label, for the e2e check
 function scheduleBadges() {
   clearTimeout(badgeTimer);
   badgeTimer = setTimeout(() => refreshBadges().catch(() => {}), 120);
+}
+function iconFor(label) {
+  try { return iconImageData(label); } catch (_) { return null; }
 }
 async function refreshBadges() {
   const wins = await normalWindows();
   wins.sort((a, b) => a.id - b.id);
   const jobs = [];
+  for (const id of Object.keys(iconLabels)) delete iconLabels[id];
   wins.forEach((w, i) => {
-    const text = keyLabel(i);
-    for (const tab of w.tabs || []) jobs.push(chrome.action.setBadgeText({ tabId: tab.id, text }).catch(() => {}));
+    const label = keyLabel(i);
+    const img = iconFor(label);
+    for (const tab of w.tabs || []) {
+      iconLabels[tab.id] = label;
+      jobs.push(img
+        ? chrome.action.setIcon({ tabId: tab.id, imageData: img }).catch(() => {})
+        : chrome.action.setBadgeText({ tabId: tab.id, text: label }).catch(() => {}));
+    }
   });
   await Promise.all(jobs);
 }
@@ -110,12 +123,16 @@ async function welcomeIfNeeded(reason) {
 // Moving the current tab out of the popup's window closes the popup at once, so the popup
 // only sends the request; the worker finishes the whole sequence (move, activate, focus).
 chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
-  if (!msg || msg.type !== 'moveTab') return false;
+  if (!msg) return false;
+  if (msg.type === 'iconLabels') { sendResponse({ ...iconLabels }); return false; }
+  if (msg.type !== 'moveTab') return false;
   moveTab(msg).then(() => sendResponse({ ok: true })).catch((err) => sendResponse({ ok: false, error: String(err) }));
   return true;
 });
 
 async function moveTab({ tabId, windowId, follow }) {
+  const tab = await chrome.tabs.get(tabId);
+  if (tab.pinned) await chrome.tabs.update(tabId, { pinned: false }); // pinned tabs cannot change window
   await chrome.tabs.move(tabId, { windowId, index: -1 });
   if (!follow) return;
   await chrome.tabs.update(tabId, { active: true });

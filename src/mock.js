@@ -19,22 +19,22 @@ if (!isExtension && params.has('mock')) {
   const ko = lang === 'ko';
   const windows = [
     { id: 101, type: 'normal', state: 'normal', focused: false, incognito: false, tabs: [
-      tab(1, 101, 'https://github.com/hcpark/llm-wiki', 'hcpark/llm-wiki: Personal Life Wiki', 'G', '#24292F', { active: true, groupId: 1 }),
-      tab(2, 101, 'https://claude.ai/code', 'Claude Code', 'C', '#D97757', { groupId: 1 }),
-      tab(3, 101, 'http://localhost:8080/wiki', 'llm-wiki · areas/jarvis', 'L', '#555', { groupId: 2 }),
-      tab(4, 101, 'https://developer.apple.com/documentation', 'Apple Developer Documentation', 'A', '#0D0D0D', { groupId: 1 }),
-      tab(5, 101, 'https://stackoverflow.com/questions/1', 'How to focus a window from a Chrome extension', 'S', '#F48024'),
+      tab(1, 101, 'https://github.com/acme/webapp/pulls', 'Pull requests · acme/webapp', 'G', '#24292F', { active: true, groupId: 1 }),
+      tab(2, 101, 'https://developer.mozilla.org/docs/Web/API/Window', 'Window - Web APIs | MDN', 'M', '#1B1B1B', { groupId: 1 }),
+      tab(3, 101, 'http://localhost:3000/', ko ? 'webapp — 개발 서버' : 'webapp — dev server', 'L', '#555', { groupId: 2 }),
+      tab(4, 101, 'https://stackoverflow.com/questions/1', 'How to focus a window from a Chrome extension', 'S', '#F48024', { groupId: 1 }),
+      tab(5, 101, 'https://www.npmjs.com/package/playwright', 'playwright - npm', 'n', '#CB3837'),
       tab(6, 101, 'https://developer.chrome.com/docs/extensions', 'Chrome Extensions', 'D', '#1A73E8'),
-      tab(7, 101, 'https://github.com/hcpark/windial', 'hcpark/windial', 'G', '#24292F', { groupId: 2 }),
-      ...Array.from({ length: 7 }, (_, i) => tab(8 + i, 101, `https://github.com/hcpark/x${i}`, `issue #${i}`, 'G', '#24292F')),
+      tab(7, 101, 'https://github.com/acme/webapp/issues/42', 'Issue #42 · acme/webapp', 'G', '#24292F', { groupId: 2 }),
+      ...Array.from({ length: 7 }, (_, i) => tab(8 + i, 101, `https://github.com/acme/webapp/issues/${50 + i}`, `Issue #${50 + i}`, 'G', '#24292F')),
     ] },
     { id: 102, type: 'normal', state: 'normal', focused: false, incognito: false, tabs: [
-      tab(31, 102, 'https://www.tradingview.com/chart/', 'TSLA 1D — TradingView', 'T', '#2962FF', { active: true, groupId: 3 }),
-      tab(32, 102, 'https://www.kiwoom.com/', ko ? '키움증권' : 'Kiwoom Securities', 'K', '#1A5AD5', { groupId: 3 }),
-      tab(33, 102, 'https://finance.naver.com/', ko ? '네이버 금융' : 'Naver Finance', 'N', '#03C75A'),
-      tab(34, 102, 'https://dart.fss.or.kr/', 'DART', 'D', '#0F4C81', { groupId: 4 }),
-      tab(35, 102, 'https://www.youtube.com/watch?v=1', ko ? '월가아재 — 9월 FOMC 이후 시나리오' : 'FOMC September scenarios', '▶', '#FF0000', { groupId: 4 }),
-      ...Array.from({ length: 4 }, (_, i) => tab(36 + i, 102, `https://www.tradingview.com/chart/${i}`, `Chart ${i}`, 'T', '#2962FF')),
+      tab(31, 102, 'https://www.tradingview.com/chart/', 'AAPL 1D — TradingView', 'T', '#2962FF', { active: true, groupId: 3 }),
+      tab(32, 102, 'https://finance.yahoo.com/', 'Yahoo Finance', 'Y', '#6001D2', { groupId: 3 }),
+      tab(33, 102, 'https://www.bloomberg.com/markets', 'Markets - Bloomberg', 'B', '#1B1B1B'),
+      tab(34, 102, 'https://www.investing.com/economic-calendar/', ko ? '경제 캘린더' : 'Economic calendar', 'I', '#0F4C81', { groupId: 4 }),
+      tab(35, 102, 'https://www.youtube.com/watch?v=1', ko ? '이번 주 시장 정리' : 'Weekly market recap', '▶', '#FF0000', { groupId: 4 }),
+      ...Array.from({ length: 4 }, (_, i) => tab(36 + i, 102, `https://www.tradingview.com/chart/${i}`, `Chart ${i + 1}`, 'T', '#2962FF')),
     ] },
     { id: 103, type: 'normal', state: 'normal', focused: false, incognito: false, tabs: [
       tab(51, 103, 'https://wiki.bambulab.com/', 'Bambu Lab Wiki', 'B', '#00AE42', { active: true }),
@@ -47,16 +47,16 @@ if (!isExtension && params.has('mock')) {
     { id: 104, type: 'normal', state: 'normal', focused: true, incognito: false, tabs: [
       tab(71, 104, 'https://map.naver.com/', ko ? '코엑스 — 네이버 지도' : 'COEX — Naver Map', 'N', '#03C75A', { active: true }),
       tab(72, 104, 'https://map.kakao.com/', ko ? '카카오맵' : 'Kakao Map', 'K', '#FEE500'),
-      tab(73, 104, 'https://app.catchtable.co.kr/', ko ? '캐치테이블' : 'Catchtable', 'C', '#FF3D3D'),
+      tab(73, 104, 'https://www.google.com/maps', 'Google Maps', 'G', '#4285F4'),
       tab(74, 104, 'https://map.naver.com/p/2', ko ? '성수동 카페 — 네이버 지도' : 'Seongsu cafes — Naver Map', 'N', '#03C75A'),
-      tab(75, 104, 'https://www.google.com/maps', 'Google Maps', 'G', '#4285F4'),
+      tab(75, 104, 'https://www.tripadvisor.com/', 'Tripadvisor', 'T', '#34E0A1'),
     ] },
     { id: 105, type: 'normal', state: 'normal', focused: false, incognito: false, tabs: [
       tab(91, 105, 'https://www.youtube.com/', 'YouTube', '▶', '#FF0000', { active: true }),
       tab(92, 105, 'https://brunch.co.kr/', ko ? '브런치' : 'Brunch', 'b', '#00C7AE'),
-      tab(93, 105, 'https://news.hada.io/', 'GeekNews', 'H', '#1B1B1B'),
+      tab(93, 105, 'https://news.ycombinator.com/', 'Hacker News', 'Y', '#FF6600'),
       tab(94, 105, 'https://www.reddit.com/', 'Reddit', 'R', '#5B4B8A'),
-      ...Array.from({ length: 7 }, (_, i) => tab(95 + i, 105, `https://www.youtube.com/watch?v=${i}`, `Video ${i}`, '▶', '#FF0000')),
+      ...Array.from({ length: 7 }, (_, i) => tab(95 + i, 105, `https://www.youtube.com/watch?v=${i}`, `Video ${i + 1}`, '▶', '#FF0000')),
     ] },
     { id: 106, type: 'normal', state: 'normal', focused: false, incognito: false, tabs: [
       tab(121, 106, 'https://mail.google.com/mail/u/0/#inbox', ko ? '받은편지함 (12)' : 'Inbox (12)', 'M', '#EA4335', { active: true }),
@@ -66,8 +66,8 @@ if (!isExtension && params.has('mock')) {
     ] },
   ];
   const groups = {
-    1: { id: 1, title: 'jarvis', color: 'blue', windowId: 101 },
-    2: { id: 2, title: 'wiki', color: 'cyan', windowId: 101 },
+    1: { id: 1, title: 'api', color: 'blue', windowId: 101 },
+    2: { id: 2, title: ko ? '문서' : 'docs', color: 'cyan', windowId: 101 },
     3: { id: 3, title: ko ? '스윙' : 'swing', color: 'green', windowId: 102 },
     4: { id: 4, title: ko ? '매크로' : 'macro', color: 'grey', windowId: 102 },
   };

@@ -131,17 +131,25 @@ try {
     title: r.querySelector('.title')?.textContent,
   })));
 
-  // --- toolbar badge carries the window number ---
+  // --- toolbar icon carries the window number ---
   await sleep(400);
-  const badges = await probe.evaluate(async (ids) => {
+  const iconPx = await probe.evaluate(async () => {
+    const m = await import(chrome.runtime.getURL('src/icon.js'));
+    const d = m.drawIcon('1', 32);
+    const px = (x, y) => Array.from(d.data.slice((y * 32 + x) * 4, (y * 32 + x) * 4 + 4));
+    let white = 0;
+    for (let y = 10; y < 22; y++) for (let x = 10; x < 22; x++) { const p = px(x, y); if (p[0] > 200 && p[1] > 200 && p[2] > 200) white++; }
+    return { corner: px(0, 0), edge: px(2, 16), white };
+  });
+  check('icon draws an indigo tile with a white digit', iconPx.corner[3] === 0 && iconPx.edge[2] > 150 && iconPx.white > 5, JSON.stringify(iconPx));
+  const labelsFor = async (ids) => {
+    const map = await probe.evaluate(() => chrome.runtime.sendMessage({ type: 'iconLabels' }));
     const out = [];
-    for (const id of ids) {
-      const tabs = await chrome.tabs.query({ windowId: id });
-      out.push(await chrome.action.getBadgeText({ tabId: tabs[0].id }));
-    }
+    for (const id of ids) { const tabs = await probe.evaluate((id) => chrome.tabs.query({ windowId: id }), id); out.push(map[tabs[0].id]); }
     return out;
-  }, [W1, W2, W3]);
-  check('toolbar badge shows each window\'s number', badges.join() === '1,2,3', badges.join());
+  };
+  const labels = await labelsFor([W1, W2, W3]);
+  check('each window\'s tabs carry that window\'s number', labels.join() === '1,2,3', labels.join());
 
   // --- default state ---
   let popup = await openPopup(W1);
@@ -299,14 +307,49 @@ try {
   await sleep(900);
   check('Shift+digit from the popup moves the tab and focuses the target window', (await focusedId()) === W3 && await waitClosed(popup), `focused ${await focusedId()}`);
 
+  // --- more than nine windows: letters, and Shift+letter jumps ---
+  const extra = [];
+  for (let i = 0; i < 8; i++) extra.push(await openWindow([`Extra ${i + 1}`]));
+  await focus(W1);
+  popup = await openPopup(W1);
+  rows = await rowInfo(popup);
+  check('windows 10 and 11 get letter keycaps and the last keeps the ghost 0',
+    rows.length === 11 && rows[9].keys[0] === '⇧A' && rows[10].keys.join() === '⇧B,0', JSON.stringify(rows.slice(8).map((r) => r.keys)));
+  await popup.keyboard.down('Shift');
+  await press(popup, 'KeyA');
+  try { await popup.keyboard.up('Shift'); } catch (_) { /* closed */ }
+  await sleep(700);
+  check('Shift+A focuses the tenth window', (await focusedId()) === rows[9].id && (await waitClosed(popup)), `focused ${await focusedId()}`);
+  for (const id of extra) await probe.evaluate((id) => chrome.windows.remove(id), id);
+  await sleep(500);
+
+  // --- a minimized window is restored when chosen ---
+  await probe.evaluate((id) => chrome.windows.update(id, { state: 'minimized' }), W2);
+  await sleep(500);
+  await focus(W1);
+  popup = await openPopup(W1);
+  const minimizedPill = await popup.evaluate((id) => [...document.querySelectorAll(`.row[data-id="${id}"] .pill`)].map((p) => p.textContent).join('|'), W2);
+  await press(popup, 'Digit2');
+  await sleep(900);
+  const w2state = await probe.evaluate((id) => chrome.windows.get(id).then((w) => w.state), W2);
+  check('minimized window is labelled and restored on jump', minimizedPill.length > 0 && w2state !== 'minimized' && (await focusedId()) === W2, `${minimizedPill} / ${w2state}`);
+
+  // --- a pinned tab can be moved (it is unpinned first) ---
+  const alphaOneId = await probe.evaluate(async () => (await chrome.tabs.query({ title: 'Alpha one' }))[0].id);
+  await probe.evaluate((id) => chrome.tabs.update(id, { pinned: true }), alphaOneId);
+  const pinnedMove = await probe.evaluate(({ tabId, windowId }) => chrome.runtime.sendMessage({ type: 'moveTab', tabId, windowId, follow: false }), { tabId: alphaOneId, windowId: W3 });
+  await sleep(500);
+  const alphaOneNow = await probe.evaluate((id) => chrome.tabs.get(id), alphaOneId);
+  check('pinned tab moves after being unpinned', pinnedMove && pinnedMove.ok && alphaOneNow.windowId === W3 && !alphaOneNow.pinned, JSON.stringify({ pinnedMove, windowId: alphaOneNow.windowId, pinned: alphaOneNow.pinned }));
+
   // --- closing a window renumbers ---
   await probe.evaluate(async (W3) => chrome.windows.remove(W3), W3);
   await sleep(500);
   popup = await openPopup(W1);
   rows = await rowInfo(popup);
   check('closing a window drops it and the ghost 0 moves', rows.length === 2 && rows[1].keys.join() === '2,0', JSON.stringify(rows.map((r) => r.keys)));
-  const badgeW2 = await probe.evaluate(async (id) => chrome.action.getBadgeText({ tabId: (await chrome.tabs.query({ windowId: id }))[0].id }), W2);
-  check('badges renumber after a window closes', badgeW2 === '2', badgeW2);
+  await sleep(300);
+  check('icon numbers hold after a window closes', (await labelsFor([W1, W2])).join() === '1,2');
   await press(popup, 'Escape');
   await waitClosed(popup);
 

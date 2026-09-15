@@ -1,4 +1,4 @@
-import { t, getSession, setSession } from './common.js';
+import { t, getSession, setSession, SUPPORT_URL } from './common.js';
 import { getShortcut, openShortcutsPage } from './shortcut.js';
 
 const $ = (id) => document.getElementById(id);
@@ -69,6 +69,11 @@ async function init() {
       if (area === 'session' && (changes.lastPopupOpen || changes.welcomeShownAt)) render();
     });
   } catch (_) { /* mock */ }
+  if (SUPPORT_URL) {
+    $('support').hidden = false;
+    $('supportLink').href = SUPPORT_URL;
+    $('supportLink').textContent = `☕ ${t('support')}`;
+  }
   await render();
   // The user sets the key in another tab; pick it up when they come back (and poll gently meanwhile).
   document.addEventListener('visibilitychange', () => { if (!document.hidden) render(); });

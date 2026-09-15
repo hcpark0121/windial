@@ -1,4 +1,4 @@
-import { t, getSettings, setSettings, getSavedNames, setSavedNames, getSession, setSession } from './common.js';
+import { t, getSettings, setSettings, getSavedNames, setSavedNames, getSession, setSession, SUPPORT_URL } from './common.js';
 import { nanoAvailability, nanoDownload, nanoNameFor, hasPromptApi } from './naming-nano.js';
 import { getShortcut, openShortcutsPage } from './shortcut.js';
 
@@ -123,6 +123,11 @@ async function init() {
   $('shortcutChange').addEventListener('click', openShortcutsPage);
   document.addEventListener('visibilitychange', () => { if (!document.hidden) renderShortcut(); });
 
+  if (SUPPORT_URL) {
+    $('support').hidden = false;
+    $('supportLink').href = SUPPORT_URL;
+    $('supportLink').textContent = `☕ ${t('support')}`;
+  }
   await Promise.all([renderNano(), renderNames(), renderShortcut()]);
   if (!hasPromptApi()) {
     // Keep the radio usable so the status line explains why it will not work.
