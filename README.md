@@ -28,6 +28,8 @@ If you keep one window per topic, Chrome's own window switching is slow: `⌘`` 
 
 Tab groups appear as coloured chips next to the name; the favicon row and tab count complete the picture.
 
+The toolbar icon carries a badge with the number of the window it sits in, so you can read a window's number without opening the list.
+
 ## Install (unpacked)
 
 1. Open `chrome://extensions`, turn on **Developer mode**.

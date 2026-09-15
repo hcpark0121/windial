@@ -1,5 +1,5 @@
 import {
-  t, MAX_FAVICONS, hostOf, colorForHost, faviconFallbackUrl, GROUP_COLORS,
+  t, MAX_FAVICONS, hostOf, colorForHost, faviconFallbackUrl, GROUP_COLORS, keyLabel,
   getSettings, getSession, resolveBindings, saveWindowName, displayName,
 } from './common.js';
 import { refreshNanoNames, hasPromptApi } from './naming-nano.js';
@@ -178,12 +178,6 @@ function cancelRename() {
 }
 
 // ---------- rendering ----------
-
-function keyLabel(index) {
-  if (index < 9) return String(index + 1);
-  if (index < 35) return String.fromCharCode(65 + index - 9);
-  return '';
-}
 
 function highlight(text, q) {
   const frag = document.createDocumentFragment();

@@ -131,6 +131,18 @@ try {
     title: r.querySelector('.title')?.textContent,
   })));
 
+  // --- toolbar badge carries the window number ---
+  await sleep(400);
+  const badges = await probe.evaluate(async (ids) => {
+    const out = [];
+    for (const id of ids) {
+      const tabs = await chrome.tabs.query({ windowId: id });
+      out.push(await chrome.action.getBadgeText({ tabId: tabs[0].id }));
+    }
+    return out;
+  }, [W1, W2, W3]);
+  check('toolbar badge shows each window\'s number', badges.join() === '1,2,3', badges.join());
+
   // --- default state ---
   let popup = await openPopup(W1);
   let rows = await rowInfo(popup);
@@ -293,6 +305,8 @@ try {
   popup = await openPopup(W1);
   rows = await rowInfo(popup);
   check('closing a window drops it and the ghost 0 moves', rows.length === 2 && rows[1].keys.join() === '2,0', JSON.stringify(rows.map((r) => r.keys)));
+  const badgeW2 = await probe.evaluate(async (id) => chrome.action.getBadgeText({ tabId: (await chrome.tabs.query({ windowId: id }))[0].id }), W2);
+  check('badges renumber after a window closes', badgeW2 === '2', badgeW2);
   await press(popup, 'Escape');
   await waitClosed(popup);
 

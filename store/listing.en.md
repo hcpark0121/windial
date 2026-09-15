@@ -22,6 +22,7 @@ Press the shortcut (⌥W on Mac, Alt+W on Windows and Linux; change it any time 
 • Move a tab with Shift+number. Hold Shift and press a number to send the current tab to that window. Add Alt to move it without following.
 • Name your windows. Press F2 to name a window. Names are matched by the window's tabs, so they survive a Chrome restart.
 • Optional on-device naming. With Chrome 148 or newer you can let the built-in Gemini Nano model suggest a name for windows you have not named. It runs on your computer and nothing leaves it. Off by default.
+• The toolbar icon shows the number of the window it is in.
 • Follows Chrome's language. English and Korean today.
 • Works in light and dark mode.
 

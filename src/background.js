@@ -1,7 +1,7 @@
 // Windial service worker: remembers window focus order (for "previous window"),
 // keeps name bindings tidy, and pre-computes Nano names when that option is on.
 
-import { getSession, setSession, resolveBindings, getSettings } from './common.js';
+import { getSession, setSession, resolveBindings, getSettings, keyLabel } from './common.js';
 import { refreshNanoNames, hasPromptApi } from './naming-nano.js';
 import { getShortcut } from './shortcut.js';
 
@@ -21,6 +21,32 @@ async function forgetWindow(windowId) {
   delete nanoNames[windowId];
   await setSession({ mru: mru.filter((id) => id !== windowId), bindings, nanoNames });
 }
+
+// The toolbar badge shows the number of the window it sits in. Badges are per tab, so every
+// tab of window N carries "N"; renumbering (a window closes) rewrites them all.
+const BADGE_BG = '#EEF0FF';
+const BADGE_INK = '#2A3BB0';
+let badgeTimer = null;
+function scheduleBadges() {
+  clearTimeout(badgeTimer);
+  badgeTimer = setTimeout(() => refreshBadges().catch(() => {}), 120);
+}
+async function refreshBadges() {
+  const wins = await normalWindows();
+  wins.sort((a, b) => a.id - b.id);
+  const jobs = [];
+  wins.forEach((w, i) => {
+    const text = keyLabel(i);
+    for (const tab of w.tabs || []) jobs.push(chrome.action.setBadgeText({ tabId: tab.id, text }).catch(() => {}));
+  });
+  await Promise.all(jobs);
+}
+function initBadgeStyle() {
+  chrome.action.setBadgeBackgroundColor({ color: BADGE_BG }).catch(() => {});
+  if (chrome.action.setBadgeTextColor) chrome.action.setBadgeTextColor({ color: BADGE_INK }).catch(() => {});
+}
+initBadgeStyle();
+scheduleBadges();
 
 async function normalWindows() {
   const wins = await chrome.windows.getAll({ populate: true, windowTypes: ['normal'] });
@@ -48,20 +74,28 @@ chrome.windows.onFocusChanged.addListener((windowId) => {
 
 chrome.windows.onRemoved.addListener((windowId) => {
   forgetWindow(windowId).catch(() => {});
+  scheduleBadges();
 });
 
 chrome.windows.onCreated.addListener(() => {
   scheduleNano();
+  scheduleBadges();
 });
 
 chrome.runtime.onStartup.addListener(() => {
+  initBadgeStyle();
+  scheduleBadges();
   seedMru().then(rebind).then(scheduleNano).catch(() => {});
 });
 
 chrome.runtime.onInstalled.addListener((details) => {
+  initBadgeStyle();
+  scheduleBadges();
   seedMru().then(rebind).then(scheduleNano).catch(() => {});
   welcomeIfNeeded(details.reason).catch(() => {});
 });
+
+chrome.tabs.onCreated.addListener(() => scheduleBadges());
 
 // Chrome cannot be asked to set a shortcut, only to suggest one. If the suggestion was
 // refused (key already taken) the user would never find out — so show them, once, right away.
@@ -106,9 +140,10 @@ function scheduleNano() {
 }
 
 chrome.tabs.onUpdated.addListener((_tabId, info) => {
+  if (info.status === 'loading') scheduleBadges(); // tab-scoped badge text is cleared on navigation
   if (info.status === 'complete' || info.title) scheduleNano();
 });
-chrome.tabs.onAttached.addListener(() => scheduleNano());
+chrome.tabs.onAttached.addListener(() => { scheduleNano(); scheduleBadges(); });
 chrome.tabs.onDetached.addListener(() => scheduleNano());
 chrome.tabs.onRemoved.addListener(() => scheduleNano());
 

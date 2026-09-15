@@ -261,6 +261,13 @@ export function displayName(win, bindings, savedNames, nanoNames, settings) {
   return { name: defaultName(win), source: 'rule' };
 }
 
+// Keycap label for the window at `index` in creation order: 1-9, then A-Z (Shift+letter).
+export function keyLabel(index) {
+  if (index < 9) return String(index + 1);
+  if (index < 35) return String.fromCharCode(65 + index - 9);
+  return '';
+}
+
 // ---------- Misc ----------
 
 export function colorForHost(host) {

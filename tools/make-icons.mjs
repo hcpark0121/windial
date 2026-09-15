@@ -9,7 +9,8 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const full = fs.readFileSync(path.join(root, 'icons', 'icon.svg'), 'utf8');
 const small = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
   <rect width="128" height="128" rx="30" fill="#4258D6"/>
-  <text x="64" y="102" text-anchor="middle" font-family="-apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="104" font-weight="800" fill="#FFFFFF">1</text>
+  <rect x="16" y="20" width="96" height="88" rx="14" fill="none" stroke="#FFFFFF" stroke-width="12"/>
+  <path d="M16 34a14 14 0 0 1 14-14h68a14 14 0 0 1 14 14v18H16z" fill="#FFFFFF"/>
 </svg>`;
 
 const browser = await chromium.launch({ channel: 'chrome', headless: true });
