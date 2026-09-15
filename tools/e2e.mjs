@@ -226,7 +226,7 @@ try {
   popup = await openPopup(W1);
   const own = await popup.evaluate(async () => (await chrome.commands.getAll()).find((c) => c.name === '_execute_action')?.shortcut || '');
   await press(popup, 'Alt+KeyW');
-  check('pressing the assigned shortcut inside the popup closes it', own === '⌥W' && await waitClosed(popup), `shortcut "${own}"`);
+  check('pressing the assigned shortcut inside the popup closes it', ['⌥W', 'Alt+W'].includes(own) && await waitClosed(popup), `shortcut "${own}"`);
 
   // --- rename via F2 ---
   await focus(W1);
@@ -326,13 +326,15 @@ try {
   // --- a minimized window is restored when chosen ---
   await probe.evaluate((id) => chrome.windows.update(id, { state: 'minimized' }), W2);
   await sleep(500);
+  // Without a window manager (xvfb on CI) Chrome cannot actually minimize; then only the jump is checked.
+  const wasMinimized = (await probe.evaluate((id) => chrome.windows.get(id).then((w) => w.state), W2)) === 'minimized';
   await focus(W1);
   popup = await openPopup(W1);
   const minimizedPill = await popup.evaluate((id) => [...document.querySelectorAll(`.row[data-id="${id}"] .pill`)].map((p) => p.textContent).join('|'), W2);
   await press(popup, 'Digit2');
   await sleep(900);
   const w2state = await probe.evaluate((id) => chrome.windows.get(id).then((w) => w.state), W2);
-  check('minimized window is labelled and restored on jump', minimizedPill.length > 0 && w2state !== 'minimized' && (await focusedId()) === W2, `${minimizedPill} / ${w2state}`);
+  check('minimized window is labelled and restored on jump', (!wasMinimized || minimizedPill.length > 0) && w2state !== 'minimized' && (await focusedId()) === W2, `${wasMinimized ? minimizedPill : 'display cannot minimize'} / ${w2state}`);
 
   // --- a pinned tab can be moved (it is unpinned first) ---
   const alphaOneId = await probe.evaluate(async () => (await chrome.tabs.query({ title: 'Alpha one' }))[0].id);
