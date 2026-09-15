@@ -106,10 +106,10 @@ body {
 }
 .row + .row { margin-top: 1px; }
 .row:hover { background: var(--row-hover); }
-.row.sel, .row.sel:hover { background: var(--sel-bg); }
+.row.cur, .row.cur:hover { background: var(--sel-bg); }
 .row.sel::before {
   content: ""; position: absolute; left: 0; top: 8px; bottom: 8px; width: 3px;
-  border-radius: 2px; background: var(--sel-bar); opacity: .55;
+  border-radius: 2px; background: var(--sel-bar);
 }
 .row.cur .name { color: var(--ink); }
 body.moving .row.cur { opacity: .45; }
