@@ -109,10 +109,10 @@ body {
 .row.sel, .row.sel:hover { background: var(--sel-bg); }
 .row.sel::before {
   content: ""; position: absolute; left: 0; top: 8px; bottom: 8px; width: 3px;
-  border-radius: 2px; background: var(--sel-bar);
+  border-radius: 2px; background: var(--sel-bar); opacity: .55;
 }
-.row.cur { opacity: .58; }
-.row.cur.sel { opacity: .8; }
+.row.cur .name { color: var(--ink); }
+body.moving .row.cur { opacity: .45; }
 
 .keys { grid-row: 1 / span 2; display: flex; align-items: center; gap: 4px; }
 .key {
@@ -127,6 +127,7 @@ body {
 .key.shift { font-size: 12px; }
 .key.none { visibility: hidden; }
 .row.sel .key { border-color: var(--sel-bar); color: var(--sel-ink); }
+.row.cur .key:first-child { background: var(--sel-bar); border-color: var(--sel-bar); color: #fff; }
 
 .name-line { display: flex; align-items: center; gap: 8px; min-width: 0; }
 .name { font-weight: 600; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; flex: 0 1 auto; }
@@ -141,7 +142,8 @@ body {
   font-size: 11px; font-weight: 500; padding: 2px 7px; border-radius: 999px;
   background: var(--pill-bg); color: var(--pill-ink); white-space: nowrap; flex: none;
 }
-.pill.ret { background: var(--sel-bar); color: #fff; }
+.pill.here { background: var(--sel-bar); color: #fff; }
+.pill.ret { background: transparent; color: var(--sel-ink); border: 1px solid var(--sel-bar); padding-top: 1px; padding-bottom: 1px; }
 .rename-btn {
   flex: none; margin-left: auto; border: 0; background: transparent; color: var(--ink-3);
   width: 22px; height: 22px; border-radius: 5px; cursor: pointer; padding: 0;

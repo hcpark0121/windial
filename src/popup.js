@@ -319,8 +319,8 @@ function buildRow(row, q) {
     nameLine.append(name);
     const chips = chipsOf(win);
     if (chips) nameLine.append(chips);
-    if (isCur) nameLine.append(pill(state.shift ? `${t('currentWindow')} · ${t('alreadyHere')}` : t('currentWindow')));
-    else if (isPrev && !q && !state.shift) nameLine.append(pill(`${t('previousWindow')} · Enter`, 'ret'));
+    if (isCur) nameLine.append(pill(state.shift ? `${t('currentWindow')} · ${t('alreadyHere')}` : t('currentWindow'), 'here'));
+    else if (isPrev && !q && !state.shift) nameLine.append(pill(`↵ ${t('previousWindow')}`, 'ret'));
     if (win.state === 'minimized') nameLine.append(pill(t('minimized')));
     const btn = document.createElement('button');
     btn.className = 'rename-btn';
@@ -398,6 +398,7 @@ function renderSelection() {
 function renderMode() {
   const moving = state.shift && !state.renaming;
   els.searchbox.classList.toggle('moving', moving);
+  document.body.classList.toggle('moving', moving);
   els.mode.hidden = !moving;
   if (moving) {
     const title = state.activeTab ? (state.activeTab.title || state.activeTab.url || '') : '';
