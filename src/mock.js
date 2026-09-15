@@ -104,7 +104,14 @@ if (!isExtension && params.has('mock')) {
 
   const clone = (w) => structuredClone(w);
   globalThis.chrome = {
-    runtime: { getURL: (p) => new URL(p, location.href).toString(), id: undefined },
+    runtime: {
+      getURL: (p) => new URL(p, location.href).toString(),
+      id: undefined,
+      async sendMessage(msg) {
+        if (msg && msg.type === 'moveTab') { await globalThis.chrome.tabs.move(msg.tabId, { windowId: msg.windowId, index: -1 }); return { ok: true }; }
+        return null;
+      },
+    },
     i18n: {
       getUILanguage: () => lang,
       getMessage(key, subs = []) {

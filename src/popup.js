@@ -114,18 +114,11 @@ async function activate(win, tab) {
 async function moveActiveTab(target, follow) {
   const tab = state.activeTab;
   if (!tab || tab.windowId === target.id) return;
-  try {
-    await chrome.tabs.move(tab.id, { windowId: target.id, index: -1 });
-    if (follow) {
-      await chrome.tabs.update(tab.id, { active: true });
-      if (target.state === 'minimized') await chrome.windows.update(target.id, { state: 'normal' });
-      await chrome.windows.update(target.id, { focused: true });
-      window.close();
-      return;
-    }
-  } catch (err) {
-    console.warn('[windial] move failed', err);
-  }
+  // Chrome closes this popup the moment its window's active tab changes, so the service
+  // worker performs the whole move; we only send the request.
+  const done = chrome.runtime.sendMessage({ type: 'moveTab', tabId: tab.id, windowId: target.id, follow }).catch(() => null);
+  if (follow) { window.close(); return; }
+  await done;
   await refresh();
 }
 

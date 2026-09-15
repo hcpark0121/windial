@@ -258,6 +258,19 @@ try {
   await press(popup, 'Escape');
   await waitClosed(popup);
 
+  // --- Shift+digit (follow): worker moves the tab, activates it and focuses the window ---
+  await focus(W1);
+  const alphaTwo = (await allWindows()).find((w) => w.id === W1).tabs.find((t) => t.title === 'Alpha two');
+  const alphaTwoId = await probe.evaluate(async (title) => (await chrome.tabs.query({ title }))[0].id, 'Alpha two');
+  const moveResult = await probe.evaluate(async ({ tabId, windowId }) =>
+    chrome.runtime.sendMessage({ type: 'moveTab', tabId, windowId, follow: true }), { tabId: alphaTwoId, windowId: W3 });
+  await sleep(700);
+  wins = await allWindows();
+  const w3 = wins.find((w) => w.id === W3);
+  check('moved tab is the active tab of the target window and that window is focused',
+    Boolean(alphaTwo) && moveResult && moveResult.ok && w3.tabs.some((t) => t.title === 'Alpha two' && t.active) && (await focusedId()) === W3,
+    JSON.stringify({ moveResult, w3tabs: w3.tabs.map((t) => [t.title, t.active]), focused: await focusedId() }));
+
   // --- closing a window renumbers ---
   await probe.evaluate(async (W3) => chrome.windows.remove(W3), W3);
   await sleep(500);

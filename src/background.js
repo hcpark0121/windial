@@ -73,6 +73,23 @@ async function welcomeIfNeeded(reason) {
   await chrome.tabs.create({ url: chrome.runtime.getURL('src/welcome.html') });
 }
 
+// Moving the current tab out of the popup's window closes the popup at once, so the popup
+// only sends the request; the worker finishes the whole sequence (move, activate, focus).
+chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
+  if (!msg || msg.type !== 'moveTab') return false;
+  moveTab(msg).then(() => sendResponse({ ok: true })).catch((err) => sendResponse({ ok: false, error: String(err) }));
+  return true;
+});
+
+async function moveTab({ tabId, windowId, follow }) {
+  await chrome.tabs.move(tabId, { windowId, index: -1 });
+  if (!follow) return;
+  await chrome.tabs.update(tabId, { active: true });
+  const win = await chrome.windows.get(windowId);
+  if (win.state === 'minimized') await chrome.windows.update(windowId, { state: 'normal' });
+  await chrome.windows.update(windowId, { focused: true });
+}
+
 // Nano naming in the background is best-effort; the popup also names on demand.
 let nanoTimer = null;
 function scheduleNano() {
