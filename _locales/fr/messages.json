@@ -1,0 +1,285 @@
+{
+  "extName": {
+    "message": "Windial : changer de fenêtre par numéro"
+  },
+  "extDesc": {
+    "message": "Un raccourci, un chiffre. Reconnaissez chaque fenêtre Chrome par son thème et passez de l’une à l’autre en deux touches."
+  },
+  "cmdOpen": {
+    "message": "Ouvrir la liste des fenêtres"
+  },
+  "searchPlaceholder": {
+    "message": "Rechercher par nom de fenêtre, onglet ou URL"
+  },
+  "tabCount": {
+    "message": "$COUNT$ onglets",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "tabCountOne": {
+    "message": "1 onglet"
+  },
+  "matchCount": {
+    "message": "$COUNT$ résultats",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "matchCountOne": {
+    "message": "1 résultat"
+  },
+  "currentWindow": {
+    "message": "Cette fenêtre"
+  },
+  "previousWindow": {
+    "message": "Précédente"
+  },
+  "alreadyHere": {
+    "message": "déjà ici"
+  },
+  "minimized": {
+    "message": "réduite"
+  },
+  "untitledGroup": {
+    "message": "Groupe sans titre"
+  },
+  "footJump": {
+    "message": "1–9 aller"
+  },
+  "footLast": {
+    "message": "0 dernière fenêtre"
+  },
+  "footBack": {
+    "message": "Enter fenêtre précédente"
+  },
+  "footMove": {
+    "message": "Shift+chiffre déplacer cet onglet"
+  },
+  "footRename": {
+    "message": "F2 renommer"
+  },
+  "footLetters": {
+    "message": "Shift+A… fenêtres 10 et plus"
+  },
+  "footSearchEnter": {
+    "message": "Entrée ouvre la fenêtre et cet onglet"
+  },
+  "footSearchPick": {
+    "message": "↑↓ choisir"
+  },
+  "moveMode": {
+    "message": "Déplacer « $TITLE$ » vers quelle fenêtre ?",
+    "placeholders": {
+      "TITLE": {
+        "content": "$1"
+      }
+    }
+  },
+  "moveStay": {
+    "message": "Maintenez Alt pour déplacer sans suivre"
+  },
+  "renamePlaceholder": {
+    "message": "Nom de la fenêtre"
+  },
+  "renameHint": {
+    "message": "Entrée enregistre · Échap annule · vide rétablit le nom par défaut"
+  },
+  "noWindows": {
+    "message": "Aucune autre fenêtre ouverte."
+  },
+  "noMatch": {
+    "message": "Aucune fenêtre ne correspond à « $Q$ »",
+    "placeholders": {
+      "Q": {
+        "content": "$1"
+      }
+    }
+  },
+  "rename": {
+    "message": "Renommer"
+  },
+  "optTitle": {
+    "message": "Paramètres de Windial"
+  },
+  "optNaming": {
+    "message": "Noms de fenêtre automatiques"
+  },
+  "optNamingHelp": {
+    "message": "Un nom que vous saisissez vous-même l’emporte toujours. Ces règles ne complètent que le reste."
+  },
+  "optNamingRule": {
+    "message": "D’après le premier onglet (par défaut)"
+  },
+  "optNamingRuleHelp": {
+    "message": "Le site du premier onglet de la fenêtre, par exemple « Github » ou « Naver »."
+  },
+  "optNamingNano": {
+    "message": "Demander à Gemini Nano sur cet appareil"
+  },
+  "optNanoNote": {
+    "message": "S’exécute sur cet ordinateur ; rien n’en sort. Nécessite Chrome 148 ou plus récent, environ 22 Go d’espace libre et un téléchargement unique du modèle."
+  },
+  "nanoUnsupported": {
+    "message": "Indisponible dans ce Chrome"
+  },
+  "nanoDownloadable": {
+    "message": "Modèle pas encore téléchargé"
+  },
+  "nanoDownloading": {
+    "message": "Téléchargement… $PCT$ %",
+    "placeholders": {
+      "PCT": {
+        "content": "$1"
+      }
+    }
+  },
+  "nanoAvailable": {
+    "message": "Prêt"
+  },
+  "nanoUnavailable": {
+    "message": "Indisponible sur cet appareil"
+  },
+  "nanoDownload": {
+    "message": "Télécharger le modèle"
+  },
+  "nanoTest": {
+    "message": "Essayer avec cette fenêtre"
+  },
+  "nanoTestResult": {
+    "message": "Nom proposé : $NAME$",
+    "placeholders": {
+      "NAME": {
+        "content": "$1"
+      }
+    }
+  },
+  "nanoTestFailed": {
+    "message": "Impossible d’obtenir un nom : $ERR$",
+    "placeholders": {
+      "ERR": {
+        "content": "$1"
+      }
+    }
+  },
+  "optLang": {
+    "message": "Langue des noms proposés"
+  },
+  "optLangSystem": {
+    "message": "Comme Chrome"
+  },
+  "optNames": {
+    "message": "Noms de fenêtre enregistrés"
+  },
+  "optNamesHelp": {
+    "message": "Les noms sont réassociés aux fenêtres d’après leurs onglets ; ils survivent donc à un redémarrage de Chrome."
+  },
+  "optNamesEmpty": {
+    "message": "Aucun nom enregistré pour l’instant. Appuyez sur F2 dans la liste pour nommer une fenêtre."
+  },
+  "delete": {
+    "message": "Supprimer"
+  },
+  "optShortcut": {
+    "message": "Raccourci"
+  },
+  "optShortcutChange": {
+    "message": "Modifier dans Chrome"
+  },
+  "optShortcutNone": {
+    "message": "Non défini"
+  },
+  "optShortcutHelp": {
+    "message": "Chrome peut refuser un raccourci déjà utilisé. Choisissez-en un autre sur la page des raccourcis de Chrome."
+  },
+  "saved": {
+    "message": "Enregistré"
+  },
+  "optPrivacy": {
+    "message": "Windial garde tout dans ce profil de navigateur et n’envoie jamais rien nulle part."
+  },
+  "welcomeReady": {
+    "message": "Windial est prêt."
+  },
+  "welcomeShortcutIs": {
+    "message": "Votre raccourci"
+  },
+  "welcomeNone": {
+    "message": "Chrome n’a pas attribué de raccourci. La combinaison proposée était sans doute déjà prise par Chrome ou une autre extension. Le définir prend dix secondes."
+  },
+  "welcomeSet": {
+    "message": "Définir le raccourci"
+  },
+  "welcomeChange": {
+    "message": "Modifier le raccourci"
+  },
+  "welcomeHow": {
+    "message": "Sur la page qui s’ouvre, trouvez Windial, cliquez sur le crayon à côté de « Ouvrir la liste des fenêtres » et appuyez sur les touches voulues. Bons choix : ⌥W, ⌘⇧C ou ⌘⇧X sur Mac ; Alt+W ou Ctrl+Maj+Y sous Windows et Linux."
+  },
+  "welcomeWatching": {
+    "message": "Cette page se met à jour toute seule une fois le raccourci défini."
+  },
+  "welcomeKeys": {
+    "message": "Touches"
+  },
+  "keyOpen": {
+    "message": "Ouvrir la liste des fenêtres. Appuyez de nouveau pour la fermer."
+  },
+  "keyDigits": {
+    "message": "Aller à cette fenêtre. Les numéros suivent l’ordre d’ouverture des fenêtres et ne bougent pas."
+  },
+  "keyZero": {
+    "message": "Dernière fenêtre, quel qu’en soit le nombre"
+  },
+  "keyEnter": {
+    "message": "Fenêtre précédente (présélectionnée à l’ouverture de la liste)"
+  },
+  "keyType": {
+    "message": "Rechercher par nom de fenêtre, groupe d’onglets, titre d’onglet et URL. Entrée ouvre la fenêtre et l’onglet correspondant."
+  },
+  "keyShift": {
+    "message": "Déplacer l’onglet actuel vers cette fenêtre et la suivre. Ajoutez Alt pour rester."
+  },
+  "keyF2": {
+    "message": "Nommer la fenêtre sélectionnée"
+  },
+  "keyEsc": {
+    "message": "Effacer la recherche, puis fermer"
+  },
+  "popupNoShortcut": {
+    "message": "Aucun raccourci défini — cliquez pour en choisir un"
+  },
+  "welcomeTry": {
+    "message": "Essayez maintenant : appuyez sur $KEY$",
+    "placeholders": {
+      "KEY": {
+        "content": "$1"
+      }
+    }
+  },
+  "welcomeWaiting": {
+    "message": "En attente de l’ouverture de la liste…"
+  },
+  "welcomeWorks": {
+    "message": "Ça marche. Vous pouvez fermer cet onglet."
+  },
+  "welcomeNotOpening": {
+    "message": "Rien ne se passe ? Chrome affiche parfois un raccourci sans l’enregistrer. Ouvrez la page des raccourcis et saisissez de nouveau la combinaison, même identique."
+  },
+  "support": {
+    "message": "Offrir un café au développeur"
+  },
+  "searchLabel": {
+    "message": "Rechercher des fenêtres"
+  },
+  "listLabel": {
+    "message": "Fenêtres"
+  },
+  "confirmDelete": {
+    "message": "Supprimer ?"
+  }
+}

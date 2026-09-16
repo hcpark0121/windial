@@ -1,0 +1,285 @@
+{
+  "extName": {
+    "message": "Windial: cambia de ventana por número"
+  },
+  "extDesc": {
+    "message": "Un atajo, un número. Reconoce cada ventana de Chrome por su tema y salta entre ellas con dos pulsaciones."
+  },
+  "cmdOpen": {
+    "message": "Abrir la lista de ventanas"
+  },
+  "searchPlaceholder": {
+    "message": "Buscar por nombre de ventana, pestaña o URL"
+  },
+  "tabCount": {
+    "message": "$COUNT$ pestañas",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "tabCountOne": {
+    "message": "1 pestaña"
+  },
+  "matchCount": {
+    "message": "$COUNT$ coincidencias",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "matchCountOne": {
+    "message": "1 coincidencia"
+  },
+  "currentWindow": {
+    "message": "Esta ventana"
+  },
+  "previousWindow": {
+    "message": "Anterior"
+  },
+  "alreadyHere": {
+    "message": "ya estás aquí"
+  },
+  "minimized": {
+    "message": "minimizada"
+  },
+  "untitledGroup": {
+    "message": "Grupo sin título"
+  },
+  "footJump": {
+    "message": "1–9 saltar"
+  },
+  "footLast": {
+    "message": "0 última ventana"
+  },
+  "footBack": {
+    "message": "Enter ventana anterior"
+  },
+  "footMove": {
+    "message": "Shift+número mover esta pestaña"
+  },
+  "footRename": {
+    "message": "F2 renombrar"
+  },
+  "footLetters": {
+    "message": "Shift+A… ventanas 10 en adelante"
+  },
+  "footSearchEnter": {
+    "message": "Enter abre la ventana y esa pestaña"
+  },
+  "footSearchPick": {
+    "message": "↑↓ elegir"
+  },
+  "moveMode": {
+    "message": "¿A qué ventana mover «$TITLE$»?",
+    "placeholders": {
+      "TITLE": {
+        "content": "$1"
+      }
+    }
+  },
+  "moveStay": {
+    "message": "Mantén Alt para mover sin seguirla"
+  },
+  "renamePlaceholder": {
+    "message": "Nombre de la ventana"
+  },
+  "renameHint": {
+    "message": "Enter guarda · Esc cancela · vacío restaura el nombre por defecto"
+  },
+  "noWindows": {
+    "message": "No hay otras ventanas abiertas."
+  },
+  "noMatch": {
+    "message": "Ninguna ventana coincide con «$Q$»",
+    "placeholders": {
+      "Q": {
+        "content": "$1"
+      }
+    }
+  },
+  "rename": {
+    "message": "Renombrar"
+  },
+  "optTitle": {
+    "message": "Ajustes de Windial"
+  },
+  "optNaming": {
+    "message": "Nombres automáticos de ventana"
+  },
+  "optNamingHelp": {
+    "message": "Un nombre que escribas tú siempre tiene prioridad. Estas reglas solo completan el resto."
+  },
+  "optNamingRule": {
+    "message": "Desde la primera pestaña (por defecto)"
+  },
+  "optNamingRuleHelp": {
+    "message": "El sitio de la primera pestaña de la ventana, por ejemplo «Github» o «Naver»."
+  },
+  "optNamingNano": {
+    "message": "Preguntar a Gemini Nano en este dispositivo"
+  },
+  "optNanoNote": {
+    "message": "Se ejecuta en este equipo; nada sale de él. Requiere Chrome 148 o superior, unos 22 GB de espacio libre y una descarga única del modelo."
+  },
+  "nanoUnsupported": {
+    "message": "No disponible en este Chrome"
+  },
+  "nanoDownloadable": {
+    "message": "Modelo aún no descargado"
+  },
+  "nanoDownloading": {
+    "message": "Descargando… $PCT$%",
+    "placeholders": {
+      "PCT": {
+        "content": "$1"
+      }
+    }
+  },
+  "nanoAvailable": {
+    "message": "Listo"
+  },
+  "nanoUnavailable": {
+    "message": "No disponible en este dispositivo"
+  },
+  "nanoDownload": {
+    "message": "Descargar modelo"
+  },
+  "nanoTest": {
+    "message": "Probar con esta ventana"
+  },
+  "nanoTestResult": {
+    "message": "Nombre sugerido: $NAME$",
+    "placeholders": {
+      "NAME": {
+        "content": "$1"
+      }
+    }
+  },
+  "nanoTestFailed": {
+    "message": "No se pudo obtener un nombre: $ERR$",
+    "placeholders": {
+      "ERR": {
+        "content": "$1"
+      }
+    }
+  },
+  "optLang": {
+    "message": "Idioma de los nombres sugeridos"
+  },
+  "optLangSystem": {
+    "message": "Igual que Chrome"
+  },
+  "optNames": {
+    "message": "Nombres de ventana guardados"
+  },
+  "optNamesHelp": {
+    "message": "Los nombres se vuelven a asociar a las ventanas por sus pestañas, así que sobreviven a un reinicio de Chrome."
+  },
+  "optNamesEmpty": {
+    "message": "Aún no hay nombres guardados. Pulsa F2 en la lista para nombrar una ventana."
+  },
+  "delete": {
+    "message": "Eliminar"
+  },
+  "optShortcut": {
+    "message": "Atajo"
+  },
+  "optShortcutChange": {
+    "message": "Cambiar en Chrome"
+  },
+  "optShortcutNone": {
+    "message": "Sin asignar"
+  },
+  "optShortcutHelp": {
+    "message": "Chrome puede rechazar un atajo ya ocupado. Elige otro en la página de atajos de Chrome."
+  },
+  "saved": {
+    "message": "Guardado"
+  },
+  "optPrivacy": {
+    "message": "Windial guarda todo en este perfil del navegador y nunca envía nada a ningún sitio."
+  },
+  "welcomeReady": {
+    "message": "Windial está listo."
+  },
+  "welcomeShortcutIs": {
+    "message": "Tu atajo"
+  },
+  "welcomeNone": {
+    "message": "Chrome no asignó un atajo. Probablemente la combinación sugerida ya la usaba Chrome u otra extensión. Configurarlo lleva diez segundos."
+  },
+  "welcomeSet": {
+    "message": "Configurar el atajo"
+  },
+  "welcomeChange": {
+    "message": "Cambiar el atajo"
+  },
+  "welcomeHow": {
+    "message": "En la página que se abre, busca Windial, pulsa el lápiz junto a «Abrir la lista de ventanas» y pulsa las teclas que quieras. Buenas opciones: ⌥W, ⌘⇧C o ⌘⇧X en Mac; Alt+W o Ctrl+Shift+Y en Windows y Linux."
+  },
+  "welcomeWatching": {
+    "message": "Esta página se actualiza sola cuando el atajo queda configurado."
+  },
+  "welcomeKeys": {
+    "message": "Teclas"
+  },
+  "keyOpen": {
+    "message": "Abrir la lista de ventanas. Púlsalo otra vez para cerrarla."
+  },
+  "keyDigits": {
+    "message": "Saltar a esa ventana. Los números siguen el orden en que se abrieron las ventanas y no cambian."
+  },
+  "keyZero": {
+    "message": "Última ventana, haya las que haya"
+  },
+  "keyEnter": {
+    "message": "Ventana anterior (preseleccionada al abrir la lista)"
+  },
+  "keyType": {
+    "message": "Buscar por nombre de ventana, grupo de pestañas, título de pestaña y URL. Enter abre la ventana y la pestaña coincidente."
+  },
+  "keyShift": {
+    "message": "Mover la pestaña actual a esa ventana y seguirla. Añade Alt para quedarte."
+  },
+  "keyF2": {
+    "message": "Nombrar la ventana seleccionada"
+  },
+  "keyEsc": {
+    "message": "Borrar la búsqueda y después cerrar"
+  },
+  "popupNoShortcut": {
+    "message": "No hay atajo configurado — haz clic para elegir uno"
+  },
+  "welcomeTry": {
+    "message": "Pruébalo ahora: pulsa $KEY$",
+    "placeholders": {
+      "KEY": {
+        "content": "$1"
+      }
+    }
+  },
+  "welcomeWaiting": {
+    "message": "Esperando a que se abra la lista…"
+  },
+  "welcomeWorks": {
+    "message": "Funciona. Puedes cerrar esta pestaña."
+  },
+  "welcomeNotOpening": {
+    "message": "¿No pasó nada? A veces Chrome muestra un atajo sin registrarlo. Abre la página de atajos e introduce la combinación de nuevo, aunque sea la misma."
+  },
+  "support": {
+    "message": "Invita a un café al desarrollador"
+  },
+  "searchLabel": {
+    "message": "Buscar ventanas"
+  },
+  "listLabel": {
+    "message": "Ventanas"
+  },
+  "confirmDelete": {
+    "message": "¿Eliminar?"
+  }
+}

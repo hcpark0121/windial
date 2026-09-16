@@ -1,0 +1,285 @@
+{
+  "extName": {
+    "message": "Windial: 番号でウィンドウ切替"
+  },
+  "extDesc": {
+    "message": "ショートカット一つ、数字一つ。Chromeのウィンドウをテーマ名で見分け、キー2回で切り替えます。"
+  },
+  "cmdOpen": {
+    "message": "ウィンドウ一覧を開く"
+  },
+  "searchPlaceholder": {
+    "message": "ウィンドウ名・タブ・URLで検索"
+  },
+  "tabCount": {
+    "message": "$COUNT$タブ",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "tabCountOne": {
+    "message": "1タブ"
+  },
+  "matchCount": {
+    "message": "$COUNT$件一致",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "matchCountOne": {
+    "message": "1件一致"
+  },
+  "currentWindow": {
+    "message": "このウィンドウ"
+  },
+  "previousWindow": {
+    "message": "前のウィンドウ"
+  },
+  "alreadyHere": {
+    "message": "すでにここ"
+  },
+  "minimized": {
+    "message": "最小化中"
+  },
+  "untitledGroup": {
+    "message": "無題のグループ"
+  },
+  "footJump": {
+    "message": "1–9 移動"
+  },
+  "footLast": {
+    "message": "0 最後のウィンドウ"
+  },
+  "footBack": {
+    "message": "Enter 前のウィンドウ"
+  },
+  "footMove": {
+    "message": "Shift+数字 このタブを移す"
+  },
+  "footRename": {
+    "message": "F2 名前を変更"
+  },
+  "footLetters": {
+    "message": "Shift+A… 10番目以降"
+  },
+  "footSearchEnter": {
+    "message": "Enterでそのウィンドウとタブを開く"
+  },
+  "footSearchPick": {
+    "message": "↑↓ 選択"
+  },
+  "moveMode": {
+    "message": "「$TITLE$」をどのウィンドウへ移しますか？",
+    "placeholders": {
+      "TITLE": {
+        "content": "$1"
+      }
+    }
+  },
+  "moveStay": {
+    "message": "Altを押したままなら移動後もここに残ります"
+  },
+  "renamePlaceholder": {
+    "message": "ウィンドウ名"
+  },
+  "renameHint": {
+    "message": "Enter 保存 · Esc 取消 · 空欄で既定の名前に戻す"
+  },
+  "noWindows": {
+    "message": "他に開いているウィンドウはありません。"
+  },
+  "noMatch": {
+    "message": "「$Q$」に一致するウィンドウはありません",
+    "placeholders": {
+      "Q": {
+        "content": "$1"
+      }
+    }
+  },
+  "rename": {
+    "message": "名前を変更"
+  },
+  "optTitle": {
+    "message": "Windial 設定"
+  },
+  "optNaming": {
+    "message": "ウィンドウ名の自動付与"
+  },
+  "optNamingHelp": {
+    "message": "自分で付けた名前が常に優先されます。以下のルールは残りのウィンドウにだけ適用されます。"
+  },
+  "optNamingRule": {
+    "message": "最初のタブから（既定）"
+  },
+  "optNamingRuleHelp": {
+    "message": "ウィンドウの最初のタブのサイト名を使います。例: 「Github」「Naver」。"
+  },
+  "optNamingNano": {
+    "message": "端末内の Gemini Nano に任せる"
+  },
+  "optNanoNote": {
+    "message": "このパソコンの中だけで動き、外部には何も送りません。Chrome 148 以降、約22GBの空き容量、初回のモデルダウンロードが必要です。"
+  },
+  "nanoUnsupported": {
+    "message": "この Chrome では使えません"
+  },
+  "nanoDownloadable": {
+    "message": "モデル未ダウンロード"
+  },
+  "nanoDownloading": {
+    "message": "ダウンロード中… $PCT$%",
+    "placeholders": {
+      "PCT": {
+        "content": "$1"
+      }
+    }
+  },
+  "nanoAvailable": {
+    "message": "準備完了"
+  },
+  "nanoUnavailable": {
+    "message": "この端末では使えません"
+  },
+  "nanoDownload": {
+    "message": "モデルをダウンロード"
+  },
+  "nanoTest": {
+    "message": "このウィンドウで試す"
+  },
+  "nanoTestResult": {
+    "message": "提案された名前: $NAME$",
+    "placeholders": {
+      "NAME": {
+        "content": "$1"
+      }
+    }
+  },
+  "nanoTestFailed": {
+    "message": "名前を取得できませんでした: $ERR$",
+    "placeholders": {
+      "ERR": {
+        "content": "$1"
+      }
+    }
+  },
+  "optLang": {
+    "message": "提案する名前の言語"
+  },
+  "optLangSystem": {
+    "message": "Chrome と同じ"
+  },
+  "optNames": {
+    "message": "保存したウィンドウ名"
+  },
+  "optNamesHelp": {
+    "message": "名前はタブ構成でウィンドウに再照合されるため、Chrome を再起動しても残ります。"
+  },
+  "optNamesEmpty": {
+    "message": "保存された名前はありません。一覧で F2 を押してウィンドウに名前を付けてください。"
+  },
+  "delete": {
+    "message": "削除"
+  },
+  "optShortcut": {
+    "message": "ショートカット"
+  },
+  "optShortcutChange": {
+    "message": "Chrome で変更"
+  },
+  "optShortcutNone": {
+    "message": "未設定"
+  },
+  "optShortcutHelp": {
+    "message": "すでに使われている組み合わせは Chrome が拒否することがあります。その場合は Chrome のショートカット画面で別の組み合わせを選んでください。"
+  },
+  "saved": {
+    "message": "保存しました"
+  },
+  "optPrivacy": {
+    "message": "Windial はすべてをこのブラウザのプロファイル内にのみ保存し、どこにも送信しません。"
+  },
+  "welcomeReady": {
+    "message": "Windial の準備ができました。"
+  },
+  "welcomeShortcutIs": {
+    "message": "現在のショートカット"
+  },
+  "welcomeNone": {
+    "message": "Chrome がショートカットを割り当てられませんでした。提案した組み合わせを Chrome や他の拡張機能がすでに使っている可能性が高いです。設定は10秒で終わります。"
+  },
+  "welcomeSet": {
+    "message": "ショートカットを設定"
+  },
+  "welcomeChange": {
+    "message": "ショートカットを変更"
+  },
+  "welcomeHow": {
+    "message": "開いたページで Windial を探し、「ウィンドウ一覧を開く」の横の鉛筆を押して、使いたいキーを押してください。おすすめ: Mac は ⌥W、⌘⇧C、⌘⇧X。Windows・Linux は Alt+W、Ctrl+Shift+Y。"
+  },
+  "welcomeWatching": {
+    "message": "ショートカットを設定すると、このページは自動的に更新されます。"
+  },
+  "welcomeKeys": {
+    "message": "キー一覧"
+  },
+  "keyOpen": {
+    "message": "ウィンドウ一覧を開く。もう一度押すと閉じます。"
+  },
+  "keyDigits": {
+    "message": "その番号のウィンドウへ移動。番号はウィンドウを開いた順で、変わりません。"
+  },
+  "keyZero": {
+    "message": "最後のウィンドウ。いくつあっても常に最後。"
+  },
+  "keyEnter": {
+    "message": "前のウィンドウ（一覧を開いたときに選択済み）"
+  },
+  "keyType": {
+    "message": "ウィンドウ名・タブグループ・タブのタイトル・URLで検索。Enter でそのウィンドウへ移り、一致したタブを開きます。"
+  },
+  "keyShift": {
+    "message": "今のタブをそのウィンドウへ移して追いかけます。Alt を加えるとここに残ります。"
+  },
+  "keyF2": {
+    "message": "選択中のウィンドウに名前を付ける"
+  },
+  "keyEsc": {
+    "message": "検索を消去、その後閉じる"
+  },
+  "popupNoShortcut": {
+    "message": "ショートカットが未設定です — クリックして設定"
+  },
+  "welcomeTry": {
+    "message": "今すぐ押してみてください: $KEY$",
+    "placeholders": {
+      "KEY": {
+        "content": "$1"
+      }
+    }
+  },
+  "welcomeWaiting": {
+    "message": "一覧が開くのを待っています…"
+  },
+  "welcomeWorks": {
+    "message": "動作しています。このタブは閉じて構いません。"
+  },
+  "welcomeNotOpening": {
+    "message": "何も起きませんか？ Chrome はショートカットを表示しても登録し損ねることがあります。ショートカットのページで同じ組み合わせをもう一度入力すると有効になります。"
+  },
+  "support": {
+    "message": "開発者にコーヒーを一杯"
+  },
+  "searchLabel": {
+    "message": "ウィンドウを検索"
+  },
+  "listLabel": {
+    "message": "ウィンドウ"
+  },
+  "confirmDelete": {
+    "message": "本当に削除？"
+  }
+}

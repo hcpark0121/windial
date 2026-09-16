@@ -1,0 +1,285 @@
+{
+  "extName": {
+    "message": "Windial：按数字切换窗口"
+  },
+  "extDesc": {
+    "message": "一个快捷键，一个数字。按主题识别每个 Chrome 窗口，两次按键即可切换。"
+  },
+  "cmdOpen": {
+    "message": "打开窗口列表"
+  },
+  "searchPlaceholder": {
+    "message": "按窗口名、标签页或网址搜索"
+  },
+  "tabCount": {
+    "message": "$COUNT$ 个标签页",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "tabCountOne": {
+    "message": "1 个标签页"
+  },
+  "matchCount": {
+    "message": "$COUNT$ 个匹配",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "matchCountOne": {
+    "message": "1 个匹配"
+  },
+  "currentWindow": {
+    "message": "当前窗口"
+  },
+  "previousWindow": {
+    "message": "上一个窗口"
+  },
+  "alreadyHere": {
+    "message": "已在此处"
+  },
+  "minimized": {
+    "message": "已最小化"
+  },
+  "untitledGroup": {
+    "message": "未命名分组"
+  },
+  "footJump": {
+    "message": "1–9 跳转"
+  },
+  "footLast": {
+    "message": "0 最后一个窗口"
+  },
+  "footBack": {
+    "message": "Enter 上一个窗口"
+  },
+  "footMove": {
+    "message": "Shift+数字 移动此标签页"
+  },
+  "footRename": {
+    "message": "F2 重命名"
+  },
+  "footLetters": {
+    "message": "Shift+A… 第 10 个及以后"
+  },
+  "footSearchEnter": {
+    "message": "按 Enter 打开该窗口和该标签页"
+  },
+  "footSearchPick": {
+    "message": "↑↓ 选择"
+  },
+  "moveMode": {
+    "message": "把“$TITLE$”移到哪个窗口？",
+    "placeholders": {
+      "TITLE": {
+        "content": "$1"
+      }
+    }
+  },
+  "moveStay": {
+    "message": "按住 Alt 则移动后留在此处"
+  },
+  "renamePlaceholder": {
+    "message": "窗口名称"
+  },
+  "renameHint": {
+    "message": "Enter 保存 · Esc 取消 · 留空恢复默认名称"
+  },
+  "noWindows": {
+    "message": "没有其他打开的窗口。"
+  },
+  "noMatch": {
+    "message": "没有与“$Q$”匹配的窗口",
+    "placeholders": {
+      "Q": {
+        "content": "$1"
+      }
+    }
+  },
+  "rename": {
+    "message": "重命名"
+  },
+  "optTitle": {
+    "message": "Windial 设置"
+  },
+  "optNaming": {
+    "message": "自动命名窗口"
+  },
+  "optNamingHelp": {
+    "message": "你自己输入的名称始终优先。以下规则只用于其余窗口。"
+  },
+  "optNamingRule": {
+    "message": "取自第一个标签页（默认）"
+  },
+  "optNamingRuleHelp": {
+    "message": "使用窗口第一个标签页所在网站的名称，例如“Github”或“Naver”。"
+  },
+  "optNamingNano": {
+    "message": "使用本机的 Gemini Nano 判断"
+  },
+  "optNanoNote": {
+    "message": "只在这台电脑上运行，不会向外发送任何内容。需要 Chrome 148 或更高版本、约 22 GB 可用磁盘空间以及一次性模型下载。"
+  },
+  "nanoUnsupported": {
+    "message": "此 Chrome 不可用"
+  },
+  "nanoDownloadable": {
+    "message": "尚未下载模型"
+  },
+  "nanoDownloading": {
+    "message": "下载中… $PCT$%",
+    "placeholders": {
+      "PCT": {
+        "content": "$1"
+      }
+    }
+  },
+  "nanoAvailable": {
+    "message": "已就绪"
+  },
+  "nanoUnavailable": {
+    "message": "此设备不可用"
+  },
+  "nanoDownload": {
+    "message": "下载模型"
+  },
+  "nanoTest": {
+    "message": "用当前窗口试试"
+  },
+  "nanoTestResult": {
+    "message": "建议的名称：$NAME$",
+    "placeholders": {
+      "NAME": {
+        "content": "$1"
+      }
+    }
+  },
+  "nanoTestFailed": {
+    "message": "无法获取名称：$ERR$",
+    "placeholders": {
+      "ERR": {
+        "content": "$1"
+      }
+    }
+  },
+  "optLang": {
+    "message": "建议名称的语言"
+  },
+  "optLangSystem": {
+    "message": "与 Chrome 相同"
+  },
+  "optNames": {
+    "message": "已保存的窗口名称"
+  },
+  "optNamesHelp": {
+    "message": "名称按窗口的标签页组成重新匹配，因此重启 Chrome 后仍然保留。"
+  },
+  "optNamesEmpty": {
+    "message": "还没有保存的名称。在列表中按 F2 为窗口命名。"
+  },
+  "delete": {
+    "message": "删除"
+  },
+  "optShortcut": {
+    "message": "快捷键"
+  },
+  "optShortcutChange": {
+    "message": "在 Chrome 中更改"
+  },
+  "optShortcutNone": {
+    "message": "未设置"
+  },
+  "optShortcutHelp": {
+    "message": "Chrome 可能会拒绝已被占用的组合。请在 Chrome 的快捷键页面另选一个。"
+  },
+  "saved": {
+    "message": "已保存"
+  },
+  "optPrivacy": {
+    "message": "Windial 把所有内容只保存在此浏览器配置文件中，不会发送到任何地方。"
+  },
+  "welcomeReady": {
+    "message": "Windial 已就绪。"
+  },
+  "welcomeShortcutIs": {
+    "message": "你的快捷键"
+  },
+  "welcomeNone": {
+    "message": "Chrome 没有分配快捷键。建议的组合很可能已被 Chrome 或其他扩展占用。设置只需十秒。"
+  },
+  "welcomeSet": {
+    "message": "设置快捷键"
+  },
+  "welcomeChange": {
+    "message": "更改快捷键"
+  },
+  "welcomeHow": {
+    "message": "在打开的页面中找到 Windial，点击“打开窗口列表”旁的铅笔，然后按下你想用的按键。推荐：Mac 用 ⌥W、⌘⇧C 或 ⌘⇧X；Windows 和 Linux 用 Alt+W 或 Ctrl+Shift+Y。"
+  },
+  "welcomeWatching": {
+    "message": "设置好快捷键后，此页面会自动更新。"
+  },
+  "welcomeKeys": {
+    "message": "按键一览"
+  },
+  "keyOpen": {
+    "message": "打开窗口列表。再按一次关闭。"
+  },
+  "keyDigits": {
+    "message": "跳到该编号的窗口。编号按窗口打开的顺序排列，不会变动。"
+  },
+  "keyZero": {
+    "message": "最后一个窗口，无论有多少个。"
+  },
+  "keyEnter": {
+    "message": "上一个窗口（列表打开时已预选）"
+  },
+  "keyType": {
+    "message": "按窗口名、标签页分组、标签页标题和网址搜索。Enter 打开该窗口并切到匹配的标签页。"
+  },
+  "keyShift": {
+    "message": "把当前标签页移到该窗口并跟随过去。加 Alt 则留在原处。"
+  },
+  "keyF2": {
+    "message": "为选中的窗口命名"
+  },
+  "keyEsc": {
+    "message": "清空搜索，然后关闭"
+  },
+  "popupNoShortcut": {
+    "message": "尚未设置快捷键 — 点击设置"
+  },
+  "welcomeTry": {
+    "message": "现在试试：按 $KEY$",
+    "placeholders": {
+      "KEY": {
+        "content": "$1"
+      }
+    }
+  },
+  "welcomeWaiting": {
+    "message": "等待列表打开…"
+  },
+  "welcomeWorks": {
+    "message": "可以用了。可以关闭此标签页。"
+  },
+  "welcomeNotOpening": {
+    "message": "没有反应？Chrome 有时会显示快捷键却未真正注册。到快捷键页面重新输入一次同样的组合即可。"
+  },
+  "support": {
+    "message": "请开发者喝杯咖啡"
+  },
+  "searchLabel": {
+    "message": "搜索窗口"
+  },
+  "listLabel": {
+    "message": "窗口"
+  },
+  "confirmDelete": {
+    "message": "确定删除？"
+  }
+}

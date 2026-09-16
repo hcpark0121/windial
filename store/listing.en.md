@@ -23,7 +23,7 @@ Press the shortcut (⌥W on Mac, Alt+W on Windows and Linux; change it any time 
 • Name your windows. Press F2 to name a window. Names are matched by the window's tabs, so they survive a Chrome restart.
 • Optional on-device naming. With Chrome 148 or newer you can let the built-in Gemini Nano model suggest a name for windows you have not named. It runs on your computer and nothing leaves it. Off by default.
 • The toolbar icon shows the number of the window it is in.
-• Follows Chrome's language. English and Korean today.
+• Follows Chrome's language: English, Korean, Japanese, Simplified Chinese, Spanish, German and French.
 • Works in light and dark mode.
 
 Privacy: Windial has no server, makes no network requests and collects nothing. Everything stays in your browser profile.

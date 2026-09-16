@@ -1,0 +1,285 @@
+{
+  "extName": {
+    "message": "Windial: Fenster per Zahl wechseln"
+  },
+  "extDesc": {
+    "message": "Ein Kurzbefehl, eine Zahl. Jedes Chrome-Fenster am Thema erkennen und mit zwei Tastendrücken wechseln."
+  },
+  "cmdOpen": {
+    "message": "Fensterliste öffnen"
+  },
+  "searchPlaceholder": {
+    "message": "Nach Fenstername, Tab oder URL suchen"
+  },
+  "tabCount": {
+    "message": "$COUNT$ Tabs",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "tabCountOne": {
+    "message": "1 Tab"
+  },
+  "matchCount": {
+    "message": "$COUNT$ Treffer",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1"
+      }
+    }
+  },
+  "matchCountOne": {
+    "message": "1 Treffer"
+  },
+  "currentWindow": {
+    "message": "Dieses Fenster"
+  },
+  "previousWindow": {
+    "message": "Vorheriges"
+  },
+  "alreadyHere": {
+    "message": "schon hier"
+  },
+  "minimized": {
+    "message": "minimiert"
+  },
+  "untitledGroup": {
+    "message": "Unbenannte Gruppe"
+  },
+  "footJump": {
+    "message": "1–9 springen"
+  },
+  "footLast": {
+    "message": "0 letztes Fenster"
+  },
+  "footBack": {
+    "message": "Enter vorheriges Fenster"
+  },
+  "footMove": {
+    "message": "Shift+Zahl diesen Tab verschieben"
+  },
+  "footRename": {
+    "message": "F2 umbenennen"
+  },
+  "footLetters": {
+    "message": "Shift+A… ab Fenster 10"
+  },
+  "footSearchEnter": {
+    "message": "Enter öffnet das Fenster und diesen Tab"
+  },
+  "footSearchPick": {
+    "message": "↑↓ auswählen"
+  },
+  "moveMode": {
+    "message": "„$TITLE$“ in welches Fenster verschieben?",
+    "placeholders": {
+      "TITLE": {
+        "content": "$1"
+      }
+    }
+  },
+  "moveStay": {
+    "message": "Alt gedrückt halten, um hier zu bleiben"
+  },
+  "renamePlaceholder": {
+    "message": "Fenstername"
+  },
+  "renameHint": {
+    "message": "Enter speichert · Esc bricht ab · leer stellt den Standardnamen wieder her"
+  },
+  "noWindows": {
+    "message": "Keine weiteren Fenster geöffnet."
+  },
+  "noMatch": {
+    "message": "Kein Fenster passt zu „$Q$“",
+    "placeholders": {
+      "Q": {
+        "content": "$1"
+      }
+    }
+  },
+  "rename": {
+    "message": "Umbenennen"
+  },
+  "optTitle": {
+    "message": "Windial-Einstellungen"
+  },
+  "optNaming": {
+    "message": "Automatische Fensternamen"
+  },
+  "optNamingHelp": {
+    "message": "Ein selbst eingegebener Name hat immer Vorrang. Diese Regeln füllen nur den Rest."
+  },
+  "optNamingRule": {
+    "message": "Vom ersten Tab (Standard)"
+  },
+  "optNamingRuleHelp": {
+    "message": "Die Website des ersten Tabs im Fenster, zum Beispiel „Github“ oder „Naver“."
+  },
+  "optNamingNano": {
+    "message": "Gemini Nano auf diesem Gerät fragen"
+  },
+  "optNanoNote": {
+    "message": "Läuft auf diesem Computer; nichts verlässt das Gerät. Benötigt Chrome 148 oder neuer, etwa 22 GB freien Speicher und einen einmaligen Modell-Download."
+  },
+  "nanoUnsupported": {
+    "message": "In diesem Chrome nicht verfügbar"
+  },
+  "nanoDownloadable": {
+    "message": "Modell noch nicht heruntergeladen"
+  },
+  "nanoDownloading": {
+    "message": "Wird heruntergeladen… $PCT$%",
+    "placeholders": {
+      "PCT": {
+        "content": "$1"
+      }
+    }
+  },
+  "nanoAvailable": {
+    "message": "Bereit"
+  },
+  "nanoUnavailable": {
+    "message": "Auf diesem Gerät nicht verfügbar"
+  },
+  "nanoDownload": {
+    "message": "Modell herunterladen"
+  },
+  "nanoTest": {
+    "message": "Mit diesem Fenster ausprobieren"
+  },
+  "nanoTestResult": {
+    "message": "Vorgeschlagener Name: $NAME$",
+    "placeholders": {
+      "NAME": {
+        "content": "$1"
+      }
+    }
+  },
+  "nanoTestFailed": {
+    "message": "Kein Name erhalten: $ERR$",
+    "placeholders": {
+      "ERR": {
+        "content": "$1"
+      }
+    }
+  },
+  "optLang": {
+    "message": "Sprache der vorgeschlagenen Namen"
+  },
+  "optLangSystem": {
+    "message": "Wie Chrome"
+  },
+  "optNames": {
+    "message": "Gespeicherte Fensternamen"
+  },
+  "optNamesHelp": {
+    "message": "Namen werden über die Tabs wieder dem Fenster zugeordnet und überstehen so einen Chrome-Neustart."
+  },
+  "optNamesEmpty": {
+    "message": "Noch keine Namen gespeichert. Drücke in der Liste F2, um ein Fenster zu benennen."
+  },
+  "delete": {
+    "message": "Löschen"
+  },
+  "optShortcut": {
+    "message": "Tastenkürzel"
+  },
+  "optShortcutChange": {
+    "message": "In Chrome ändern"
+  },
+  "optShortcutNone": {
+    "message": "Nicht festgelegt"
+  },
+  "optShortcutHelp": {
+    "message": "Chrome lehnt ein bereits belegtes Kürzel möglicherweise ab. Wähle dann auf der Kürzelseite von Chrome ein anderes."
+  },
+  "saved": {
+    "message": "Gespeichert"
+  },
+  "optPrivacy": {
+    "message": "Windial speichert alles nur in diesem Browserprofil und sendet nichts irgendwohin."
+  },
+  "welcomeReady": {
+    "message": "Windial ist bereit."
+  },
+  "welcomeShortcutIs": {
+    "message": "Dein Tastenkürzel"
+  },
+  "welcomeNone": {
+    "message": "Chrome hat kein Kürzel zugewiesen. Die vorgeschlagene Kombination war vermutlich schon durch Chrome oder eine andere Erweiterung belegt. Das Festlegen dauert zehn Sekunden."
+  },
+  "welcomeSet": {
+    "message": "Kürzel festlegen"
+  },
+  "welcomeChange": {
+    "message": "Kürzel ändern"
+  },
+  "welcomeHow": {
+    "message": "Suche auf der geöffneten Seite Windial, klicke auf den Stift neben „Fensterliste öffnen“ und drücke die gewünschten Tasten. Gute Wahl: ⌥W, ⌘⇧C oder ⌘⇧X auf dem Mac; Alt+W oder Strg+Umschalt+Y unter Windows und Linux."
+  },
+  "welcomeWatching": {
+    "message": "Diese Seite aktualisiert sich von selbst, sobald das Kürzel festgelegt ist."
+  },
+  "welcomeKeys": {
+    "message": "Tasten"
+  },
+  "keyOpen": {
+    "message": "Fensterliste öffnen. Noch einmal drücken schließt sie."
+  },
+  "keyDigits": {
+    "message": "Zu diesem Fenster springen. Die Zahlen folgen der Reihenfolge, in der die Fenster geöffnet wurden, und bleiben stabil."
+  },
+  "keyZero": {
+    "message": "Letztes Fenster, egal wie viele es sind"
+  },
+  "keyEnter": {
+    "message": "Vorheriges Fenster (beim Öffnen der Liste vorausgewählt)"
+  },
+  "keyType": {
+    "message": "Nach Fenstername, Tabgruppe, Tabtitel und URL suchen. Enter öffnet das Fenster und den passenden Tab."
+  },
+  "keyShift": {
+    "message": "Den aktuellen Tab in dieses Fenster verschieben und mitgehen. Mit Alt hier bleiben."
+  },
+  "keyF2": {
+    "message": "Ausgewähltes Fenster benennen"
+  },
+  "keyEsc": {
+    "message": "Suche leeren, dann schließen"
+  },
+  "popupNoShortcut": {
+    "message": "Kein Kürzel festgelegt — klicken, um eins zu wählen"
+  },
+  "welcomeTry": {
+    "message": "Jetzt ausprobieren: $KEY$ drücken",
+    "placeholders": {
+      "KEY": {
+        "content": "$1"
+      }
+    }
+  },
+  "welcomeWaiting": {
+    "message": "Warte darauf, dass die Liste sich öffnet…"
+  },
+  "welcomeWorks": {
+    "message": "Funktioniert. Du kannst diesen Tab schließen."
+  },
+  "welcomeNotOpening": {
+    "message": "Nichts passiert? Chrome zeigt manchmal ein Kürzel an, ohne es zu registrieren. Öffne die Kürzelseite und gib die Kombination erneut ein – dieselbe genügt."
+  },
+  "support": {
+    "message": "Dem Entwickler einen Kaffee spendieren"
+  },
+  "searchLabel": {
+    "message": "Fenster suchen"
+  },
+  "listLabel": {
+    "message": "Fenster"
+  },
+  "confirmDelete": {
+    "message": "Wirklich löschen?"
+  }
+}
