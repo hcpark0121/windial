@@ -4,6 +4,7 @@
 //
 //   npm run e2e            (headless)
 //   HEADED=1 npm run e2e   (watch it; window focus events are only real when headed)
+//   INCOGNITO=1 HEADED=1 npm run e2e   (also try the incognito block; unreliable in Chrome for Testing)
 import { chromium } from 'playwright';
 import path from 'node:path';
 import fs from 'node:fs';
@@ -27,7 +28,7 @@ const context = await chromium.launchPersistentContext(profile, {
   viewport: { width: 900, height: 700 },
   colorScheme: 'light',
   args: [
-    `--disable-extensions-except=${root}`,
+    `--disable-extensions-except=${root}`, // Playwright passes --disable-extensions by default; this re-enables ours
     `--load-extension=${root}`,
     '--no-first-run',
     '--hide-crash-restore-bubble',
@@ -59,7 +60,7 @@ try {
   await w1a.goto(pageUrl('Alpha one'));
   const w1b = await context.newPage();
   await w1b.goto(pageUrl('Alpha two'));
-  const probe = await context.newPage();
+  let probe = await context.newPage();
   await probe.goto(`chrome-extension://${extId}/src/options.html`);
 
   const allWindows = () => probe.evaluate(async () => {
@@ -363,7 +364,56 @@ try {
   if (welcome) { await welcome.bringToFront(); await sleep(300); welcomeKey = await welcome.evaluate(() => document.querySelector('.bigkey')?.textContent || ''); await welcome.screenshot({ path: path.join(outDir, '6-welcome.png'), fullPage: true }); }
   check('welcome page opened on install and shows the assigned shortcut', Boolean(welcome) && welcomeKey.length > 0, welcomeKey || 'no welcome page');
 
+  // --- incognito windows: needs "Allow in incognito", toggled through chrome://extensions ---
+  // Best effort: in Chrome for Testing the toggle currently leaves a --load-extension extension
+  // disabled, so this block usually skips. Incognito behaviour is verified by hand in real Chrome.
+  let incognitoOn = false;
+  if (process.env.INCOGNITO) try {
+    const ext = await context.newPage();
+    await ext.goto(`chrome://extensions/?id=${extId}`);
+    const toggle = ext.locator('#allow-incognito');
+    await toggle.waitFor({ timeout: 6000 });
+    await toggle.click();
+    await sleep(1500); // Chrome reloads the extension; pages of it close
+    await ext.close();
+    // The extension restarts; its pages are blocked for a moment. Retry with fresh pages.
+    let ok = false;
+    for (let i = 0; i < 12 && !ok; i++) {
+      if (!probe.isClosed()) await probe.close().catch(() => {});
+      probe = await context.newPage();
+      try { await probe.goto(`chrome-extension://${extId}/src/options.html`, { timeout: 5000 }); ok = true; }
+      catch (_) { await sleep(1000); }
+    }
+    if (!ok) throw new Error('extension pages did not come back after the incognito toggle');
+    incognitoOn = await probe.evaluate(() => chrome.extension.isAllowedIncognitoAccess());
+  } catch (err) {
+    console.log('incognito toggle unavailable, skipping:', err.message.split('\n')[0]);
+  }
+  if (incognitoOn) {
+    await sleep(800);
+    const WI = await probe.evaluate(async (url) => (await chrome.windows.create({ url, incognito: true, focused: true })).id, pageUrl('Secret one'));
+    await sleep(800);
+    await focus(W1);
+    popup = await openPopup(W1);
+    rows = await rowInfo(popup);
+    const incPill = await popup.evaluate((id) => [...document.querySelectorAll(`.row[data-id="${id}"] .pill`)].map((p) => p.textContent).join('|'), WI);
+    check('incognito window is listed and marked', rows.some((r) => r.id === WI) && incPill.length > 0, `${rows.length} rows, pill "${incPill}"`);
+    await popup.keyboard.press('Escape');
+    await waitClosed(popup);
+    const alphaId = await probe.evaluate(async () => (await chrome.tabs.query({ title: 'Alpha one' }))[0].id);
+    const across = await probe.evaluate(({ tabId, windowId }) => chrome.runtime.sendMessage({ type: 'moveTab', tabId, windowId, follow: false }), { tabId: alphaId, windowId: WI });
+    check('moving a normal tab into an incognito window is refused', across && across.ok === false, JSON.stringify(across));
+    const saved2 = await probe.evaluate(() => chrome.storage.local.get('savedNames').then((r) => (r.savedNames || []).length));
+    await probe.evaluate((id) => chrome.windows.remove(id), WI);
+    await sleep(400);
+    check('nothing about the incognito window was persisted', saved2 === 1, `saved names: ${saved2}`);
+  }
+
   // --- options page ---
+  if (probe.isClosed() || !probe.url().includes('options.html')) {
+    probe = await context.newPage();
+    await probe.goto(`chrome-extension://${extId}/src/options.html`);
+  }
   await probe.reload();
   await sleep(400);
   const optTitle = await probe.evaluate(() => document.querySelector('h1').textContent);

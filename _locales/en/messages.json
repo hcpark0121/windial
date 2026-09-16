@@ -281,5 +281,11 @@
   },
   "confirmDelete": {
     "message": "Delete?"
+  },
+  "incognito": {
+    "message": "Incognito"
+  },
+  "moveAcrossIncognito": {
+    "message": "Tabs can’t move between normal and incognito windows"
   }
 }

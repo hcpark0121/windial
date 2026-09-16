@@ -21,14 +21,17 @@ const state = {
 // ---------- data ----------
 
 async function load() {
-  const [all, current, mru, settings, nanoNames] = await Promise.all([
+  const [all, current, mru, settings, nanoNames, sessionNames] = await Promise.all([
     chrome.windows.getAll({ populate: true, windowTypes: ['normal'] }),
     chrome.windows.getCurrent(),
     getSession('mru', []),
     getSettings(),
     getSession('nanoNames', {}),
+    getSession('sessionNames', {}),
   ]);
-  const wins = all.filter((w) => !w.incognito).sort((a, b) => a.id - b.id);
+  // Incognito windows appear only when the user allowed the extension in incognito.
+  const wins = all.slice().sort((a, b) => a.id - b.id);
+  state.sessionNames = sessionNames;
   for (const w of wins) w.tabs = w.tabs || [];
   state.windows = wins;
   state.currentId = current.id;
@@ -56,7 +59,7 @@ async function load() {
 function computeNames() {
   state.names = {};
   for (const win of state.windows) {
-    state.names[win.id] = displayName(win, state.bindings, state.savedNames, state.nanoNames, state.settings);
+    state.names[win.id] = displayName(win, state.bindings, state.savedNames, state.nanoNames, state.settings, state.sessionNames);
   }
 }
 
@@ -116,6 +119,7 @@ async function activate(win, tab) {
 async function moveActiveTab(target, follow) {
   const tab = state.activeTab;
   if (!tab || tab.windowId === target.id) return;
+  if (Boolean(tab.incognito) !== Boolean(target.incognito)) { flashFoot(t('moveAcrossIncognito')); return; }
   // Chrome closes this popup the moment its window's active tab changes, so the service
   // worker performs the whole move. We must wait for its reply before closing ourselves:
   // closing right after sendMessage tears the page down before the message is delivered.
@@ -165,6 +169,7 @@ async function commitRename(value) {
     const { bindings, savedNames } = await resolveBindings(state.windows);
     state.bindings = bindings;
     state.savedNames = savedNames;
+    state.sessionNames = await getSession('sessionNames', {});
     computeNames();
   }
   buildRows();
@@ -209,7 +214,10 @@ function tile(text, bg) {
 function favicon(tab) {
   const host = hostOf(tab.url || tab.pendingUrl || '');
   const fallback = () => tile(host ? host[0] : '?', colorForHost(host || '?'));
-  const src = tab.favIconUrl || faviconFallbackUrl(tab.url || tab.pendingUrl || '');
+  // Only Chrome's favicon cache (chrome-extension://…/_favicon/) or an inline data: icon,
+  // never the site's own icon URL, so the popup makes no network requests of its own.
+  const inline = tab.favIconUrl && tab.favIconUrl.startsWith('data:') ? tab.favIconUrl : '';
+  const src = inline || faviconFallbackUrl(tab.url || tab.pendingUrl || '');
   if (!src) return fallback();
   const img = document.createElement('img');
   img.className = 'fav';
@@ -277,7 +285,8 @@ function buildRow(row, q) {
   const nameInfo = state.names[win.id];
 
   const el = document.createElement('div');
-  el.className = 'row' + (isCur ? ' cur' : '');
+  const acrossIncognito = state.shift && state.activeTab && Boolean(state.activeTab.incognito) !== Boolean(win.incognito);
+  el.className = 'row' + (isCur ? ' cur' : '') + (win.incognito ? ' incog' : '') + (acrossIncognito ? ' nomove' : '');
   el.id = `win-${win.id}`;
   el.dataset.id = String(win.id);
   el.setAttribute('role', 'option');
@@ -326,6 +335,7 @@ function buildRow(row, q) {
     if (chips) nameLine.append(chips);
     if (isCur) nameLine.append(pill(state.shift ? `${t('currentWindow')} · ${t('alreadyHere')}` : t('currentWindow'), 'here'));
     else if (isPrev && !q && !state.shift) nameLine.append(pill(`↵ ${t('previousWindow')}`, 'ret'));
+    if (win.incognito) nameLine.append(pill(t('incognito'), 'incog'));
     if (win.state === 'minimized') nameLine.append(pill(t('minimized')));
     const btn = document.createElement('button');
     btn.className = 'rename-btn';
@@ -415,6 +425,14 @@ function renderMode() {
       return out;
     }));
   }
+}
+
+let footTimer = null;
+function flashFoot(text) {
+  clearTimeout(footTimer);
+  els.foot.className = 'foot hint';
+  els.foot.replaceChildren(footItem(text));
+  footTimer = setTimeout(renderFoot, 2200);
 }
 
 function keycap(text) {

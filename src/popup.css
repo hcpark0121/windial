@@ -147,6 +147,8 @@ body.moving .row.cur { opacity: .45; }
   background: var(--pill-bg); color: var(--pill-ink); white-space: nowrap; flex: none;
 }
 .pill.here { background: var(--sel-bar); color: #fff; }
+.pill.incog { background: #2B2B33; color: #E8EAF0; }
+.row.nomove { opacity: .35; }
 .pill.ret { background: transparent; color: var(--sel-ink); border: 1px solid var(--sel-bar); padding-top: 1px; padding-bottom: 1px; }
 .rename-btn {
   flex: none; margin-left: auto; border: 0; background: transparent; color: var(--ink-3);

@@ -138,7 +138,9 @@ function uid() {
 
 // Make sure every window that has a saved name is bound to it.
 // Returns { bindings, savedNames } after binding unbound windows to the best matching saved name.
-export async function resolveBindings(windows) {
+export async function resolveBindings(allWindows) {
+  // Incognito windows never touch persistent storage: no bindings, no fingerprints.
+  const windows = allWindows.filter((w) => !w.incognito);
   const savedNames = await getSavedNames();
   const bindings = await getSession('bindings', {});
   const liveIds = new Set(windows.map((w) => String(w.id)));
@@ -194,6 +196,13 @@ export async function resolveBindings(windows) {
 // Save (or clear, when name is empty) the user-chosen name of a window.
 export async function saveWindowName(win, name) {
   const clean = (name || '').trim().slice(0, MAX_NAME_LENGTH);
+  if (win.incognito) {
+    // Session-only: gone when the browser closes, never written to disk.
+    const sessionNames = await getSession('sessionNames', {});
+    if (clean) sessionNames[win.id] = clean; else delete sessionNames[win.id];
+    await setSession({ sessionNames });
+    return clean ? { name: clean } : null;
+  }
   const savedNames = await getSavedNames();
   const bindings = await getSession('bindings', {});
   const existingId = bindings[win.id];
@@ -248,7 +257,11 @@ export function nanoSignatureStale(sigA, sigB) {
 
 // Resolve the display name of each window. Order: user name > nano name > default rule.
 // `nanoNames` is { windowId: { name, sig } } from session storage (may be empty).
-export function displayName(win, bindings, savedNames, nanoNames, settings) {
+export function displayName(win, bindings, savedNames, nanoNames, settings, sessionNames = {}) {
+  if (win.incognito) {
+    const n = sessionNames[win.id];
+    return n ? { name: n, source: 'user' } : { name: defaultName(win), source: 'rule' };
+  }
   const savedId = bindings[win.id];
   if (savedId) {
     const saved = savedNames.find((s) => s.id === savedId);

@@ -15,12 +15,13 @@ async function pushMru(windowId) {
 }
 
 async function forgetWindow(windowId) {
-  const [mru, bindings, nanoNames] = await Promise.all([
-    getSession('mru', []), getSession('bindings', {}), getSession('nanoNames', {}),
+  const [mru, bindings, nanoNames, sessionNames] = await Promise.all([
+    getSession('mru', []), getSession('bindings', {}), getSession('nanoNames', {}), getSession('sessionNames', {}),
   ]);
   delete bindings[windowId];
   delete nanoNames[windowId];
-  await setSession({ mru: mru.filter((id) => id !== windowId), bindings, nanoNames });
+  delete sessionNames[windowId];
+  await setSession({ mru: mru.filter((id) => id !== windowId), bindings, nanoNames, sessionNames });
 }
 
 // The toolbar icon shows the number of the window it sits in. Icons are per tab, so every
@@ -62,9 +63,10 @@ function initBadgeStyle() {
 initBadgeStyle();
 scheduleBadges();
 
+// Incognito windows are included when the user has allowed the extension in incognito
+// (Chrome hides them from us otherwise). Nothing about them is persisted.
 async function normalWindows() {
-  const wins = await chrome.windows.getAll({ populate: true, windowTypes: ['normal'] });
-  return wins.filter((w) => !w.incognito);
+  return chrome.windows.getAll({ populate: true, windowTypes: ['normal'] });
 }
 
 async function seedMru() {
@@ -134,6 +136,8 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
 
 async function moveTab({ tabId, windowId, follow }) {
   const tab = await chrome.tabs.get(tabId);
+  const target = await chrome.windows.get(windowId);
+  if (Boolean(tab.incognito) !== Boolean(target.incognito)) throw new Error('incognito-boundary');
   if (tab.pinned) await chrome.tabs.update(tabId, { pinned: false }); // pinned tabs cannot change window
   await chrome.tabs.move(tabId, { windowId, index: -1 });
   if (!follow) return;

@@ -281,5 +281,11 @@
   },
   "confirmDelete": {
     "message": "Supprimer ?"
+  },
+  "incognito": {
+    "message": "Navigation privée"
+  },
+  "moveAcrossIncognito": {
+    "message": "Les onglets ne peuvent pas passer d’une fenêtre normale à une fenêtre privée"
   }
 }

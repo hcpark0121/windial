@@ -281,5 +281,11 @@
   },
   "confirmDelete": {
     "message": "정말 삭제?"
+  },
+  "incognito": {
+    "message": "시크릿"
+  },
+  "moveAcrossIncognito": {
+    "message": "일반 창과 시크릿 창 사이로는 탭을 옮길 수 없습니다"
   }
 }

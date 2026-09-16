@@ -281,5 +281,11 @@
   },
   "confirmDelete": {
     "message": "Wirklich löschen?"
+  },
+  "incognito": {
+    "message": "Inkognito"
+  },
+  "moveAcrossIncognito": {
+    "message": "Tabs lassen sich nicht zwischen normalen und Inkognito-Fenstern verschieben"
   }
 }

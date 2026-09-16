@@ -84,6 +84,7 @@ export function refreshNanoNames(windows, settings, onEach) {
       if ((await nanoAvailability()) !== 'available') return;
       const nanoNames = await getSession('nanoNames', {});
       for (const win of windows) {
+        if (win.incognito) continue; // never describe incognito tabs, even on-device
         const sig = nanoSignature(win);
         const cur = nanoNames[win.id];
         if (cur && cur.sig === sig) continue;

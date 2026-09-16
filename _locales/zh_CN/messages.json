@@ -281,5 +281,11 @@
   },
   "confirmDelete": {
     "message": "确定删除？"
+  },
+  "incognito": {
+    "message": "无痕"
+  },
+  "moveAcrossIncognito": {
+    "message": "标签页不能在普通窗口和无痕窗口之间移动"
   }
 }

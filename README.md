@@ -51,6 +51,10 @@ npm run pack                # dist/windial-<version>.zip for the Web Store
 
 Open `src/popup.html?mock=1&lang=ko` (served over http, e.g. `node tools/serve.mjs`) to work on the UI with sample windows and no extension context. Add `&q=밤부` or `&shift=1` for the search and move states.
 
+## Incognito
+
+Allow the extension in incognito (`chrome://extensions` → Windial → Details → *Allow in Incognito*) and incognito windows join the list, numbered with the rest and marked. Nothing about them is written to disk: names you give them live only for the session, and the on-device naming option skips them. Chrome does not let tabs move between normal and incognito windows, so Shift+number greys those targets out.
+
 ## Languages
 
 The UI follows Chrome's language: English, Korean, Japanese, Simplified Chinese, Spanish, German, French (`_locales/`). Translations were drafted by the author with machine help; corrections are welcome as pull requests.

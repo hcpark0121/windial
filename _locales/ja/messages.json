@@ -281,5 +281,11 @@
   },
   "confirmDelete": {
     "message": "本当に削除？"
+  },
+  "incognito": {
+    "message": "シークレット"
+  },
+  "moveAcrossIncognito": {
+    "message": "通常ウィンドウとシークレットウィンドウの間ではタブを移動できません"
   }
 }

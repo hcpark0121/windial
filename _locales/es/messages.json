@@ -281,5 +281,11 @@
   },
   "confirmDelete": {
     "message": "¿Eliminar?"
+  },
+  "incognito": {
+    "message": "Incógnito"
+  },
+  "moveAcrossIncognito": {
+    "message": "Las pestañas no se pueden mover entre ventanas normales y de incógnito"
   }
 }

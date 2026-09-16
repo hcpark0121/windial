@@ -14,6 +14,8 @@ To draw the window list, Windial reads the titles, URLs, favicons and tab groups
 - Your settings (naming mode, label language). Stored in `chrome.storage.local`.
 - The order in which windows were focused and any automatically generated names. Stored in `chrome.storage.session`, which Chrome erases when the browser closes.
 
+Incognito windows are visible to Windial only if you allow it in incognito. Their names are kept in session storage only and their tabs are never used for on-device naming.
+
 ## What Windial sends
 
 Nothing. Windial makes no network requests and has no server. It does not collect analytics, does not sell or share data, and does not use remote code.
