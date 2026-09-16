@@ -29,6 +29,8 @@ Press the shortcut (⌥W on Mac, Alt+W on Windows and Linux; change it any time 
 
 Privacy: Windial has no server, makes no network requests and collects nothing. Everything stays in your browser profile.
 
+Windial is free and open source. The options page links to a voluntary tip page (Ko-fi); nothing in the extension is paid.
+
 Tip: if the shortcut is already taken on your machine, pick another at chrome://extensions/shortcuts.
 
 **Screenshots** (1280×800): `store/screenshots/en-default.png`, `en-search.png`, `en-move.png`

@@ -3,7 +3,7 @@
 
 export const MAX_FAVICONS = 6;
 // Set to the Buy Me a Coffee page once it exists; empty hides the link everywhere.
-export const SUPPORT_URL = '';
+export const SUPPORT_URL = 'https://ko-fi.com/haydenpark';
 export const MAX_NAME_LENGTH = 24;
 
 // ---------- i18n ----------

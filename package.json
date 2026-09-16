@@ -1,6 +1,6 @@
 {
   "name": "windial",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": true,
   "description": "Dev tooling for the Windial Chrome extension (icons, screenshots, end-to-end check). The extension itself is plain files and needs no build.",
   "type": "module",

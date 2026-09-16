@@ -46,6 +46,8 @@ npm run shots               # store screenshots from the mock popup
 npm run e2e                 # loads the extension into Chrome for Testing and checks real behaviour
 HEADED=1 npm run e2e        # same, visibly (window focus events are only real when headed)
 npm run pack                # dist/windial-<version>.zip for the Web Store
+bash tools/devconsole-browser.sh   # headed Chrome for Testing on the Web Store console (sign in yourself)
+node tools/devconsole.mjs "return await page.title();"   # drive that console over CDP
 ```
 
 Open `src/popup.html?mock=1&lang=ko` (served over http, e.g. `node tools/serve.mjs`) to work on the UI with sample windows and no extension context. Add `&q=밤부` or `&shift=1` for the search and move states.
@@ -61,6 +63,10 @@ Allow the extension in incognito (`chrome://extensions` → Windial → Details 
 ## Languages
 
 The UI follows Chrome's language: English, Korean, Japanese, Simplified Chinese, Spanish, German, French (`_locales/`). Translations were drafted by the author with machine help; corrections are welcome as pull requests.
+
+## Support
+
+Windial is free. If it saves you time, you can [buy me a coffee on Ko-fi](https://ko-fi.com/haydenpark) or [sponsor on GitHub](https://github.com/sponsors/hcpark0121).
 
 ## Privacy
 

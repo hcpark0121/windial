@@ -3,7 +3,7 @@
   "name": "__MSG_extName__",
   "short_name": "Windial",
   "description": "__MSG_extDesc__",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "default_locale": "en",
   "minimum_chrome_version": "128",
   "permissions": [

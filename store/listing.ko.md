@@ -27,6 +27,8 @@ Windial은 이 둘을 고칩니다.
 
 개인정보: Windial은 서버가 없고, 네트워크 요청을 하지 않으며, 아무것도 수집하지 않습니다. 모든 것은 브라우저 프로필 안에만 있습니다.
 
+Windial은 무료·오픈소스입니다. 설정 페이지에 자발적 후원(Ko-fi) 링크가 있고, 확장 안에 유료 기능은 없습니다.
+
 팁: 단축키가 이미 쓰이고 있다면 chrome://extensions/shortcuts 에서 다른 조합을 고르세요.
 
 **스크린샷** (1280×800): `store/screenshots/ko-default.png`, `ko-search.png`, `ko-move.png`
