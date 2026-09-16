@@ -150,6 +150,8 @@ try {
   };
   const labels = await labelsFor([W1, W2, W3]);
   check('each window\'s tabs carry that window\'s number', labels.join() === '1,2,3', labels.join());
+  const iconStatus = await probe.evaluate(() => chrome.runtime.sendMessage({ type: 'iconStatus' }));
+  check('setIcon accepted the drawn images (no errors from the worker)', iconStatus && iconStatus.errors.length === 0, JSON.stringify(iconStatus && iconStatus.errors));
 
   // --- default state ---
   let popup = await openPopup(W1);

@@ -30,6 +30,7 @@ const BADGE_BG = '#EEF0FF';
 const BADGE_INK = '#2A3BB0';
 let badgeTimer = null;
 const iconLabels = {}; // tabId -> label, for the e2e check
+const iconErrors = []; // last few setIcon failures, for the e2e check
 function scheduleBadges() {
   clearTimeout(badgeTimer);
   badgeTimer = setTimeout(() => refreshBadges().catch(() => {}), 120);
@@ -48,7 +49,7 @@ async function refreshBadges() {
     for (const tab of w.tabs || []) {
       iconLabels[tab.id] = label;
       jobs.push(img
-        ? chrome.action.setIcon({ tabId: tab.id, imageData: img }).catch(() => {})
+        ? chrome.action.setIcon({ tabId: tab.id, imageData: img }).catch((err) => { iconErrors.push(String(err)); if (iconErrors.length > 5) iconErrors.shift(); })
         : chrome.action.setBadgeText({ tabId: tab.id, text: label }).catch(() => {}));
     }
   });
@@ -125,6 +126,7 @@ async function welcomeIfNeeded(reason) {
 chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
   if (!msg) return false;
   if (msg.type === 'iconLabels') { sendResponse({ ...iconLabels }); return false; }
+  if (msg.type === 'iconStatus') { sendResponse({ labels: { ...iconLabels }, errors: [...iconErrors] }); return false; }
   if (msg.type !== 'moveTab') return false;
   moveTab(msg).then(() => sendResponse({ ok: true })).catch((err) => sendResponse({ ok: false, error: String(err) }));
   return true;
