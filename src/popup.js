@@ -1,5 +1,5 @@
 import {
-  t, MAX_FAVICONS, hostOf, colorForHost, faviconFallbackUrl, GROUP_COLORS, keyLabel,
+  t, uiLanguage, MAX_FAVICONS, hostOf, colorForHost, faviconFallbackUrl, GROUP_COLORS, keyLabel,
   getSettings, getSession, resolveBindings, saveWindowName, displayName,
 } from './common.js';
 import { refreshNanoNames, hasPromptApi } from './naming-nano.js';
@@ -80,7 +80,8 @@ function buildRows() {
     const matchedTabs = win.tabs.filter((tab) =>
       (tab.title || '').toLowerCase().includes(q) || (tab.url || '').toLowerCase().includes(q));
     if (!nameHit && !matchedTabs.length) return;
-    rows.push({ win, index, matchedTabs, nameHit, score: (nameHit ? 100 : 0) + matchedTabs.length });
+    const prefix = name.startsWith(q) ? 50 : 0;
+    rows.push({ win, index, matchedTabs, nameHit, score: (nameHit ? 100 : 0) + prefix + matchedTabs.length });
   });
   if (q) rows.sort((a, b) => b.score - a.score || a.index - b.index);
   state.rows = rows;
@@ -213,6 +214,9 @@ function favicon(tab) {
   const img = document.createElement('img');
   img.className = 'fav';
   img.alt = '';
+  img.width = 16;
+  img.height = 16;
+  img.decoding = 'async';
   img.src = src;
   img.addEventListener('error', () => img.replaceWith(fallback()), { once: true });
   return img;
@@ -274,6 +278,7 @@ function buildRow(row, q) {
 
   const el = document.createElement('div');
   el.className = 'row' + (isCur ? ' cur' : '');
+  el.id = `win-${win.id}`;
   el.dataset.id = String(win.id);
   el.setAttribute('role', 'option');
 
@@ -326,6 +331,7 @@ function buildRow(row, q) {
     btn.className = 'rename-btn';
     btn.type = 'button';
     btn.title = `${t('rename')} (F2)`;
+    btn.setAttribute('aria-label', `${t('rename')} (F2)`);
     btn.tabIndex = -1;
     btn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>';
     btn.addEventListener('click', (e) => {
@@ -378,8 +384,9 @@ function render() {
   const q = state.query.trim().toLowerCase();
   els.list.replaceChildren(...state.rows.map((row) => buildRow(row, q)));
   const none = !state.rows.length;
-  els.empty.hidden = !none;
-  if (none) els.empty.textContent = q ? t('noMatch', state.query.trim()) : t('noWindows');
+  const lonely = !q && state.windows.length <= 1;
+  els.empty.hidden = !(none || lonely);
+  if (none || lonely) els.empty.textContent = q ? t('noMatch', state.query.trim()) : t('noWindows');
   renderMode();
   renderFoot();
   renderSelection();
@@ -391,7 +398,7 @@ function renderSelection() {
     const on = i === state.selected;
     rows[i].classList.toggle('sel', on);
     rows[i].setAttribute('aria-selected', on ? 'true' : 'false');
-    if (on) rows[i].scrollIntoView({ block: 'nearest' });
+    if (on) { rows[i].scrollIntoView({ block: 'nearest' }); els.search.setAttribute('aria-activedescendant', rows[i].id); }
   }
 }
 
@@ -515,7 +522,10 @@ function onKeyUp(e) {
 async function init() {
   await (globalThis.__windialMockReady || Promise.resolve());
   chrome.storage.session.set({ lastPopupOpen: Date.now() }).catch(() => {});
+  document.documentElement.lang = uiLanguage();
   els.search.placeholder = t('searchPlaceholder');
+  els.search.setAttribute('aria-label', t('searchLabel'));
+  els.list.setAttribute('aria-label', t('listLabel'));
   els.search.addEventListener('input', () => setQuery(els.search.value));
   window.addEventListener('keydown', onKeyDown);
   window.addEventListener('keyup', onKeyUp);

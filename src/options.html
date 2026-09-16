@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <title>Windial</title>
@@ -21,12 +21,12 @@
       <span><b data-i18n="optNamingNano"></b><small data-i18n="optNanoNote"></small></span>
     </label>
     <div class="nano" id="nano">
-      <div class="status"><span class="dot" id="nanoDot"></span><span id="nanoStatus"></span></div>
+      <div class="status" aria-live="polite"><span class="dot" id="nanoDot"></span><span id="nanoStatus"></span></div>
       <div class="actions">
         <button type="button" id="nanoDownload" data-i18n="nanoDownload" hidden></button>
         <button type="button" id="nanoTest" data-i18n="nanoTest" hidden></button>
       </div>
-      <p class="result" id="nanoResult" hidden></p>
+      <p class="result" id="nanoResult" aria-live="polite" hidden></p>
       <label class="inline">
         <span data-i18n="optLang"></span>
         <select id="nameLang">
@@ -60,7 +60,7 @@
 
   <p class="privacy" data-i18n="optPrivacy"></p>
   <p class="support" id="support" hidden><a id="supportLink" target="_blank" rel="noopener"></a></p>
-  <div class="toast" id="toast" hidden data-i18n="saved"></div>
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden data-i18n="saved"></div>
 </main>
 <script type="module" src="mock.js"></script>
 <script type="module" src="options.js"></script>

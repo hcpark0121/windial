@@ -1,4 +1,4 @@
-import { t, getSettings, setSettings, getSavedNames, setSavedNames, getSession, setSession, SUPPORT_URL } from './common.js';
+import { t, uiLanguage, getSettings, setSettings, getSavedNames, setSavedNames, getSession, setSession, SUPPORT_URL } from './common.js';
 import { nanoAvailability, nanoDownload, nanoNameFor, hasPromptApi } from './naming-nano.js';
 import { getShortcut, openShortcutsPage } from './shortcut.js';
 
@@ -52,7 +52,16 @@ async function renderNames() {
     const del = document.createElement('button');
     del.type = 'button';
     del.textContent = t('delete');
+    let armed = null;
     del.addEventListener('click', async () => {
+      // Two presses: the first arms the button for three seconds, the second deletes.
+      if (!armed) {
+        del.textContent = t('confirmDelete');
+        del.classList.add('danger');
+        armed = setTimeout(() => { armed = null; del.textContent = t('delete'); del.classList.remove('danger'); }, 3000);
+        return;
+      }
+      clearTimeout(armed);
       const list = (await getSavedNames()).filter((x) => x.id !== n.id);
       await setSavedNames(list);
       const b2 = await getSession('bindings', {});
@@ -76,6 +85,7 @@ async function renderShortcut() {
 
 async function init() {
   await (globalThis.__windialMockReady || Promise.resolve());
+  document.documentElement.lang = uiLanguage();
   applyI18n();
   const settings = await getSettings();
   for (const r of document.querySelectorAll('input[name=naming]')) {

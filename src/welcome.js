@@ -1,4 +1,4 @@
-import { t, getSession, setSession, SUPPORT_URL } from './common.js';
+import { t, uiLanguage, getSession, setSession, SUPPORT_URL } from './common.js';
 import { getShortcut, openShortcutsPage } from './shortcut.js';
 
 const $ = (id) => document.getElementById(id);
@@ -62,6 +62,7 @@ async function render() {
 
 async function init() {
   await (globalThis.__windialMockReady || Promise.resolve());
+  document.documentElement.lang = uiLanguage();
   tryShownAt = (await getSession('welcomeShownAt', 0)) || Date.now();
   await setSession({ welcomeShownAt: tryShownAt });
   try {

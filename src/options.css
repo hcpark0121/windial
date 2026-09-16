@@ -10,6 +10,7 @@
     --ok: #5BB974; --warn: #F9AB00; --bad: #F28B82; --key-bg: #2C303A; --key-edge: #4A505E;
   }
 }
+html { color-scheme: light dark; }
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
 html, body { margin: 0; }
@@ -17,10 +18,11 @@ body {
   background: var(--bg); color: var(--ink);
   font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Segoe UI", "Malgun Gothic", system-ui, "Noto Sans KR", sans-serif;
   font-size: 13.5px; line-height: 1.5; min-width: 420px;
+  touch-action: manipulation; -webkit-tap-highlight-color: transparent;
 }
 main { padding: 18px 22px 22px; max-width: 560px; }
-h1 { font-size: 17px; font-weight: 600; margin: 0 0 14px; }
-h2 { font-size: 13px; font-weight: 600; margin: 0 0 4px; }
+h1 { font-size: 17px; font-weight: 600; margin: 0 0 14px; text-wrap: balance; }
+h2 { font-size: 13px; font-weight: 600; margin: 0 0 4px; text-wrap: balance; }
 section { padding: 14px 0; border-top: 1px solid var(--edge); }
 .help { color: var(--ink-2); margin: 0 0 10px; font-size: 12.5px; }
 .choice { display: flex; gap: 10px; align-items: flex-start; padding: 6px 0; cursor: pointer; }
@@ -37,7 +39,10 @@ button {
   font: inherit; font-size: 12.5px; padding: 5px 11px; border-radius: 6px; cursor: pointer;
   border: 1px solid var(--edge); background: var(--bg); color: var(--ink);
 }
+button:hover { background: var(--panel); }
 button.primary { background: var(--accent); color: var(--accent-ink); border-color: transparent; }
+button.primary:hover { filter: brightness(1.08); }
+button.danger { color: var(--bad); border-color: var(--bad); }
 button:disabled { opacity: .5; cursor: default; }
 button:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 .result { margin: 8px 0 0; color: var(--ink-2); font-size: 12.5px; }

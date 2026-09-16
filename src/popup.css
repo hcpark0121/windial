@@ -49,6 +49,7 @@
   }
 }
 
+html { color-scheme: light dark; }
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
 html, body { margin: 0; padding: 0; }
@@ -60,6 +61,8 @@ body {
   font-size: 13.5px;
   line-height: 1.45;
   overflow: hidden;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 #app { display: flex; flex-direction: column; max-height: 590px; }
 
@@ -74,6 +77,7 @@ body {
   color: var(--ink-3);
   position: relative;
 }
+.search:focus-within { box-shadow: 0 0 0 1.5px color-mix(in srgb, var(--sel-bar) 55%, transparent); }
 .search svg { flex: none; }
 .search input {
   flex: 1; min-width: 0; height: 100%;

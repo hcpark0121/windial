@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <title>Windial</title>
@@ -9,11 +9,11 @@
 <div id="app">
   <div class="search" id="searchbox">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-    <input id="search" type="text" autocomplete="off" spellcheck="false" aria-label="search">
-    <div id="mode" class="mode" hidden></div>
+    <input id="search" name="q" type="text" autocomplete="off" spellcheck="false" role="combobox" aria-expanded="true" aria-controls="list" aria-autocomplete="list">
+    <div id="mode" class="mode" aria-live="polite" hidden></div>
   </div>
-  <div id="list" class="rows" role="listbox" aria-label="windows"></div>
-  <div id="empty" class="empty" hidden></div>
+  <div id="list" class="rows" role="listbox"></div>
+  <div id="empty" class="empty" aria-live="polite" hidden></div>
   <button id="banner" class="banner" type="button" hidden></button>
   <div id="foot" class="foot"></div>
 </div>

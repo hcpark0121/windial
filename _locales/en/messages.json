@@ -272,5 +272,14 @@
   },
   "support": {
     "message": "Buy the developer a coffee"
+  },
+  "searchLabel": {
+    "message": "Search windows"
+  },
+  "listLabel": {
+    "message": "Windows"
+  },
+  "confirmDelete": {
+    "message": "Delete?"
   }
 }

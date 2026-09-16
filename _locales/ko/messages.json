@@ -272,5 +272,14 @@
   },
   "support": {
     "message": "개발자에게 커피 한 잔"
+  },
+  "searchLabel": {
+    "message": "창 찾기"
+  },
+  "listLabel": {
+    "message": "창 목록"
+  },
+  "confirmDelete": {
+    "message": "정말 삭제?"
   }
 }
