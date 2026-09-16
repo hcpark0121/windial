@@ -27,4 +27,4 @@ If you enable **Ask Gemini Nano on this device**, tab titles and site names are 
 
 ## Contact
 
-Open an issue at https://github.com/hcpark0121/windial/issues.
+Email hayden.park.apps@gmail.com or open an issue at https://github.com/hcpark0121/windial/issues.
