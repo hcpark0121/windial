@@ -50,6 +50,10 @@ npm run pack                # dist/windial-<version>.zip for the Web Store
 
 Open `src/popup.html?mock=1&lang=ko` (served over http, e.g. `node tools/serve.mjs`) to work on the UI with sample windows and no extension context. Add `&q=밤부` or `&shift=1` for the search and move states.
 
+## List density
+
+The options page offers three densities: compact (about 13 windows fit in Chrome's 600 px popup limit), normal (about 10) and large (about 8, easier to read). Chrome caps popup height, so density is the lever.
+
 ## Incognito
 
 Allow the extension in incognito (`chrome://extensions` → Windial → Details → *Allow in Incognito*) and incognito windows join the list, numbered with the rest and marked. Nothing about them is written to disk: names you give them live only for the session. Chrome does not let tabs move between normal and incognito windows, so Shift+number greys those targets out.

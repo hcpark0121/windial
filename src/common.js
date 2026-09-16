@@ -94,8 +94,21 @@ export function fingerprintScore(fpA, fpB) {
 const REBIND_THRESHOLD = 0.4;
 
 // ---------- Storage ----------
-// chrome.storage.local  : savedNames[]
+// chrome.storage.local  : savedNames[], settings{density}
 // chrome.storage.session: mru[], bindings{windowId->savedId}, sessionNames{windowId->name} (incognito only)
+
+export const DEFAULT_SETTINGS = { density: 'normal' }; // 'compact' | 'normal' | 'large'
+
+export async function getSettings() {
+  const { settings } = await chrome.storage.local.get('settings');
+  return { ...DEFAULT_SETTINGS, ...(settings || {}) };
+}
+
+export async function setSettings(patch) {
+  const next = { ...(await getSettings()), ...patch };
+  await chrome.storage.local.set({ settings: next });
+  return next;
+}
 
 export async function getSavedNames() {
   const { savedNames } = await chrome.storage.local.get('savedNames');

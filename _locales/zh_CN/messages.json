@@ -221,5 +221,17 @@
   },
   "moveAcrossIncognito": {
     "message": "标签页不能在普通窗口和无痕窗口之间移动"
+  },
+  "optDensity": {
+    "message": "列表密度"
+  },
+  "densityCompact": {
+    "message": "紧凑 — 显示更多"
+  },
+  "densityNormal": {
+    "message": "标准"
+  },
+  "densityLarge": {
+    "message": "宽松 — 更易阅读"
   }
 }

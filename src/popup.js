@@ -1,6 +1,6 @@
 import {
   t, uiLanguage, MAX_FAVICONS, hostOf, colorForHost, faviconFallbackUrl, GROUP_COLORS, keyLabel,
-  getSession, resolveBindings, saveWindowName, displayName,
+  getSession, getSettings, resolveBindings, saveWindowName, displayName,
 } from './common.js';
 import { getShortcut, openShortcutsPage, parseShortcut, matchesShortcut } from './shortcut.js';
 
@@ -536,6 +536,7 @@ async function init() {
   await (globalThis.__windialMockReady || Promise.resolve());
   chrome.storage.session.set({ lastPopupOpen: Date.now() }).catch(() => {});
   document.documentElement.lang = uiLanguage();
+  getSettings().then((s) => { document.body.dataset.density = s.density || 'normal'; }).catch(() => {});
   els.search.placeholder = t('searchPlaceholder');
   els.search.setAttribute('aria-label', t('searchLabel'));
   els.list.setAttribute('aria-label', t('listLabel'));

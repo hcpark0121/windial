@@ -221,5 +221,17 @@
   },
   "moveAcrossIncognito": {
     "message": "일반 창과 시크릿 창 사이로는 탭을 옮길 수 없습니다"
+  },
+  "optDensity": {
+    "message": "목록 밀도"
+  },
+  "densityCompact": {
+    "message": "촘촘하게 — 더 많이"
+  },
+  "densityNormal": {
+    "message": "보통"
+  },
+  "densityLarge": {
+    "message": "크게 — 더 잘 보이게"
   }
 }

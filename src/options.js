@@ -1,4 +1,4 @@
-import { t, uiLanguage, getSavedNames, setSavedNames, getSession, setSession, SUPPORT_URL } from './common.js';
+import { t, uiLanguage, getSettings, setSettings, getSavedNames, setSavedNames, getSession, setSession, SUPPORT_URL } from './common.js';
 import { getShortcut, openShortcutsPage } from './shortcut.js';
 
 const $ = (id) => document.getElementById(id);
@@ -64,6 +64,11 @@ async function init() {
   await (globalThis.__windialMockReady || Promise.resolve());
   document.documentElement.lang = uiLanguage();
   applyI18n();
+  const settings = await getSettings();
+  for (const r of document.querySelectorAll('input[name=density]')) {
+    r.checked = r.value === settings.density;
+    r.addEventListener('change', async () => { await setSettings({ density: r.value }); toast(); });
+  }
   $('shortcutChange').addEventListener('click', openShortcutsPage);
   document.addEventListener('visibilitychange', () => { if (!document.hidden) renderShortcut(); });
 

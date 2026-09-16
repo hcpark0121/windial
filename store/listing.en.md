@@ -23,6 +23,7 @@ Press the shortcut (⌥W on Mac, Alt+W on Windows and Linux; change it any time 
 • Name your windows. Press F2 to name a window. Names are matched by the window's tabs, so they survive a Chrome restart.
 • The toolbar icon shows the number of the window it is in.
 • Incognito windows join the list if you allow the extension in incognito. Nothing about them is saved.
+• Choose the list density: compact (about 13 windows on screen), normal or large.
 • Follows Chrome's language: English, Korean, Japanese, Simplified Chinese, Spanish, German and French.
 • Works in light and dark mode.
 

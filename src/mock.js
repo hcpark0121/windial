@@ -65,6 +65,14 @@ if (!isExtension && params.has('mock')) {
       tab(124, 106, 'https://www.linkedin.com/', 'LinkedIn', 'in', '#0A66C2'),
     ] },
   ];
+  // ?many=1 adds five more windows to judge list density.
+  for (let i = 0; i < (params.has('many') ? 5 : 0); i++) {
+    const id = 107 + i;
+    windows.push({ id, type: 'normal', state: 'normal', focused: false, incognito: false, tabs: [
+      tab(200 + i * 3, id, `https://example${i}.org/`, ko ? `예시 사이트 ${i + 1}` : `Example site ${i + 1}`, 'E', '#6B7280', { active: true }),
+      tab(201 + i * 3, id, `https://docs.example${i}.org/`, 'Docs', 'D', '#9CA3AF'),
+    ] });
+  }
   const groups = {
     1: { id: 1, title: 'api', color: 'blue', windowId: 101 },
     2: { id: 2, title: ko ? '문서' : 'docs', color: 'cyan', windowId: 101 },
@@ -82,8 +90,8 @@ if (!isExtension && params.has('mock')) {
     return { urls, hosts };
   };
   const labels = ko
-    ? ['개발', '투자', '3D 모델링', '장소·지도', '읽을거리', '메일·캘린더']
-    : ['Dev', 'Investing', '3D printing', 'Places', 'Reading', 'Mail & calendar'];
+    ? ['개발', '투자', '3D 모델링', '장소·지도', '읽을거리', '메일·캘린더', '예시 7', '예시 8', '예시 9', '예시 10', '예시 11']
+    : ['Dev', 'Investing', '3D printing', 'Places', 'Reading', 'Mail & calendar', 'Sample 7', 'Sample 8', 'Sample 9', 'Sample 10', 'Sample 11'];
   const savedNames = windows.map((w, i) => ({ id: `a${i + 1}`, name: labels[i], fp: fpOf(w), created: 1, updated: 1 }));
 
   const local = new Map([['savedNames', savedNames]]);

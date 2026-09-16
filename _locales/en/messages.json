@@ -221,5 +221,17 @@
   },
   "moveAcrossIncognito": {
     "message": "Tabs can’t move between normal and incognito windows"
+  },
+  "optDensity": {
+    "message": "List density"
+  },
+  "densityCompact": {
+    "message": "Compact — see more windows"
+  },
+  "densityNormal": {
+    "message": "Normal"
+  },
+  "densityLarge": {
+    "message": "Large — easier to read"
   }
 }

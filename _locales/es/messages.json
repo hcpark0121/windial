@@ -221,5 +221,17 @@
   },
   "moveAcrossIncognito": {
     "message": "Las pestañas no se pueden mover entre ventanas normales y de incógnito"
+  },
+  "optDensity": {
+    "message": "Densidad de la lista"
+  },
+  "densityCompact": {
+    "message": "Compacta — ver más ventanas"
+  },
+  "densityNormal": {
+    "message": "Normal"
+  },
+  "densityLarge": {
+    "message": "Grande — más fácil de leer"
   }
 }

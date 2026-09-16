@@ -221,5 +221,17 @@
   },
   "moveAcrossIncognito": {
     "message": "通常ウィンドウとシークレットウィンドウの間ではタブを移動できません"
+  },
+  "optDensity": {
+    "message": "一覧の密度"
+  },
+  "densityCompact": {
+    "message": "コンパクト — より多く表示"
+  },
+  "densityNormal": {
+    "message": "標準"
+  },
+  "densityLarge": {
+    "message": "大きく — 読みやすく"
   }
 }

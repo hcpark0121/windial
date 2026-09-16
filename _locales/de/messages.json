@@ -221,5 +221,17 @@
   },
   "moveAcrossIncognito": {
     "message": "Tabs lassen sich nicht zwischen normalen und Inkognito-Fenstern verschieben"
+  },
+  "optDensity": {
+    "message": "Listendichte"
+  },
+  "densityCompact": {
+    "message": "Kompakt — mehr Fenster sehen"
+  },
+  "densityNormal": {
+    "message": "Normal"
+  },
+  "densityLarge": {
+    "message": "Groß — besser lesbar"
   }
 }

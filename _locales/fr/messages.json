@@ -221,5 +221,17 @@
   },
   "moveAcrossIncognito": {
     "message": "Les onglets ne peuvent pas passer d’une fenêtre normale à une fenêtre privée"
+  },
+  "optDensity": {
+    "message": "Densité de la liste"
+  },
+  "densityCompact": {
+    "message": "Compacte — voir plus de fenêtres"
+  },
+  "densityNormal": {
+    "message": "Normale"
+  },
+  "densityLarge": {
+    "message": "Grande — plus lisible"
   }
 }
