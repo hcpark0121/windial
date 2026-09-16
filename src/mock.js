@@ -86,8 +86,8 @@ if (!isExtension && params.has('mock')) {
     : ['Dev', 'Investing', '3D printing', 'Places', 'Reading', 'Mail & calendar'];
   const savedNames = windows.map((w, i) => ({ id: `a${i + 1}`, name: labels[i], fp: fpOf(w), created: 1, updated: 1 }));
 
-  const local = new Map([['savedNames', savedNames], ['settings', { naming: 'rule', nameLang: 'system' }]]);
-  const session = new Map([['mru', [104, 105, 101, 102]], ['bindings', {}], ['nanoNames', {}]]);
+  const local = new Map([['savedNames', savedNames]]);
+  const session = new Map([['mru', [104, 105, 101, 102]], ['bindings', {}], ['sessionNames', {}]]);
   const storageArea = (map) => ({
     async get(key) {
       const keys = key === undefined || key === null ? [...map.keys()] : (Array.isArray(key) ? key : [key]);

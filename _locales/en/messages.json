@@ -106,77 +106,11 @@
   "optTitle": {
     "message": "Windial settings"
   },
-  "optNaming": {
-    "message": "Automatic window names"
-  },
-  "optNamingHelp": {
-    "message": "A name you type yourself always wins. These rules only fill in the rest."
-  },
-  "optNamingRule": {
-    "message": "From the first tab (default)"
-  },
-  "optNamingRuleHelp": {
-    "message": "The site of the window's first tab, for example “Github” or “Naver”."
-  },
-  "optNamingNano": {
-    "message": "Ask Gemini Nano on this device"
-  },
-  "optNanoNote": {
-    "message": "Runs on this computer; nothing leaves your machine. Needs Chrome 148 or newer, about 22 GB of free disk space and a one-time model download."
-  },
-  "nanoUnsupported": {
-    "message": "Not available in this Chrome"
-  },
-  "nanoDownloadable": {
-    "message": "Model not downloaded yet"
-  },
-  "nanoDownloading": {
-    "message": "Downloading… $PCT$%",
-    "placeholders": {
-      "PCT": {
-        "content": "$1"
-      }
-    }
-  },
-  "nanoAvailable": {
-    "message": "Ready"
-  },
-  "nanoUnavailable": {
-    "message": "Not available on this device"
-  },
-  "nanoDownload": {
-    "message": "Download model"
-  },
-  "nanoTest": {
-    "message": "Try it on this window"
-  },
-  "nanoTestResult": {
-    "message": "Suggested name: $NAME$",
-    "placeholders": {
-      "NAME": {
-        "content": "$1"
-      }
-    }
-  },
-  "nanoTestFailed": {
-    "message": "Could not get a name: $ERR$",
-    "placeholders": {
-      "ERR": {
-        "content": "$1"
-      }
-    }
-  },
-  "optLang": {
-    "message": "Language of suggested names"
-  },
-  "optLangSystem": {
-    "message": "Same as Chrome"
-  },
   "optNames": {
     "message": "Saved window names"
   },
   "optNamesHelp": {
-    "message": "Names are matched to windows by their tabs, so they survive a Chrome restart."
+    "message": "Names are matched to windows by their tabs, so they survive a Chrome restart. Windows you have not named are called after the site of their first tab."
   },
   "optNamesEmpty": {
     "message": "No names saved yet. Press F2 in the list to name a window."

@@ -6,21 +6,18 @@ Windial is a Chrome extension that lists your open browser windows and lets you 
 
 ## What Windial reads
 
-To draw the window list, Windial reads the titles, URLs, favicons and tab groups of your open tabs through Chrome's extension APIs. It reads them only while the popup is open or, if you turn on the on-device naming option, when a window's tabs change.
+To draw the window list, Windial reads the titles, URLs, favicons and tab groups of your open tabs through Chrome's extension APIs. It reads them while the popup is open and, to draw the window number on the toolbar icon, when windows or tabs change.
 
 ## What Windial stores
 
 - Window names you type yourself, together with the list of tab addresses of that window at the time (used only to recognise the same window again after Chrome restarts). Stored in `chrome.storage.local` inside your browser profile.
-- Your settings (naming mode, label language). Stored in `chrome.storage.local`.
-- The order in which windows were focused and any automatically generated names. Stored in `chrome.storage.session`, which Chrome erases when the browser closes.
+- The order in which windows were focused, and names given to incognito windows. Stored in `chrome.storage.session`, which Chrome erases when the browser closes.
 
-Incognito windows are visible to Windial only if you allow it in incognito. Their names are kept in session storage only and their tabs are never used for on-device naming.
+Incognito windows are visible to Windial only if you allow it in incognito. Their names are kept in session storage only.
 
 ## What Windial sends
 
 Nothing. Windial makes no network requests and has no server. It does not collect analytics, does not sell or share data, and does not use remote code.
-
-If you enable **Ask Gemini Nano on this device**, tab titles and site names are given to Chrome's built-in on-device model to suggest a window name. That model runs on your computer; the data does not leave it. The option is off by default.
 
 ## Permissions
 

@@ -23,8 +23,7 @@ If you keep one window per topic, Chrome's own window switching is slow: `⌘`` 
 ## How windows are named
 
 1. A name you typed (F2). It is matched to the window by its tabs, so it survives a Chrome restart.
-2. Optional: a suggestion from Chrome's built-in on-device model (Gemini Nano). Turn it on in the options page. Needs Chrome 148+, about 22 GB free disk and a one-time model download. Nothing leaves the machine. Korean output is not officially supported by the model yet, so check the result.
-3. Otherwise the site of the window's first tab, e.g. “Github”.
+2. Otherwise the site of the window's first tab, e.g. “Github”.
 
 Tab groups appear as coloured chips next to the name; the favicon row and tab count complete the picture.
 
@@ -53,7 +52,7 @@ Open `src/popup.html?mock=1&lang=ko` (served over http, e.g. `node tools/serve.m
 
 ## Incognito
 
-Allow the extension in incognito (`chrome://extensions` → Windial → Details → *Allow in Incognito*) and incognito windows join the list, numbered with the rest and marked. Nothing about them is written to disk: names you give them live only for the session, and the on-device naming option skips them. Chrome does not let tabs move between normal and incognito windows, so Shift+number greys those targets out.
+Allow the extension in incognito (`chrome://extensions` → Windial → Details → *Allow in Incognito*) and incognito windows join the list, numbered with the rest and marked. Nothing about them is written to disk: names you give them live only for the session. Chrome does not let tabs move between normal and incognito windows, so Shift+number greys those targets out.
 
 ## Languages
 

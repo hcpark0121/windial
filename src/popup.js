@@ -1,8 +1,7 @@
 import {
   t, uiLanguage, MAX_FAVICONS, hostOf, colorForHost, faviconFallbackUrl, GROUP_COLORS, keyLabel,
-  getSettings, getSession, resolveBindings, saveWindowName, displayName,
+  getSession, resolveBindings, saveWindowName, displayName,
 } from './common.js';
-import { refreshNanoNames, hasPromptApi } from './naming-nano.js';
 import { getShortcut, openShortcutsPage, parseShortcut, matchesShortcut } from './shortcut.js';
 
 const $ = (id) => document.getElementById(id);
@@ -13,7 +12,7 @@ const els = {
 
 const state = {
   windows: [], currentId: null, previousId: null, groups: {},
-  bindings: {}, savedNames: [], nanoNames: {}, settings: null,
+  bindings: {}, savedNames: [], sessionNames: {},
   names: {}, rows: [], selected: 0, query: '', shift: false, renaming: null, activeTab: null,
   ownShortcut: null,
 };
@@ -21,12 +20,10 @@ const state = {
 // ---------- data ----------
 
 async function load() {
-  const [all, current, mru, settings, nanoNames, sessionNames] = await Promise.all([
+  const [all, current, mru, sessionNames] = await Promise.all([
     chrome.windows.getAll({ populate: true, windowTypes: ['normal'] }),
     chrome.windows.getCurrent(),
     getSession('mru', []),
-    getSettings(),
-    getSession('nanoNames', {}),
     getSession('sessionNames', {}),
   ]);
   // Incognito windows appear only when the user allowed the extension in incognito.
@@ -35,8 +32,6 @@ async function load() {
   for (const w of wins) w.tabs = w.tabs || [];
   state.windows = wins;
   state.currentId = current.id;
-  state.settings = settings;
-  state.nanoNames = nanoNames;
   const live = new Set(wins.map((w) => w.id));
   state.previousId = mru.find((id) => id !== current.id && live.has(id)) ?? null;
 
@@ -59,7 +54,7 @@ async function load() {
 function computeNames() {
   state.names = {};
   for (const win of state.windows) {
-    state.names[win.id] = displayName(win, state.bindings, state.savedNames, state.nanoNames, state.settings, state.sessionNames);
+    state.names[win.id] = displayName(win, state.bindings, state.savedNames, state.sessionNames);
   }
 }
 
@@ -566,14 +561,6 @@ async function init() {
   });
   els.banner.addEventListener('click', () => { openShortcutsPage(); window.close(); });
 
-  if (state.settings.naming === 'nano' && hasPromptApi()) {
-    refreshNanoNames(state.windows, state.settings, async () => {
-      state.nanoNames = await getSession('nanoNames', {});
-      computeNames();
-      buildRows();
-      render();
-    }).catch(() => {});
-  }
 }
 
 init().catch((err) => {

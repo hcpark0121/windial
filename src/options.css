@@ -29,8 +29,6 @@ section { padding: 14px 0; border-top: 1px solid var(--edge); }
 .choice input { margin: 4px 0 0; accent-color: var(--accent); }
 .choice b { display: block; font-weight: 600; }
 .choice small { display: block; color: var(--ink-2); font-size: 12px; }
-.nano { margin: 6px 0 0 24px; padding: 10px 12px; background: var(--panel); border-radius: 8px; display: none; }
-.nano.on { display: block; }
 .status { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
 .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ink-3); flex: none; }
 .dot.ok { background: var(--ok); } .dot.warn { background: var(--warn); } .dot.bad { background: var(--bad); }

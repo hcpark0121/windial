@@ -106,77 +106,11 @@
   "optTitle": {
     "message": "Paramètres de Windial"
   },
-  "optNaming": {
-    "message": "Noms de fenêtre automatiques"
-  },
-  "optNamingHelp": {
-    "message": "Un nom que vous saisissez vous-même l’emporte toujours. Ces règles ne complètent que le reste."
-  },
-  "optNamingRule": {
-    "message": "D’après le premier onglet (par défaut)"
-  },
-  "optNamingRuleHelp": {
-    "message": "Le site du premier onglet de la fenêtre, par exemple « Github » ou « Naver »."
-  },
-  "optNamingNano": {
-    "message": "Demander à Gemini Nano sur cet appareil"
-  },
-  "optNanoNote": {
-    "message": "S’exécute sur cet ordinateur ; rien n’en sort. Nécessite Chrome 148 ou plus récent, environ 22 Go d’espace libre et un téléchargement unique du modèle."
-  },
-  "nanoUnsupported": {
-    "message": "Indisponible dans ce Chrome"
-  },
-  "nanoDownloadable": {
-    "message": "Modèle pas encore téléchargé"
-  },
-  "nanoDownloading": {
-    "message": "Téléchargement… $PCT$ %",
-    "placeholders": {
-      "PCT": {
-        "content": "$1"
-      }
-    }
-  },
-  "nanoAvailable": {
-    "message": "Prêt"
-  },
-  "nanoUnavailable": {
-    "message": "Indisponible sur cet appareil"
-  },
-  "nanoDownload": {
-    "message": "Télécharger le modèle"
-  },
-  "nanoTest": {
-    "message": "Essayer avec cette fenêtre"
-  },
-  "nanoTestResult": {
-    "message": "Nom proposé : $NAME$",
-    "placeholders": {
-      "NAME": {
-        "content": "$1"
-      }
-    }
-  },
-  "nanoTestFailed": {
-    "message": "Impossible d’obtenir un nom : $ERR$",
-    "placeholders": {
-      "ERR": {
-        "content": "$1"
-      }
-    }
-  },
-  "optLang": {
-    "message": "Langue des noms proposés"
-  },
-  "optLangSystem": {
-    "message": "Comme Chrome"
-  },
   "optNames": {
     "message": "Noms de fenêtre enregistrés"
   },
   "optNamesHelp": {
-    "message": "Les noms sont réassociés aux fenêtres d’après leurs onglets ; ils survivent donc à un redémarrage de Chrome."
+    "message": "Les noms sont réassociés aux fenêtres d’après leurs onglets ; ils survivent donc à un redémarrage de Chrome. Les fenêtres sans nom prennent le nom du site de leur premier onglet."
   },
   "optNamesEmpty": {
     "message": "Aucun nom enregistré pour l’instant. Appuyez sur F2 dans la liste pour nommer une fenêtre."

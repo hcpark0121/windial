@@ -106,77 +106,11 @@
   "optTitle": {
     "message": "Windial 设置"
   },
-  "optNaming": {
-    "message": "自动命名窗口"
-  },
-  "optNamingHelp": {
-    "message": "你自己输入的名称始终优先。以下规则只用于其余窗口。"
-  },
-  "optNamingRule": {
-    "message": "取自第一个标签页（默认）"
-  },
-  "optNamingRuleHelp": {
-    "message": "使用窗口第一个标签页所在网站的名称，例如“Github”或“Naver”。"
-  },
-  "optNamingNano": {
-    "message": "使用本机的 Gemini Nano 判断"
-  },
-  "optNanoNote": {
-    "message": "只在这台电脑上运行，不会向外发送任何内容。需要 Chrome 148 或更高版本、约 22 GB 可用磁盘空间以及一次性模型下载。"
-  },
-  "nanoUnsupported": {
-    "message": "此 Chrome 不可用"
-  },
-  "nanoDownloadable": {
-    "message": "尚未下载模型"
-  },
-  "nanoDownloading": {
-    "message": "下载中… $PCT$%",
-    "placeholders": {
-      "PCT": {
-        "content": "$1"
-      }
-    }
-  },
-  "nanoAvailable": {
-    "message": "已就绪"
-  },
-  "nanoUnavailable": {
-    "message": "此设备不可用"
-  },
-  "nanoDownload": {
-    "message": "下载模型"
-  },
-  "nanoTest": {
-    "message": "用当前窗口试试"
-  },
-  "nanoTestResult": {
-    "message": "建议的名称：$NAME$",
-    "placeholders": {
-      "NAME": {
-        "content": "$1"
-      }
-    }
-  },
-  "nanoTestFailed": {
-    "message": "无法获取名称：$ERR$",
-    "placeholders": {
-      "ERR": {
-        "content": "$1"
-      }
-    }
-  },
-  "optLang": {
-    "message": "建议名称的语言"
-  },
-  "optLangSystem": {
-    "message": "与 Chrome 相同"
-  },
   "optNames": {
     "message": "已保存的窗口名称"
   },
   "optNamesHelp": {
-    "message": "名称按窗口的标签页组成重新匹配，因此重启 Chrome 后仍然保留。"
+    "message": "名称按窗口的标签页组成重新匹配，因此重启 Chrome 后仍然保留。 未命名的窗口按第一个标签页所在网站的名称显示。"
   },
   "optNamesEmpty": {
     "message": "还没有保存的名称。在列表中按 F2 为窗口命名。"

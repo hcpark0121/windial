@@ -106,77 +106,11 @@
   "optTitle": {
     "message": "Ajustes de Windial"
   },
-  "optNaming": {
-    "message": "Nombres automáticos de ventana"
-  },
-  "optNamingHelp": {
-    "message": "Un nombre que escribas tú siempre tiene prioridad. Estas reglas solo completan el resto."
-  },
-  "optNamingRule": {
-    "message": "Desde la primera pestaña (por defecto)"
-  },
-  "optNamingRuleHelp": {
-    "message": "El sitio de la primera pestaña de la ventana, por ejemplo «Github» o «Naver»."
-  },
-  "optNamingNano": {
-    "message": "Preguntar a Gemini Nano en este dispositivo"
-  },
-  "optNanoNote": {
-    "message": "Se ejecuta en este equipo; nada sale de él. Requiere Chrome 148 o superior, unos 22 GB de espacio libre y una descarga única del modelo."
-  },
-  "nanoUnsupported": {
-    "message": "No disponible en este Chrome"
-  },
-  "nanoDownloadable": {
-    "message": "Modelo aún no descargado"
-  },
-  "nanoDownloading": {
-    "message": "Descargando… $PCT$%",
-    "placeholders": {
-      "PCT": {
-        "content": "$1"
-      }
-    }
-  },
-  "nanoAvailable": {
-    "message": "Listo"
-  },
-  "nanoUnavailable": {
-    "message": "No disponible en este dispositivo"
-  },
-  "nanoDownload": {
-    "message": "Descargar modelo"
-  },
-  "nanoTest": {
-    "message": "Probar con esta ventana"
-  },
-  "nanoTestResult": {
-    "message": "Nombre sugerido: $NAME$",
-    "placeholders": {
-      "NAME": {
-        "content": "$1"
-      }
-    }
-  },
-  "nanoTestFailed": {
-    "message": "No se pudo obtener un nombre: $ERR$",
-    "placeholders": {
-      "ERR": {
-        "content": "$1"
-      }
-    }
-  },
-  "optLang": {
-    "message": "Idioma de los nombres sugeridos"
-  },
-  "optLangSystem": {
-    "message": "Igual que Chrome"
-  },
   "optNames": {
     "message": "Nombres de ventana guardados"
   },
   "optNamesHelp": {
-    "message": "Los nombres se vuelven a asociar a las ventanas por sus pestañas, así que sobreviven a un reinicio de Chrome."
+    "message": "Los nombres se vuelven a asociar a las ventanas por sus pestañas, así que sobreviven a un reinicio de Chrome. Las ventanas sin nombre se muestran con el sitio de su primera pestaña."
   },
   "optNamesEmpty": {
     "message": "Aún no hay nombres guardados. Pulsa F2 en la lista para nombrar una ventana."

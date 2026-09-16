@@ -106,77 +106,11 @@
   "optTitle": {
     "message": "Windial-Einstellungen"
   },
-  "optNaming": {
-    "message": "Automatische Fensternamen"
-  },
-  "optNamingHelp": {
-    "message": "Ein selbst eingegebener Name hat immer Vorrang. Diese Regeln füllen nur den Rest."
-  },
-  "optNamingRule": {
-    "message": "Vom ersten Tab (Standard)"
-  },
-  "optNamingRuleHelp": {
-    "message": "Die Website des ersten Tabs im Fenster, zum Beispiel „Github“ oder „Naver“."
-  },
-  "optNamingNano": {
-    "message": "Gemini Nano auf diesem Gerät fragen"
-  },
-  "optNanoNote": {
-    "message": "Läuft auf diesem Computer; nichts verlässt das Gerät. Benötigt Chrome 148 oder neuer, etwa 22 GB freien Speicher und einen einmaligen Modell-Download."
-  },
-  "nanoUnsupported": {
-    "message": "In diesem Chrome nicht verfügbar"
-  },
-  "nanoDownloadable": {
-    "message": "Modell noch nicht heruntergeladen"
-  },
-  "nanoDownloading": {
-    "message": "Wird heruntergeladen… $PCT$%",
-    "placeholders": {
-      "PCT": {
-        "content": "$1"
-      }
-    }
-  },
-  "nanoAvailable": {
-    "message": "Bereit"
-  },
-  "nanoUnavailable": {
-    "message": "Auf diesem Gerät nicht verfügbar"
-  },
-  "nanoDownload": {
-    "message": "Modell herunterladen"
-  },
-  "nanoTest": {
-    "message": "Mit diesem Fenster ausprobieren"
-  },
-  "nanoTestResult": {
-    "message": "Vorgeschlagener Name: $NAME$",
-    "placeholders": {
-      "NAME": {
-        "content": "$1"
-      }
-    }
-  },
-  "nanoTestFailed": {
-    "message": "Kein Name erhalten: $ERR$",
-    "placeholders": {
-      "ERR": {
-        "content": "$1"
-      }
-    }
-  },
-  "optLang": {
-    "message": "Sprache der vorgeschlagenen Namen"
-  },
-  "optLangSystem": {
-    "message": "Wie Chrome"
-  },
   "optNames": {
     "message": "Gespeicherte Fensternamen"
   },
   "optNamesHelp": {
-    "message": "Namen werden über die Tabs wieder dem Fenster zugeordnet und überstehen so einen Chrome-Neustart."
+    "message": "Namen werden über die Tabs wieder dem Fenster zugeordnet und überstehen so einen Chrome-Neustart. Fenster ohne Namen werden nach der Website ihres ersten Tabs benannt."
   },
   "optNamesEmpty": {
     "message": "Noch keine Namen gespeichert. Drücke in der Liste F2, um ein Fenster zu benennen."

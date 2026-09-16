@@ -1,8 +1,7 @@
 // Windial service worker: remembers window focus order (for "previous window"),
-// keeps name bindings tidy, and pre-computes Nano names when that option is on.
+// keeps name bindings tidy, and draws the per-tab toolbar icon with the window's number.
 
-import { getSession, setSession, resolveBindings, getSettings, keyLabel } from './common.js';
-import { refreshNanoNames, hasPromptApi } from './naming-nano.js';
+import { getSession, setSession, resolveBindings, keyLabel } from './common.js';
 import { getShortcut } from './shortcut.js';
 import { iconImageData } from './icon.js';
 
@@ -15,13 +14,12 @@ async function pushMru(windowId) {
 }
 
 async function forgetWindow(windowId) {
-  const [mru, bindings, nanoNames, sessionNames] = await Promise.all([
-    getSession('mru', []), getSession('bindings', {}), getSession('nanoNames', {}), getSession('sessionNames', {}),
+  const [mru, bindings, sessionNames] = await Promise.all([
+    getSession('mru', []), getSession('bindings', {}), getSession('sessionNames', {}),
   ]);
   delete bindings[windowId];
-  delete nanoNames[windowId];
   delete sessionNames[windowId];
-  await setSession({ mru: mru.filter((id) => id !== windowId), bindings, nanoNames, sessionNames });
+  await setSession({ mru: mru.filter((id) => id !== windowId), bindings, sessionNames });
 }
 
 // The toolbar icon shows the number of the window it sits in. Icons are per tab, so every
@@ -94,20 +92,19 @@ chrome.windows.onRemoved.addListener((windowId) => {
 });
 
 chrome.windows.onCreated.addListener(() => {
-  scheduleNano();
   scheduleBadges();
 });
 
 chrome.runtime.onStartup.addListener(() => {
   initBadgeStyle();
   scheduleBadges();
-  seedMru().then(rebind).then(scheduleNano).catch(() => {});
+  seedMru().then(rebind).catch(() => {});
 });
 
 chrome.runtime.onInstalled.addListener((details) => {
   initBadgeStyle();
   scheduleBadges();
-  seedMru().then(rebind).then(scheduleNano).catch(() => {});
+  seedMru().then(rebind).catch(() => {});
   welcomeIfNeeded(details.reason).catch(() => {});
 });
 
@@ -147,29 +144,8 @@ async function moveTab({ tabId, windowId, follow }) {
   await chrome.windows.update(windowId, { focused: true });
 }
 
-// Nano naming in the background is best-effort; the popup also names on demand.
-let nanoTimer = null;
-function scheduleNano() {
-  if (!hasPromptApi()) return;
-  clearTimeout(nanoTimer);
-  nanoTimer = setTimeout(async () => {
-    try {
-      const settings = await getSettings();
-      if (settings.naming !== 'nano') return;
-      const wins = await normalWindows();
-      await refreshNanoNames(wins, settings);
-    } catch (_) { /* ignore */ }
-  }, 4000);
-}
-
 chrome.tabs.onUpdated.addListener((_tabId, info) => {
-  if (info.status === 'loading') scheduleBadges(); // tab-scoped badge text is cleared on navigation
-  if (info.status === 'complete' || info.title) scheduleNano();
+  if (info.status === 'loading') scheduleBadges(); // tab-scoped icons are cleared on navigation
 });
-chrome.tabs.onAttached.addListener(() => { scheduleNano(); scheduleBadges(); });
-chrome.tabs.onDetached.addListener(() => scheduleNano());
-chrome.tabs.onRemoved.addListener(() => scheduleNano());
+chrome.tabs.onAttached.addListener(() => scheduleBadges());
 
-chrome.storage.onChanged.addListener((changes, area) => {
-  if (area === 'local' && changes.settings) scheduleNano();
-});

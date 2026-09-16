@@ -94,25 +94,8 @@ export function fingerprintScore(fpA, fpB) {
 const REBIND_THRESHOLD = 0.4;
 
 // ---------- Storage ----------
-// chrome.storage.local  : settings, savedNames[]
-// chrome.storage.session: mru[], bindings{windowId->savedId}, nanoNames{windowId->{name,sig}}
-
-export const DEFAULT_SETTINGS = {
-  naming: 'rule',        // 'rule' | 'nano'
-  nameLang: 'system',    // 'system' | 'ko' | 'en' | 'ja' | ...
-};
-
-export async function getSettings() {
-  const { settings } = await chrome.storage.local.get('settings');
-  return { ...DEFAULT_SETTINGS, ...(settings || {}) };
-}
-
-export async function setSettings(patch) {
-  const cur = await getSettings();
-  const next = { ...cur, ...patch };
-  await chrome.storage.local.set({ settings: next });
-  return next;
-}
+// chrome.storage.local  : savedNames[]
+// chrome.storage.session: mru[], bindings{windowId->savedId}, sessionNames{windowId->name} (incognito only)
 
 export async function getSavedNames() {
   const { savedNames } = await chrome.storage.local.get('savedNames');
@@ -244,20 +227,8 @@ export function defaultName(win) {
   return label || (first.title || '').slice(0, MAX_NAME_LENGTH);
 }
 
-// Signature used to decide whether a Nano-generated name is stale.
-export function nanoSignature(win) {
-  return fingerprint(win).hosts.slice().sort().join('|');
-}
-
-export function nanoSignatureStale(sigA, sigB) {
-  const a = sigA ? sigA.split('|') : [];
-  const b = sigB ? sigB.split('|') : [];
-  return jaccard(a, b) < 0.6;
-}
-
-// Resolve the display name of each window. Order: user name > nano name > default rule.
-// `nanoNames` is { windowId: { name, sig } } from session storage (may be empty).
-export function displayName(win, bindings, savedNames, nanoNames, settings, sessionNames = {}) {
+// Resolve the display name of a window: a name the user typed, else the site of its first tab.
+export function displayName(win, bindings, savedNames, sessionNames = {}) {
   if (win.incognito) {
     const n = sessionNames[win.id];
     return n ? { name: n, source: 'user' } : { name: defaultName(win), source: 'rule' };
@@ -266,12 +237,6 @@ export function displayName(win, bindings, savedNames, nanoNames, settings, sess
   if (savedId) {
     const saved = savedNames.find((s) => s.id === savedId);
     if (saved && saved.name) return { name: saved.name, source: 'user' };
-  }
-  if (settings.naming === 'nano') {
-    const n = nanoNames && nanoNames[win.id];
-    if (n && n.name && !nanoSignatureStale(n.sig, nanoSignature(win))) {
-      return { name: n.name, source: 'nano' };
-    }
   }
   return { name: defaultName(win), source: 'rule' };
 }

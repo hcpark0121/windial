@@ -106,77 +106,11 @@
   "optTitle": {
     "message": "Windial 設定"
   },
-  "optNaming": {
-    "message": "ウィンドウ名の自動付与"
-  },
-  "optNamingHelp": {
-    "message": "自分で付けた名前が常に優先されます。以下のルールは残りのウィンドウにだけ適用されます。"
-  },
-  "optNamingRule": {
-    "message": "最初のタブから（既定）"
-  },
-  "optNamingRuleHelp": {
-    "message": "ウィンドウの最初のタブのサイト名を使います。例: 「Github」「Naver」。"
-  },
-  "optNamingNano": {
-    "message": "端末内の Gemini Nano に任せる"
-  },
-  "optNanoNote": {
-    "message": "このパソコンの中だけで動き、外部には何も送りません。Chrome 148 以降、約22GBの空き容量、初回のモデルダウンロードが必要です。"
-  },
-  "nanoUnsupported": {
-    "message": "この Chrome では使えません"
-  },
-  "nanoDownloadable": {
-    "message": "モデル未ダウンロード"
-  },
-  "nanoDownloading": {
-    "message": "ダウンロード中… $PCT$%",
-    "placeholders": {
-      "PCT": {
-        "content": "$1"
-      }
-    }
-  },
-  "nanoAvailable": {
-    "message": "準備完了"
-  },
-  "nanoUnavailable": {
-    "message": "この端末では使えません"
-  },
-  "nanoDownload": {
-    "message": "モデルをダウンロード"
-  },
-  "nanoTest": {
-    "message": "このウィンドウで試す"
-  },
-  "nanoTestResult": {
-    "message": "提案された名前: $NAME$",
-    "placeholders": {
-      "NAME": {
-        "content": "$1"
-      }
-    }
-  },
-  "nanoTestFailed": {
-    "message": "名前を取得できませんでした: $ERR$",
-    "placeholders": {
-      "ERR": {
-        "content": "$1"
-      }
-    }
-  },
-  "optLang": {
-    "message": "提案する名前の言語"
-  },
-  "optLangSystem": {
-    "message": "Chrome と同じ"
-  },
   "optNames": {
     "message": "保存したウィンドウ名"
   },
   "optNamesHelp": {
-    "message": "名前はタブ構成でウィンドウに再照合されるため、Chrome を再起動しても残ります。"
+    "message": "名前はタブ構成でウィンドウに再照合されるため、Chrome を再起動しても残ります。 名前を付けていないウィンドウは、最初のタブのサイト名で表示されます。"
   },
   "optNamesEmpty": {
     "message": "保存された名前はありません。一覧で F2 を押してウィンドウに名前を付けてください。"
