@@ -2,10 +2,10 @@
 // 1) bash tools/devconsole-browser.sh   (opens the console; sign in yourself)
 // 2) node tools/devconsole.mjs "<async body using page, ctx, pages>"   e.g. "return await page.title();"
 import { chromium } from 'playwright';
-const browser = await chromium.connectOverCDP('http://localhost:9333');
+const browser = await chromium.connectOverCDP(`http://localhost:${process.env.DEVCONSOLE_PORT || 9333}`);
 const ctx = browser.contexts()[0];
 const pages = ctx.pages();
-const page = pages.find((p) => p.url().includes('webstore/devconsole')) || pages[pages.length - 1];
+const page = pages.find((p) => p.url().includes(process.env.DEVCONSOLE_MATCH || 'webstore/devconsole')) || pages[pages.length - 1];
 const code = process.argv[2] || 'return { url: page.url(), title: await page.title() };';
 const fn = new Function('page', 'ctx', 'browser', 'pages', `return (async () => { ${code} })();`);
 try {
