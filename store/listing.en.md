@@ -27,6 +27,7 @@ Press the shortcut (⌥W on Mac, Alt+W on Windows and Linux; change it any time 
 • Incognito windows join the list if you allow the extension in incognito. Nothing about them is saved.
 • Choose the list density: compact (about 13 windows on screen), normal or large.
 • Follows Chrome's language: English, Korean, Japanese, Simplified Chinese, Spanish, German and French.
+• On macOS it also jumps to windows on other desktops (Spaces).
 • Works in light and dark mode.
 
 Privacy: Windial has no server, makes no network requests and collects nothing. Everything stays in your browser profile.
