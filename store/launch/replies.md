@@ -26,7 +26,10 @@ https://www.clien.net/service/board/cm_mac/18283996
 
 기본 기능으로는 Cmd+` 로 같은 앱의 창을 순서대로 넘기는 것까지입니다. 다른 데스크탑(Spaces)에 있는 창도 Cmd+` 로 넘어가긴 하는데, 창이 여러 개면 원하는 창까지 여러 번 눌러야 하고 어느 창인지 미리 볼 수가 없죠.
 
-저도 같은 불편 때문에 크롬 확장을 하나 만들어 쓰고 있습니다(제가 만든 거라 홍보이긴 합니다). 단축키를 누르면 창 목록이 이름·파비콘과 함께 뜨고 숫자 1~9로 그 창에 바로 갑니다. 다른 데스크탑(Spaces)에 있는 창도 번호만 누르면 그 데스크탑으로 넘어가는 걸 확인했습니다. 무료·오픈소스이고 외부로 아무것도 보내지 않습니다. 스토어에서 Windial로 찾으시면 됩니다.
+저도 같은 불편 때문에 크롬 확장을 하나 만들어 쓰고 있습니다(제가 만든 거라 홍보이긴 합니다). 단축키를 누르면 창 목록이 이름·파비콘과 함께 뜨고 숫자 1~9로 그 창에 바로 갑니다. 다른 데스크탑(Spaces)에 있는 창도 번호만 누르면 그 데스크탑으로 넘어가는 걸 확인했습니다. 무료·오픈소스이고 외부로 아무것도 보내지 않습니다.
+
+Windial (크롬 웹스토어): https://chromewebstore.google.com/detail/ccghjfhnknjhbdfhpolmjejigphmdlja
+소스: https://github.com/hcpark0121/windial
 
 ## Google Chrome Community — Keyboard shortcut for switching windows in Chrome (macOS) — LOCKED, cannot reply
 https://support.google.com/chrome/thread/291082258
