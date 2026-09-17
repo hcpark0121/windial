@@ -233,5 +233,8 @@
   },
   "densityLarge": {
     "message": "Grande — más fácil de leer"
+  },
+  "rateLink": {
+    "message": "Valora Windial en Chrome Web Store"
   }
 }

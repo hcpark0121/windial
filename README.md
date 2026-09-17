@@ -1,5 +1,7 @@
 # Windial
 
+**[Install from the Chrome Web Store](https://chromewebstore.google.com/detail/ccghjfhnknjhbdfhpolmjejigphmdlja)** · free · open source
+
 Switch Chrome windows by number. One shortcut, one digit.
 
 If you keep one window per topic, Chrome's own window switching is slow: `⌘`` cycles one window at a time and only shows whatever tab happens to be active. Windial opens a list where every window is recognisable at a glance, and pressing **1–9** (or **0** for the last window) takes you there.
@@ -29,7 +31,9 @@ Tab groups appear as coloured chips next to the name; the favicon row and tab co
 
 The toolbar icon carries a badge with the number of the window it sits in, so you can read a window's number without opening the list.
 
-## Install (unpacked)
+## Install
+
+From the [Chrome Web Store](https://chromewebstore.google.com/detail/ccghjfhnknjhbdfhpolmjejigphmdlja), or unpacked for development:
 
 1. Open `chrome://extensions`, turn on **Developer mode**.
 2. **Load unpacked** → pick this folder.

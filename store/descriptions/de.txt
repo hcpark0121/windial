@@ -1,0 +1,15 @@
+Windial ist ein Tastatur-Fensterwechsler für Chrome.
+
+Wer ein Chrome-Fenster pro Thema nutzt, wechselt langsam: Chrome zeigt nur den Titel des aktiven Tabs, und ⌘` bzw. Alt+Tab blättert Fenster für Fenster. Windial listet alle Fenster mit Name, Tabgruppen, Website-Icons und Tabanzahl auf – eine Zifferntaste bringt dich ins Fenster.
+
+• Liste per Tastenkürzel öffnen (⌥W auf dem Mac, Alt+W unter Windows und Linux; änderbar unter chrome://extensions/shortcuts), mit 1–9 springen, 0 ist das letzte Fenster.
+• Stabile Nummern: Sie folgen der Reihenfolge, in der die Fenster geöffnet wurden.
+• Das vorherige Fenster ist vorausgewählt: Enter bringt dich zurück.
+• Suche nach Fenstername, Tabgruppe, Tabtitel und URL; Enter öffnet das Fenster und den passenden Tab.
+• Shift+Zahl verschiebt den aktuellen Tab in dieses Fenster.
+• F2 benennt ein Fenster; der Name übersteht einen Chrome-Neustart.
+• Das Symbol in der Symbolleiste zeigt die Nummer des Fensters.
+• Inkognito-Fenster werden unterstützt (nichts wird gespeichert).
+• Listendichte wählbar; heller und dunkler Modus.
+
+Datenschutz: kein Server, keine Netzwerkanfragen, keine Datenerfassung. Alles bleibt in deinem Browserprofil. Kostenlos und Open Source; die Einstellungsseite enthält einen freiwilligen Unterstützungslink (Ko-fi).

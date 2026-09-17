@@ -1,9 +1,9 @@
 {
   "extName": {
-    "message": "Windial: Switch Windows by Number"
+    "message": "Windial – Window Switcher by Number Keys"
   },
   "extDesc": {
-    "message": "One shortcut, one number. See every Chrome window by its topic and jump between them in two keystrokes."
+    "message": "Window switcher for Chrome: press a shortcut, then a number. See every window by name and favicons, jump in two keystrokes."
   },
   "cmdOpen": {
     "message": "Open the window list"
@@ -233,5 +233,8 @@
   },
   "densityLarge": {
     "message": "Large — easier to read"
+  },
+  "rateLink": {
+    "message": "Rate Windial on the Chrome Web Store"
   }
 }

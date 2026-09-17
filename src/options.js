@@ -1,4 +1,4 @@
-import { t, uiLanguage, getSettings, setSettings, getSavedNames, setSavedNames, getSession, setSession, SUPPORT_URL } from './common.js';
+import { t, uiLanguage, getSettings, setSettings, getSavedNames, setSavedNames, getSession, setSession, SUPPORT_URL, REVIEW_URL } from './common.js';
 import { getShortcut, openShortcutsPage } from './shortcut.js';
 
 const $ = (id) => document.getElementById(id);
@@ -72,6 +72,8 @@ async function init() {
   $('shortcutChange').addEventListener('click', openShortcutsPage);
   document.addEventListener('visibilitychange', () => { if (!document.hidden) renderShortcut(); });
 
+  $('rateLink').href = REVIEW_URL;
+  $('rateLink').textContent = `★ ${t('rateLink')}`;
   if (SUPPORT_URL) {
     $('support').hidden = false;
     $('supportLink').href = SUPPORT_URL;

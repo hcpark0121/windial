@@ -47,5 +47,17 @@ for (const lang of ['ko', 'en']) {
   }
 }
 
+// promo tiles for the store listing (no alpha: they are full-bleed)
+for (const [name, w, h] of [['tile-small', 440, 280], ['tile-marquee', 1400, 560]]) {
+  const page = await browser.newPage({ viewport: { width: w, height: h }, deviceScaleFactor: 1, colorScheme: 'light' });
+  await page.goto(`${base}/store/tile.html?size=${name === 'tile-small' ? 'small' : 'marquee'}&lang=en`);
+  await page.waitForFunction(() => window.__shotReady === true, null, { timeout: 15000 });
+  await page.waitForTimeout(300);
+  const out = path.join(outDir, `${name}.png`);
+  await page.screenshot({ path: out });
+  console.log('wrote', path.relative(root, out));
+  await page.close();
+}
+
 await browser.close();
 server.close();

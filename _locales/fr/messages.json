@@ -233,5 +233,8 @@
   },
   "densityLarge": {
     "message": "Grande — plus lisible"
+  },
+  "rateLink": {
+    "message": "Noter Windial sur le Chrome Web Store"
   }
 }

@@ -233,5 +233,8 @@
   },
   "densityLarge": {
     "message": "Groß — besser lesbar"
+  },
+  "rateLink": {
+    "message": "Windial im Chrome Web Store bewerten"
   }
 }

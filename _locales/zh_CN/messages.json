@@ -233,5 +233,8 @@
   },
   "densityLarge": {
     "message": "宽松 — 更易阅读"
+  },
+  "rateLink": {
+    "message": "在 Chrome 应用商店为 Windial 评分"
   }
 }

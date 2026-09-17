@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Windial promo tile</title>
+<style>
+  html, body { margin: 0; }
+  body {
+    overflow: hidden; color: #1B1F2A;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Segoe UI", system-ui, sans-serif;
+    background:
+      radial-gradient(70% 90% at 12% 8%, #DCE2FF 0%, rgba(220,226,255,0) 60%),
+      radial-gradient(60% 80% at 92% 95%, #E4F3EA 0%, rgba(228,243,234,0) 60%),
+      #F3F4F8;
+  }
+  .k { display: inline-flex; align-items: center; justify-content: center; border: 1.5px solid #C9CDD6; border-bottom-width: 3px; border-radius: 9px; background: #fff; font-weight: 600; color: #1B1F2A; }
+  .arrow { color: #5B6270; }
+
+  /* small: 440x280 */
+  body.small { width: 440px; height: 280px; display: flex; flex-direction: column; justify-content: center; padding: 0 36px; box-sizing: border-box; gap: 14px; }
+  .small .brand { display: flex; align-items: center; gap: 14px; }
+  .small .brand img { width: 56px; height: 56px; border-radius: 13px; }
+  .small h1 { font-size: 40px; letter-spacing: -.02em; margin: 0; font-weight: 700; }
+  .small p { margin: 0; font-size: 18px; color: #4A5160; line-height: 1.35; }
+  .small .keys { display: flex; align-items: center; gap: 10px; font-size: 16px; }
+  .small .k { min-width: 40px; height: 40px; padding: 0 12px; font-size: 17px; }
+
+  /* marquee: 1400x560 */
+  body.marquee { width: 1400px; height: 560px; display: grid; grid-template-columns: 1fr 560px; align-items: center; padding: 0 80px 0 96px; box-sizing: border-box; gap: 24px; }
+  .marquee .brand { display: flex; align-items: center; gap: 18px; margin-bottom: 18px; }
+  .marquee .brand img { width: 72px; height: 72px; border-radius: 16px; }
+  .marquee h1 { font-size: 60px; letter-spacing: -.02em; margin: 0; font-weight: 700; }
+  .marquee p { margin: 0 0 26px; font-size: 26px; color: #4A5160; line-height: 1.4; max-width: 22ch; }
+  .marquee .keys { display: flex; align-items: center; gap: 12px; font-size: 20px; }
+  .marquee .k { min-width: 52px; height: 52px; padding: 0 16px; font-size: 22px; }
+  .frame { justify-self: end; width: 520px; height: 470px; border-radius: 14px; overflow: hidden; background: #fff; box-shadow: 0 30px 60px rgba(20,24,40,.22), 0 3px 10px rgba(20,24,40,.10); }
+  iframe { width: 520px; height: 600px; border: 0; display: block; }
+</style>
+</head>
+<body>
+<script>
+  const params = new URLSearchParams(location.search);
+  const size = params.get('size') === 'marquee' ? 'marquee' : 'small';
+  const lang = params.get('lang') || 'en';
+  document.body.className = size;
+  const copy = { en: 'Switch Chrome windows by number.', ko: '숫자 하나로 크롬 창을 옮깁니다.' };
+  const text = `
+    <div>
+      <div class="brand"><img src="../icons/icon128.png" alt=""><h1>Windial</h1></div>
+      <p>${copy[lang] || copy.en}</p>
+      <div class="keys"><span class="k">${navigator.platform.includes('Mac') ? '⌥W' : 'Alt+W'}</span><span class="arrow">→</span><span class="k">3</span></div>
+    </div>`;
+  document.body.innerHTML = size === 'marquee'
+    ? text + `<div class="frame"><iframe id="f" src="../src/popup.html?mock=1&lang=${lang}"></iframe></div>`
+    : text;
+  const f = document.getElementById('f');
+  if (f) f.addEventListener('load', () => { const tick = () => { const d = f.contentDocument; if (d && d.querySelector('.row')) setTimeout(() => { window.__shotReady = true; }, 250); else setTimeout(tick, 50); }; tick(); });
+  else window.__shotReady = true;
+</script>
+</body>
+</html>

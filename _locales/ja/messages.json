@@ -233,5 +233,8 @@
   },
   "densityLarge": {
     "message": "大きく — 読みやすく"
+  },
+  "rateLink": {
+    "message": "Chrome ウェブストアで Windial を評価"
   }
 }

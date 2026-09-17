@@ -1,14 +1,3 @@
-# Chrome Web Store listing (English)
-
-**Name** (45 chars max): `Windial – Window Switcher by Number Keys`
-
-**Summary** (132 chars max):
-One shortcut, one number. See every Chrome window by its topic and jump between them in two keystrokes.
-
-**Category**: Workflow & Planning (or Tools)
-
-**Description**:
-
 Windial is a keyboard window switcher for Chrome.
 
 If you keep one Chrome window per topic, you already know the problem: the built-in window switcher only shows the title of whatever tab happens to be active, and cycling through windows with ⌘` takes as many presses as you have windows.
@@ -34,15 +23,3 @@ Privacy: Windial has no server, makes no network requests and collects nothing. 
 Windial is free and open source. The options page links to a voluntary tip page (Ko-fi); nothing in the extension is paid.
 
 Tip: if the shortcut is already taken on your machine, pick another at chrome://extensions/shortcuts.
-
-**Screenshots** (1280×800): `store/screenshots/en-default.png`, `en-search.png`, `en-move.png`
-
-**Privacy policy URL**: host `store/privacy-policy.md` (for example on GitHub) and paste its URL.
-
-**Single purpose** (for the review form): Switch between open Chrome windows using the keyboard.
-
-**Permission justifications**:
-- `tabs`: read tab titles, URLs and favicons to describe each window and to search them.
-- `tabGroups`: show tab group names and colours as part of each window's description.
-- `favicon`: show cached site icons for tabs that have not loaded one.
-- `storage`: keep user-typed window names and settings in the browser profile.

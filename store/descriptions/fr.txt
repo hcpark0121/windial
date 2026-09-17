@@ -1,0 +1,15 @@
+Windial est un sélecteur de fenêtres au clavier pour Chrome.
+
+Si vous gardez une fenêtre Chrome par sujet, passer de l’une à l’autre est lent : Chrome n’affiche que le titre de l’onglet actif et ⌘` ou Alt+Tab avance fenêtre par fenêtre. Windial liste toutes les fenêtres avec leur nom, leurs groupes d’onglets, les icônes des sites et le nombre d’onglets ; un chiffre et vous y êtes.
+
+• Ouvrez la liste avec le raccourci (⌥W sur Mac, Alt+W sous Windows et Linux ; modifiable dans chrome://extensions/shortcuts), appuyez sur 1–9 pour y aller, 0 pour la dernière fenêtre.
+• Numéros stables : ils suivent l’ordre d’ouverture des fenêtres.
+• La fenêtre précédente est présélectionnée : Entrée vous y ramène.
+• Recherche par nom de fenêtre, groupe d’onglets, titre d’onglet et URL ; Entrée ouvre la fenêtre et l’onglet trouvé.
+• Shift+chiffre déplace l’onglet actuel vers cette fenêtre.
+• F2 nomme une fenêtre ; le nom survit à un redémarrage de Chrome.
+• L’icône de la barre d’outils affiche le numéro de la fenêtre.
+• Fenêtres de navigation privée prises en charge (rien n’est enregistré).
+• Densité de liste au choix ; modes clair et sombre.
+
+Confidentialité : aucun serveur, aucune requête réseau, aucune collecte. Tout reste dans votre profil de navigateur. Gratuit et open source ; la page des paramètres contient un lien de soutien volontaire (Ko-fi).

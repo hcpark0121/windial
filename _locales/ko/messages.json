@@ -1,9 +1,9 @@
 {
   "extName": {
-    "message": "Windial: 숫자로 창 전환"
+    "message": "Windial – 숫자키 창 전환기"
   },
   "extDesc": {
-    "message": "단축키 하나, 숫자 하나. 크롬 창마다 주제 이름과 파비콘을 보여주고, 키 두 번으로 창을 옮깁니다."
+    "message": "크롬 창 전환기. 단축키 하나, 숫자 하나로 창을 옮깁니다. 창마다 이름·탭 그룹·파비콘을 보여 줍니다."
   },
   "cmdOpen": {
     "message": "창 목록 열기"
@@ -233,5 +233,8 @@
   },
   "densityLarge": {
     "message": "크게 — 더 잘 보이게"
+  },
+  "rateLink": {
+    "message": "크롬 웹스토어에서 Windial 평가하기"
   }
 }

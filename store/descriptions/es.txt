@@ -1,0 +1,15 @@
+Windial es un selector de ventanas por teclado para Chrome.
+
+Si usas una ventana de Chrome por tema, cambiar entre ellas es lento: Chrome solo muestra el título de la pestaña activa y ⌘` o Alt+Tab avanza de una en una. Windial lista todas las ventanas con su nombre, grupos de pestañas, iconos de los sitios y número de pestañas; pulsa un número y estás en esa ventana.
+
+• Abre la lista con el atajo (⌥W en Mac, Alt+W en Windows y Linux; se cambia en chrome://extensions/shortcuts), pulsa 1–9 para saltar y 0 para la última ventana.
+• Los números son estables: siguen el orden en que abriste las ventanas.
+• La ventana anterior ya está seleccionada: Enter te devuelve a ella.
+• Busca por nombre de ventana, grupo de pestañas, título o URL; Enter abre la ventana y la pestaña encontrada.
+• Shift+número mueve la pestaña actual a esa ventana.
+• F2 pone nombre a una ventana y el nombre sobrevive a un reinicio de Chrome.
+• El icono de la barra muestra el número de la ventana.
+• Compatible con ventanas de incógnito (no se guarda nada).
+• Densidad de lista a elegir; modo claro y oscuro.
+
+Privacidad: sin servidor, sin peticiones de red, sin recopilar nada. Todo queda en tu perfil del navegador. Gratis y de código abierto; la página de ajustes incluye un enlace de apoyo voluntario (Ko-fi).
